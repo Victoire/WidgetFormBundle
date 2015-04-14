@@ -1,0 +1,29 @@
+{
+    "name": "victoire/form-widget",
+    "type": "symfony-bundle",
+    "description": "Create custom forms in Victoire website",
+    "keywords": ["cms", "victoire", "Form", "widget"],
+    "homepage": "http://appventus.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leny BERNARD",
+            "email": "leny@appventus.com"
+        },
+        {
+            "name": "Charlie Lucas",
+            "email": "charlie@appventus.com"
+        }
+    ],
+    "require": {
+        "php"                      : ">=5.3.3",
+        "symfony/framework-bundle" : "~2.3",
+        "victoire/victoire"        : "dev-master",
+        "ornicar/akismet-bundle"   : "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Victoire\\Widget\\FormBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Victoire/Widget/FormBundle"
+}

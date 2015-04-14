@@ -1,0 +1,84 @@
+{% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h3>{{ widget.title }}</h3>
+        {% set formName = 'cms_form_content' %}
+        <form class="form" update="null" id="form-{{ widget.id }}" method="post" action="{{ path('patrimea_result') }}" enctype="multipart/form-data">
+        {% set hiddenFields = ["title", "targetEmail","autoAnswer","subject"] %}
+            {% for field in hiddenFields %}
+                {% if attribute(widget, field) is defined %}
+                    <input type="hidden" name="{{ formName }}[{{ field }}]" value="{{ attribute(widget, field) }}"/>
+                {% endif %}
+            {% endfor %}
+            {% set hiddenAttachments = ["attachmentUrl","attachmentUrl2","attachmentUrl3","attachmentUrl4","attachmentUrl5","attachmentUrl6","attachmentUrl7"] %}
+            {% for attachment in hiddenAttachments %}
+                {% if attribute(widget, attachment) != "" %}
+                    <input type="hidden" name="{{ formName }}[{{ attachment }}]" value="{{ attribute(attribute(widget, attachment), 'id') }}"/>
+                {% endif %}
+            {% endfor %}
+            <div style="display:none">
+                <textarea name="{{ formName }}[message]">
+                    {{ attribute(widget, 'message') }}
+                </textarea>
+            </div>
+
+            {% for question in widget.questions %}
+                {% set questionId = loop.index0 %}
+                <div class="form-group">
+                    <label for="{{ question.type }}-{{ questionId }}" class="control-label">{{ question.title }}{% if question.required %}&nbsp;<span class='required'>*</span>{% endif %}</label>
+                    <input type="hidden" value="{{ question.title }}" name="{{ formName }}[questions][{{ questionId }}][label]"/>
+                    <input type="hidden" value="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][type]"/>
+                    {% if question.type == "text" %}
+                        <div class="input">
+                            <input class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %}/>
+                            <div class="alert alert-error" style="display: none"></div>
+                        </div>
+                    {% elseif question.type == "textarea" %}
+                        <div class="input">
+                            <textarea class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %}></textarea>
+                            <div class="alert alert-error" style="display: none"></div>
+                        </div>
+                    {% elseif question.type == "date" %}
+                        <div class="input">
+                            <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Day]" {% if question.required %}required="required"{% endif %}>
+                                {% for day in 0..31 %}
+                                    <option value="{{ day }}"{% if day == "now"|date('d') %} selected="selected"{% endif %}>{{ day }}</option>
+                                {% endfor %}
+                            </select>
+                            <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Month]"{% if question.required %}required="required"{% endif %}>
+                                {% set months =  {'1' : 'Janvier','2' : 'Février','3' : 'Mars','4' : 'Avril','5' : "Mai", '6' : "Juin", '7' : "Juillet", '8' : "Aout", '9' : "Septembre", '10' : "Octobre", '11' : "Novembre", '12' : "Décembre"} %}
+                                {% for key, month in months %}
+                                    <option value="{{ month }}"{% if key == "now"|date('n') %} selected="selected"{% endif %}>{{ month }}</option>
+                                {% endfor %}
+                            </select>
+                            <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Year]" {% if question.required %}required="required"{% endif %}>
+                                {% for year in range(1900, "now"|date("Y") + 25) %}
+                                    <option value="{{ year }}"{% if year == "now"|date('Y') %}selected="selected"{% endif %}>{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="alert alert-error" style="display: none"></div>
+                        </div>
+                    {% elseif question.type == "radio" or question.type == "checkbox" %}
+                        {% set proposals = data_unserialize(question.proposal)%}
+                        {% for k,proposal in proposals %}
+                            <div class="control-group input" id="input_{{ k }}">
+                                <label class="{{ question.type }}-inline">
+                                    <input type="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][proposal][]" value="{{ proposal }}" type="{{ question.type }}" /> {{ proposal }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button class="btn btn-primary pull-right">
+                {% if submitIcon %}
+                    <span class="fa {{ submitIcon }}"></span>&nbsp;
+                {% endif %}
+                {{ submitLabel }}
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

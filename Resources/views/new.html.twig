@@ -1,0 +1,131 @@
+{% extends 'VictoireCoreBundle:Widget:new.html.twig' %}
+
+{% trans_default_domain "victoire" %}
+{% set widgetId = widget.id|default('null') %}
+{% block body %}
+{% block form %}
+{{ form_start(form, {'attr' : {'id' : 'victoire_widget_form' }}) }}
+<div class="row">
+    <div class="col-md-4">
+        {{ form_row(form.title) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.submitLabel) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.submitIcon) }}
+            </div>
+        </div>
+        {% set params = (form.autoAnswer.vars.checked == 'on' ? 'true' : '') %}
+        {{ form_row(form.autoAnswer, {'attr': {'onclick' : 'showTargetField()'}, value : params }) }}
+        <div id="target_container" style="{{ form.autoAnswer.vars.checked == 'on' ? "" : "display:none" }}" class="auto_answer_extra_fields_container">
+            {{ form_row(form.targetEmail) }}
+            {{ form_row(form.subject) }}
+            {{ form_row(form.message) }}
+            {{ 'widget_form.form.message.help_block'|trans({}, 'victoire')|raw }}
+            <div id="attachment-container">
+               {{ form_row(form.attachmentUrl) }}
+               {{ form_widget(form.attachmentUrl2) }}<br/>
+               {{ form_widget(form.attachmentUrl3) }}<br/>
+               {{ form_widget(form.attachmentUrl4) }}<br/>
+               {{ form_widget(form.attachmentUrl5) }}<br/>
+               {{ form_widget(form.attachmentUrl6) }}<br/>
+               {{ form_widget(form.attachmentUrl7) }}
+           </div>
+       </div>
+   </div>
+   <div class="col-md-8">
+        {% include "VictoireWidgetFormBundle::formCreator.html.twig" with {'form' : form} %}
+        {% do form.questions.setRendered %}
+    </div>
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}
+{% endblock form %}
+
+
+<script type="text/javascript">
+    $vic(function() {
+        $vic( ".questions-form-list" ).sortable({
+            handle: ".question-link",
+            items: ".question",
+            placeholder: "question-placeholder",
+            update: function(event, ui) {
+                setPosition();
+            }
+        });
+        $vic( ".questions-form-list" ).disableSelection();
+        $vic( ".question" )
+        .find( ".question-link" )
+        .prepend( "<span class='question-toggle'></span>");
+
+        $vic( ".question-toggle" ).click(function() {
+            var icon = $vic( this );
+            icon.closest( ".question" ).find( ".question-content" ).toggle();
+        });
+    });
+    var questionHolder = $('ul#questions-form-list');
+
+    var $addQuestionLink = $('<a href="#" class="add_question_link">{{"widget_form.form.question.new.label"|trans|raw}}</a>');
+    var $newQuestionLinkLi = $('<li class="question-add"></li>').append($addQuestionLink);
+    var targetOnOff = {{ form.autoAnswer.vars.checked == 'on' ? "true" : "false" }};
+
+    $(document).ready(function() {
+        questionHolder.find('li.question').each(function() {
+            var id = $(this).data('id');
+            showQuestionForm(id);
+            addQuestionFormDeleteLink($(this));
+            $(this).find('.question-position').val($('li.question').index($(this)));
+            $(this).find('.selector-type').attr('onChange', 'showQuestionForm(this)');
+        });
+        questionHolder.append($newQuestionLinkLi);
+
+        $addQuestionLink.on('click', function(e) {
+            e.preventDefault();
+            addQuestionForm(questionHolder, $newQuestionLinkLi);
+        });
+    });
+
+    function showTargetField()
+    {
+        if (targetOnOff) {
+            $('div#target_container').hide();
+            targetOnOff = false;
+        } else {
+            $('div#target_container').show();
+            targetOnOff = true;
+
+        }
+
+        return true;
+    }
+
+    function addQuestionForm(questionHolder, $newQuestionLinkLi) {
+        var prototype = questionHolder.attr('data-prototype');
+        var questionId = questionHolder.children().length - 1;
+        var newForm = prototype.replace(/__name__/g, questionId);
+        var $newFormLi = $('<li class="question" data-id="'+(questionHolder.children().length - 1)+'"></li>').append(newForm);
+        $newQuestionLinkLi.before($newFormLi);
+        showQuestionForm(questionId);
+        $(".question_"+(questionId)+"_text").show();
+        addQuestionFormDeleteLink($newFormLi);
+    }
+
+    function addQuestionFormDeleteLink($questionFormLi) {
+        var $removeForm = $('<a href="#" class="pull-right"><i class="fa fa-trash-o formSlotDeleteLi"></i></a>');
+        $questionFormLi.find('.question-header').append($removeForm);
+
+        $removeForm.on('click', function(e) {
+            e.preventDefault();
+            $questionFormLi.remove();
+        });
+    }
+
+    function setPosition()
+    {
+        questionHolder.find('li.question').each(function() {
+            $(this).find('.question-position').val($('li.question').index($(this)));
+        });
+    }
+</script>
+{% endblock body %}

@@ -1,0 +1,92 @@
+{% trans_default_domain "victoire" %}
+
+{# for prototype #}
+{{ form_row(item.position) }}
+{{ form_row(item.title) }}
+{{ form_row(item.required) }}
+{{ form_row(item.type) }}
+{{ form_row(item.proposal) }}
+
+<div class="answer-type">
+    <div class="question_{{ name }}_text question_{{ name }}_" style='display: none'>
+        <div class="vic-form-group">
+            <input type="text" class="vic-form-control" readonly="readonly" />
+        </div>
+    </div>
+    <div class="question_{{ name }}_textarea question_{{ name }}_" style="display: none">
+        <div class="vic-form-group">
+            <textarea class="vic-form-control" readonly="readonly"></textarea>
+        </div>
+    </div>
+    <div class="question_{{ name }}_date question_{{ name }}_" style="display: none;">
+        <div class="vic-form-group" style="opacity: 0.5;">
+            <select disabled="disabled" style="width: auto;float:right;margin:5px 0px 5px 5px;">
+                {% for year in range(1900, "now"|date("Y") + 25) %}
+                    <option value="{{ year }}"{% if year == "now"|date('Y') %}selected="selected"{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+            <select disabled="disabled" style="width: auto;float:right;margin:5px;">
+                {% set months =  {'1' : 'Janvier','2' : 'Février','3' : 'Mars','4' : 'Avril','5' : "Mai", '6' : "Juin", '7' : "Juillet", '8' : "Aout", '9' : "Septembre", '10' : "Octobre", '11' : "Novembre", '12' : "Décembre"} %}
+                {% for key, month in months %}
+                    <option value="{{ month }}"{% if key == "now"|date('n') %} selected="selected"{% endif %}>{{ month }}</option>
+                {% endfor %}
+            </select>
+            <select disabled="disabled" style="width: auto;float:right;margin:5px;">
+                {% for day in 0..31 %}
+                    <option value="{{ day }}"{% if day == "now"|date('d') %} selected="selected"{% endif %}>{{ day }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="question_{{ name }}_proposal question_{{ name }}_" style="display: none">
+            <ul id="question_{{ name }}_proposals-form-list"  data-prototype="<div class='vic-input-group'><input type='text' class='vic-form-control' id ='victoire_widget_form_form_questions_{{ name }}_proposal__nameProposal__' name='victoire_widget_form_form[questions][{{ name }}][proposal][__nameProposal__]' value=''></div>">
+
+            {% for proposal in proposals %}
+                <li class="proposals{{ name }}">
+                    <div class='vic-input-group'>
+                        <input type="text" id ="victoire_widget_form_form_questions_{{ name }}_proposal_{{ loop.index0 }}" class="vic-form-control" value="{{ proposal }}" name="victoire_widget_form_form[questions][{{ name }}][proposal][{{ loop.index0 }}]">
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <hr/>
+</div>
+
+
+<script type="text/javascript">
+var proposal{{ name }}Holder = $vic('#question_{{ name }}_proposals-form-list');
+
+var $addProposal{{ name }}Link = $vic('<a href="#" class="add_proposal{{ name }}_link vic-input-group"><input type="text" class="vic-form-control" readonly="readonly" placeholder="{{ "widget_form.form.proposal.new.label"|trans }}"/><span class="vic-input-group-addon"><i class="fa fa-plus formDeleteLi"></i></span></a>');
+var $newProposal{{ name }}LinkLi = $vic('<li class="proposals{{ name }}"></li>').append($addProposal{{ name }}Link);
+
+$vic(document).ready(function() {
+    proposal{{ name }}Holder.find('li.proposals{{ name }}').each(function() {
+        addProposal{{ name }}FormDeleteLink($vic(this));
+    });
+     proposal{{ name }}Holder.append($newProposal{{ name }}LinkLi);
+
+    $addProposal{{ name }}Link.on('click', function(e) {
+        e.preventDefault();
+        addProposal{{ name }}Form(proposal{{ name }}Holder, $newProposal{{ name }}LinkLi);
+    });
+});
+
+function addProposal{{ name }}Form(proposal{{ name }}Holder, $newProposal{{ name }}LinkLi) {
+    var prototype = proposal{{ name }}Holder.attr('data-prototype');
+    var newForm = prototype.replace(/__nameProposal__/g, proposal{{ name }}Holder.children().length - 1);
+    var $newFormLi = $vic('<li class="proposals{{ name }}"></li>').append(newForm);
+    $newProposal{{ name }}LinkLi.before($newFormLi);
+    addProposal{{ name }}FormDeleteLink($newFormLi);
+}
+
+function addProposal{{ name }}FormDeleteLink($proposal{{ name }}FormLi) {
+    var $removeForm = $vic('<span class="vic-input-group-addon"><a href="#"><i class="fa fa-trash-o formDeleteLi"></i></a></span>');
+    $proposal{{ name }}FormLi.find('.vic-input-group').append($removeForm);
+
+    $removeForm.on('click', function(e) {
+        e.preventDefault();
+        $proposal{{ name }}FormLi.remove();
+    });
+}
+</script>

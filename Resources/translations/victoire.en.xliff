@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2014-08-25T15:37:48Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit resname="widget.form.new.action.label">
+        <source>widget.form.new.action.label</source>
+        <target>Form</target>
+      </trans-unit>
+      <trans-unit resname="modal.form.widget.type.form.label">
+        <source>modal.form.widget.type.form.label</source>
+        <target>Form</target>
+      </trans-unit>
+      <trans-unit id="c8bb92c13e3b78714de6d44f61e5f049dcec2ead" resname="widget_form.form.attachmentUrl.label">
+        <source>widget_form.form.attachmentUrl.label</source>
+        <target>Attach url</target>
+        <jms:reference-file line="26">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="78e4752db0a9b406b45710f3b29793cbe2b6f159" resname="widget_form.form.attachmentUrl2.label">
+        <source>widget_form.form.attachmentUrl2.label</source>
+        <target>Url 2</target>
+        <jms:reference-file line="29">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f0f3384a6a44d0774b8eab68f47327c40d97ffe8" resname="widget_form.form.attachmentUrl3.label">
+        <source>widget_form.form.attachmentUrl3.label</source>
+        <target>Url 3</target>
+        <jms:reference-file line="32">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="defc1df1982ca30870f86911f16f26b4410378a1" resname="widget_form.form.attachmentUrl4.label">
+        <source>widget_form.form.attachmentUrl4.label</source>
+        <target>Url 4</target>
+        <jms:reference-file line="35">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e1c7499f37faed8a2f0982a3a2f13d5c0502b83c" resname="widget_form.form.attachmentUrl5.label">
+        <source>widget_form.form.attachmentUrl5.label</source>
+        <target>Url 5</target>
+        <jms:reference-file line="38">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="474396596ba4c126183c0d8c5da058511712a8cb" resname="widget_form.form.attachmentUrl6.label">
+        <source>widget_form.form.attachmentUrl6.label</source>
+        <target>Url 6</target>
+        <jms:reference-file line="41">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="17708b37816b214f74ea5a40150f3668f52d2abe" resname="widget_form.form.attachmentUrl7.label">
+        <source>widget_form.form.attachmentUrl7.label</source>
+        <target>Url 7</target>
+        <jms:reference-file line="44">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bdce0079b72abd1f198b75a83827be2bebd51ff5" resname="widget_form.form.autoAnswer.label">
+        <source>widget_form.form.autoAnswer.label</source>
+        <target>Auto answer</target>
+        <jms:reference-file line="53">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="eab503edf2431b8205d0f87ce17821b70a80cb47" resname="widget_form.form.captcha.label">
+        <source>widget_form.form.captcha.label</source>
+        <target>Captcha</target>
+        <jms:reference-file line="56">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="998b8bb64d2275f837b5501e03150a4f964519e0" resname="widget_form.form.message.label">
+        <source>widget_form.form.message.label</source>
+        <target>Content</target>
+        <jms:reference-file line="59">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5d3caa050d880bbcffa8b710019cb49780eb70d9" resname="widget_form.form.question.delete.label">
+        <source>widget_form.form.question.delete.label</source>
+        <target>widget_form.form.question.delete.label</target>
+        <jms:reference-file line="82">Resources/views/form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="633d6b7aaf8a9a8d13819b62a7994fbf15a8d2c0" resname="widget_form.form.question.new.label">
+        <source>widget_form.form.question.new.label</source>
+        <target>New question</target>
+        <jms:reference-file line="55">Resources/views/form.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4766ad230b355e85caa7f842022883241da8b66f" resname="widget_form.form.questions.label">
+        <source>widget_form.form.questions.label</source>
+        <target>Questions</target>
+        <jms:reference-file line="97">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="37f58cf11c8fa7334c294601d42cff310f308884" resname="widget_form.form.subject.label">
+        <source>widget_form.form.subject.label</source>
+        <target>Subject</target>
+        <jms:reference-file line="47">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84aa8297edcd04be060fa557c3ea245f9b5d79c8" resname="widget_form.form.targetEmail.label">
+        <source>widget_form.form.targetEmail.label</source>
+        <target>Reply Adress</target>
+        <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ffea1d626eb77b0783a8e6264194b1f3fc1e8015" resname="widget_form.form.title.label">
+        <source>widget_form.form.title.label</source>
+        <target>Title</target>
+        <jms:reference-file line="23">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="614244867f2350f3e9defe7193612f76cc06f805" resname="widget_form.form.proposal.delete.label">
+        <source>widget_form.form.proposal.delete.label</source>
+        <target>Delete proposal</target>
+        <jms:reference-file line="67">Resources/views/_formCreatorQuestion.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8a16a2794b0ece68b04adda077aae584ae5687e0" resname="widget_form.form.proposal.new.label">
+        <source>widget_form.form.proposal.new.label</source>
+        <target>New proposal</target>
+        <jms:reference-file line="91">Resources/views/_formCreatorQuestion.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a4645fefa99ecba8ea86e8296dda9f27a214f01c" resname="widget_form.form.question.proposal.label">
+        <source>widget_form.form.question.proposal.label</source>
+        <target>Proposal</target>
+        <jms:reference-file line="46">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c7df432984d9bef91b722a1d5e0627a60ec6fba9" resname="widget_form.form.question.required.label">
+        <source>widget_form.form.question.required.label</source>
+        <target>Required</target>
+        <jms:reference-file line="26">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ce7b6620779bb48c7af1ef037d8fdb995ddf1d6d" resname="widget_form.form.question.title.label">
+        <source>widget_form.form.question.title.label</source>
+        <target>Posted question</target>
+        <jms:reference-file line="22">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3cdc008d402817170a8e3cd1586a514f362b0561" resname="widget_form.form.question.type.choice">
+        <source>widget_form.form.question.type.choice</source>
+        <target>Multiple choice</target>
+        <jms:reference-file line="34">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d6135249cfd626eaf1c2e9cfbf91b5bd969a96af" resname="widget_form.form.question.type.date">
+        <source>widget_form.form.question.type.date</source>
+        <target>Date</target>
+        <jms:reference-file line="33">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3c01757079a27994a0874a13abb402c95fef70eb" resname="widget_form.form.question.type.label">
+        <source>widget_form.form.question.type.label</source>
+        <target>Type of answer</target>
+        <jms:reference-file line="38">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e57c83c836b3fb648e1e44a9bb444641588b76c7" resname="widget_form.form.question.type.radio">
+        <source>widget_form.form.question.type.radio</source>
+        <target>Unique choice</target>
+        <jms:reference-file line="35">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="04176dffd8a22299830b20ba219b8e79cdee0062" resname="widget_form.form.question.type.text">
+        <source>widget_form.form.question.type.text</source>
+        <target>Short open response</target>
+        <jms:reference-file line="31">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0d82cea0cc3e28fd896f544152d1cd922d7f2c1b" resname="widget_form.form.question.type.textarea">
+        <source>widget_form.form.question.type.textarea</source>
+        <target>Long open response</target>
+        <jms:reference-file line="32">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2014-09-01T18:05:44Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a4645fefa99ecba8ea86e8296dda9f27a214f01c" resname="widget_form.form.question.proposal.label">
+        <source>widget_form.form.question.proposal.label</source>
+        <target state="new">widget_form.form.question.proposal.label</target>
+      </trans-unit>
+      <trans-unit id="c7df432984d9bef91b722a1d5e0627a60ec6fba9" resname="widget_form.form.question.required.label">
+        <source>widget_form.form.question.required.label</source>
+        <target state="new">widget_form.form.question.required.label</target>
+      </trans-unit>
+      <trans-unit id="ce7b6620779bb48c7af1ef037d8fdb995ddf1d6d" resname="widget_form.form.question.title.label">
+        <source>widget_form.form.question.title.label</source>
+        <target>Libellé</target>
+      </trans-unit>
+      <trans-unit id="3cdc008d402817170a8e3cd1586a514f362b0561" resname="widget_form.form.question.type.choice">
+        <source>widget_form.form.question.type.choice</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="d6135249cfd626eaf1c2e9cfbf91b5bd969a96af" resname="widget_form.form.question.type.date">
+        <source>widget_form.form.question.type.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="3c01757079a27994a0874a13abb402c95fef70eb" resname="widget_form.form.question.type.label">
+        <source>widget_form.form.question.type.label</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="e57c83c836b3fb648e1e44a9bb444641588b76c7" resname="widget_form.form.question.type.radio">
+        <source>widget_form.form.question.type.radio</source>
+        <target>Radio</target>
+      </trans-unit>
+      <trans-unit id="04176dffd8a22299830b20ba219b8e79cdee0062" resname="widget_form.form.question.type.text">
+        <source>widget_form.form.question.type.text</source>
+        <target>Texte</target>
+      </trans-unit>
+      <trans-unit id="0d82cea0cc3e28fd896f544152d1cd922d7f2c1b" resname="widget_form.form.question.type.textarea">
+        <source>widget_form.form.question.type.textarea</source>
+        <target>Texte long</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

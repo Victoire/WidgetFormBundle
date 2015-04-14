@@ -1,0 +1,51 @@
+{% set question = { 'label' : '' , "required" : 'false', 'type' : "text", "proposal": { }} %}
+{% trans_default_domain "victoire" %}
+<ul id="questions-form-list" class="questions-form-list vic-bordered-list" style="padding: 15px;" data-prototype="{% spaceless %}
+<div class='question-header'><span class='question-link' style='cursor:move;'><i class='fa fa-arrows fa-3'></i></span></div><div class='question-content'>
+{% filter escape %}
+{% include "VictoireWidgetFormBundle::formCreatorQuestion.html.twig" with { 'question' : question, 'item': form.questions.vars.prototype, name: '__name__', 'proposals': {} } %}
+{% endfilter %}
+{% endspaceless %}</div>">
+    {% for question in form.questions %}
+        <li class="question" data-id="{{ loop.index0 }}">
+            <div class="question-header">
+            <span class="question-link"><i class="fa fa-arrows fa-3"></i></span>
+            </div>
+            <div class="question-content">
+                {% include "VictoireWidgetFormBundle::formCreatorQuestion.html.twig" with { 'question' : question, 'name': loop.index0, 'item': question, 'proposals': data_unserialize(question.proposal.vars.value) } %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+
+<script type="text/javascript">
+    function showQuestionFormBySelect(select) {
+        showQuestionForm($vic(select).parents('li.question').data('id'), $vic(select).val());
+    }
+
+    function showQuestionForm(questionId, questionType) {
+        if (questionType == undefined) {
+            var questionType = $vic('#victoire_widget_form_form_questions_' + questionId + '_type').val();
+        }
+        $vic(".question_" + questionId + "_").hide();
+        switch (questionType) {
+            case 'text':
+               $vic(".question_" + questionId + "_" + questionType).show();
+                break;
+            case 'textarea':
+                $vic(".question_" + questionId + "_" + questionType).show();
+                break;
+            case 'radio':
+                $vic(".question_" + questionId + "_proposal").show();
+                break;
+            case 'checkbox':
+                 $vic(".question_" + questionId + "_proposal").show();
+                break;
+            case 'date':
+                $vic(".question_" + questionId + "_" + questionType).show();
+                break;
+            default:
+                break;
+        }
+    }
+</script>

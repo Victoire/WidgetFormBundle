@@ -1,0 +1,22 @@
+services:
+    victoire_core.widget_form_content_resolver:
+        class: Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver
+        tags:
+            - { name: victoire_widget.widget_content_resolver, alias: Form }
+
+    #alias to the entity
+    victoire.widget.form:
+        class: Victoire\Widget\FormBundle\Entity\WidgetForm
+
+    #alias to the form
+    victoire.widget.form.form:
+        class: Victoire\Widget\FormBundle\Form\WidgetFormType
+        arguments:
+            - %victoire_widget_form.prefill%
+        tags:
+            - { name: form.type , alias: victoire_widget_form_form }
+
+    victoire.form_widget.twig.extension:
+        class: Victoire\Widget\FormBundle\Twig\WidgetFormExtension
+        tags:
+            - { name: twig.extension }

@@ -21,6 +21,7 @@
 <script type="text/javascript">
     function showQuestionFormBySelect(select) {
         showQuestionForm($vic(select).parents('li.question').data('id'), $vic(select).val());
+        showExpandedField($vic(select));
     }
 
     function showQuestionForm(questionId, questionType) {

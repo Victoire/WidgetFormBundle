@@ -1,0 +1,8 @@
+<div class="control-group" >
+    {% for k,proposal in proposals %}
+        <label class="{{ question.type }}{% if question.proposalInline %}-inline{% endif %}" for="input-{{ questionId ~ '-' ~ k }}">
+            <input type="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][proposal][]" value="{{ proposal }}" type="{{ question.type }}" id="input-{{ questionId ~ '-' ~ k }}"/>
+             {{ proposal }}
+        </label>
+    {% endfor %}
+</div>

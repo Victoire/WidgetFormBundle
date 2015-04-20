@@ -52,6 +52,16 @@ class WidgetFormQuestionType extends WidgetType
                     ),
                 )
             )
+            ->add('proposalExpanded', null, array(
+                'label'    => "widget_form.form.question.proposalExpanded.label",
+                'required' => false,
+                )
+            )
+            ->add('proposalInline', null, array(
+                'label'    => "widget_form.form.question.proposalInline.label",
+                'required' => false,
+                )
+            )
             ->add('proposal', 'hidden', array(
                 'label'    => "widget_form.form.question.proposal.label",
                 'required' => false,

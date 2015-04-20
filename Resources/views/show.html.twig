@@ -61,13 +61,11 @@
                         </div>
                     {% elseif question.type == "radio" or question.type == "checkbox" %}
                         {% set proposals = data_unserialize(question.proposal)%}
-                        {% for k,proposal in proposals %}
-                            <div class="control-group input" id="input_{{ k }}">
-                                <label class="{{ question.type }}-inline">
-                                    <input type="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][proposal][]" value="{{ proposal }}" type="{{ question.type }}" /> {{ proposal }}
-                                </label>
-                            </div>
-                        {% endfor %}
+                        {% if question.proposalExpanded %}
+                            {% include 'VictoireWidgetFormBundle:form:_choiceExpanded.html.twig' %}
+                        {% else %}
+                            {% include 'VictoireWidgetFormBundle:form:_choice.html.twig' %}
+                        {% endif %}
                     {% endif %}
                 </div>
             {% endfor %}

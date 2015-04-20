@@ -1,0 +1,7 @@
+<select name="{{ formName }}[questions][{{ questionId }}][proposal][]">
+{% for k,proposal in proposals %}
+    <option id="input_{{ k }}" value="{{ proposal }}">
+        {{ proposal }}
+    </option>
+{% endfor %}
+</select>

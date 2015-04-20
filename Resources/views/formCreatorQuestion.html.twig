@@ -3,8 +3,19 @@
 {# for prototype #}
 {{ form_row(item.position) }}
 {{ form_row(item.title) }}
-{{ form_row(item.required) }}
-{{ form_row(item.type) }}
+<div class="vic-form-group">
+    {{ form_row(item.required) }}
+</div>
+<div class="vic-col-row vic-form-group">
+    <div class="vic-col-md-8">
+        {{ form_row(item.type) }}
+    </div>
+    {% set proposalType = (item.type.vars.value != 'checkbox' and item.type.vars.value != 'radio' ? true : false) %}
+    <div class="vic-col-md-4 expanded_container"{% if proposalType %} style="display: none"{% endif %}>
+        {{ form_row(item.proposalExpanded) }}
+        {{ form_row(item.proposalInline) }}
+    </div>
+</div>
 {{ form_row(item.proposal) }}
 
 <div class="answer-type">
@@ -39,7 +50,7 @@
         </div>
     </div>
     <div class="question_{{ name }}_proposal question_{{ name }}_" style="display: none">
-            <ul id="question_{{ name }}_proposals-form-list"  data-prototype="<div class='vic-input-group'><input type='text' class='vic-form-control' id ='victoire_widget_form_form_questions_{{ name }}_proposal__nameProposal__' name='victoire_widget_form_form[questions][{{ name }}][proposal][__nameProposal__]' value=''></div>">
+        <ul id="question_{{ name }}_proposals-form-list"  data-prototype="<div class='vic-input-group'><input type='text' class='vic-form-control' id ='victoire_widget_form_form_questions_{{ name }}_proposal__nameProposal__' name='victoire_widget_form_form[questions][{{ name }}][proposal][__nameProposal__]' value=''></div>">
 
             {% for proposal in proposals %}
                 <li class="proposals{{ name }}">

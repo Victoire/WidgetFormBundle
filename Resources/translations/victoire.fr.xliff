@@ -168,6 +168,14 @@
         <source>widget_form.form.question.new.label</source>
         <target><![CDATA[<span class="fa fa-plus"></span>&nbsp;Ajouter une nouvelle question]]></target>
       </trans-unit>
+      <trans-unit id="ec80dda84ae7e07aae54a07568a16a27e68b94b0" resname="widget_form.form.question.proposalExpanded.label">
+        <source>widget_form.form.question.proposalExpanded.label</source>
+        <target>Utiliser des cases à cocher</target>
+      </trans-unit>
+      <trans-unit id="7e07aae54a07568a16a27e68b94b0ec80dda84ae" resname="widget_form.form.question.proposalInline.label">
+        <source>widget_form.form.question.proposalInline.label</source>
+        <target>Afficher en ligne</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -67,6 +67,20 @@ class WidgetFormQuestion
     protected $proposal = null;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="proposal_expanded", type="boolean", nullable=true)
+     */
+    protected $proposalExpanded = null;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="proposal_inline", type="boolean", nullable=true)
+     */
+    protected $proposalInline = null;
+
+    /**
      * Get id
      *
      * @return integer
@@ -212,5 +226,51 @@ class WidgetFormQuestion
     public function getForm()
     {
         return $this->form;
+    }
+
+    /**
+     * Get proposalExpanded
+     *
+     * @return string
+     */
+    public function getProposalExpanded()
+    {
+        return $this->proposalExpanded;
+    }
+
+    /**
+     * Set proposalExpanded
+     * @param string $proposalExpanded
+     *
+     * @return $this
+     */
+    public function setProposalExpanded($proposalExpanded)
+    {
+        $this->proposalExpanded = $proposalExpanded;
+
+        return $this;
+    }
+
+    /**
+     * Get proposalInline
+     *
+     * @return string
+     */
+    public function getProposalInline()
+    {
+        return $this->proposalInline;
+    }
+
+    /**
+     * Set proposalInline
+     * @param string $proposalInline
+     *
+     * @return $this
+     */
+    public function setProposalInline($proposalInline)
+    {
+        $this->proposalInline = $proposalInline;
+
+        return $this;
     }
 }

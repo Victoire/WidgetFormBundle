@@ -64,19 +64,19 @@
             icon.closest( ".question" ).find( ".question-content" ).toggle();
         });
     });
-    var questionHolder = $('ul#questions-form-list');
+    var questionHolder = $vic('ul#questions-form-list');
 
-    var $addQuestionLink = $('<a href="#" class="add_question_link">{{"widget_form.form.question.new.label"|trans|raw}}</a>');
-    var $newQuestionLinkLi = $('<li class="question-add"></li>').append($addQuestionLink);
+    var $addQuestionLink = $vic('<a href="#" class="add_question_link">{{"widget_form.form.question.new.label"|trans|raw}}</a>');
+    var $newQuestionLinkLi = $vic('<li class="question-add"></li>').append($addQuestionLink);
     var targetOnOff = {{ form.autoAnswer.vars.checked == 'on' ? "true" : "false" }};
 
-    $(document).ready(function() {
+    $vic(document).ready(function() {
         questionHolder.find('li.question').each(function() {
-            var id = $(this).data('id');
+            var id = $vic(this).data('id');
             showQuestionForm(id);
-            addQuestionFormDeleteLink($(this));
-            $(this).find('.question-position').val($('li.question').index($(this)));
-            $(this).find('.selector-type').attr('onChange', 'showQuestionForm(this)');
+            addQuestionFormDeleteLink($vic(this));
+            $vic(this).find('.question-position').val($vic('li.question').index($vic(this)));
+            $vic(this).find('.selector-type').attr('onChange', 'showQuestionForm(this)');
         });
         questionHolder.append($newQuestionLinkLi);
 
@@ -89,10 +89,10 @@
     function showTargetField()
     {
         if (targetOnOff) {
-            $('div#target_container').hide();
+            $vic('div#target_container').hide();
             targetOnOff = false;
         } else {
-            $('div#target_container').show();
+            $vic('div#target_container').show();
             targetOnOff = true;
 
         }
@@ -100,19 +100,30 @@
         return true;
     }
 
+    function showExpandedField(select)
+    {
+        var questionType = $vic(select).val();
+        var expanded_container = $vic(select).parents('.vic-col-row.vic-form-group').first().find('.expanded_container');
+        if (questionType == 'radio' || questionType == 'checkbox') {
+            $vic(expanded_container).show();
+        } else {
+            $vic(expanded_container).hide();
+        }
+    }
+
     function addQuestionForm(questionHolder, $newQuestionLinkLi) {
         var prototype = questionHolder.attr('data-prototype');
         var questionId = questionHolder.children().length - 1;
         var newForm = prototype.replace(/__name__/g, questionId);
-        var $newFormLi = $('<li class="question" data-id="'+(questionHolder.children().length - 1)+'"></li>').append(newForm);
+        var $newFormLi = $vic('<li class="question" data-id="'+(questionHolder.children().length - 1)+'"></li>').append(newForm);
         $newQuestionLinkLi.before($newFormLi);
         showQuestionForm(questionId);
-        $(".question_"+(questionId)+"_text").show();
+        $vic(".question_"+(questionId)+"_text").show();
         addQuestionFormDeleteLink($newFormLi);
     }
 
     function addQuestionFormDeleteLink($questionFormLi) {
-        var $removeForm = $('<a href="#" class="pull-right"><i class="fa fa-trash-o formSlotDeleteLi"></i></a>');
+        var $removeForm = $vic('<a href="#" class="pull-right"><i class="fa fa-trash-o formSlotDeleteLi"></i></a>');
         $questionFormLi.find('.question-header').append($removeForm);
 
         $removeForm.on('click', function(e) {
@@ -124,7 +135,7 @@
     function setPosition()
     {
         questionHolder.find('li.question').each(function() {
-            $(this).find('.question-position').val($('li.question').index($(this)));
+            $vic(this).find('.question-position').val($vic('li.question').index($vic(this)));
         });
     }
 </script>

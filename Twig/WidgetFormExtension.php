@@ -25,7 +25,11 @@ class WidgetFormExtension extends \Twig_Extension
     public function dataUnserialize($data)
     {
         if (is_string($data) && $data != 'N;') {
-            return unserialize($data);
+            try {
+                return unserialize($data);
+            } catch (\Exception $e) {
+                throw new \Exception(sprintf("Please check the validity of the proposal value %s. %s", $data, $e->getMessage()));
+            }
         }
 
         return '';

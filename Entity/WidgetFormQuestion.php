@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WidgetFormQuestion
 {
+    public function __construct()
+    {
+        $this->proposal = array();
+    }
+
     /**
      * @var integer
      *
@@ -57,9 +62,9 @@ class WidgetFormQuestion
     /**
      * @var string
      *
-     * @ORM\Column(name="proposal", type="string", length=255, nullable=true)
+     * @ORM\Column(name="proposal", type="string", length=255, options={"default": "N;"})
      */
-    protected $proposal;
+    protected $proposal = null;
 
     /**
      * Get id

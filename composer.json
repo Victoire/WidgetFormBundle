@@ -1,5 +1,5 @@
 {
-    "name": "fov/form-widget",
+    "name": "friendsofvictoire/form-widget",
     "type": "symfony-bundle",
     "description": "Create custom forms in Victoire website",
     "keywords": ["cms", "victoire", "Form", "widget"],

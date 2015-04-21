@@ -2,8 +2,9 @@
 namespace Victoire\Widget\FormBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Victoire\Bundle\WidgetBundle\Entity\Widget;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
 /**
  * WidgetForm
@@ -16,7 +17,7 @@ class WidgetForm extends Widget
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     protected $title;
 
@@ -108,6 +109,7 @@ class WidgetForm extends Widget
      * @var text
      *
      * @ORM\Column(name="submit_label", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     protected $submitLabel;
 

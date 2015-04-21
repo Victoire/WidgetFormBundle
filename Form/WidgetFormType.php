@@ -114,7 +114,7 @@ class WidgetFormType extends WidgetType
         ))
         ->add('submitIcon', 'font_awesome_picker', array(
             'label' => 'widget_form.form.submitIcon.label',
-            'required' => true,
+            'required' => false,
         ))
         ;
 

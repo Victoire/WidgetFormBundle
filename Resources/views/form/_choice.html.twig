@@ -1,4 +1,4 @@
-<select name="{{ formName }}[questions][{{ questionId }}][proposal][]">
+<select name="{{ formName }}[questions][{{ questionId }}][proposal][]"{% if question.type == "checkbox" %} multiple{% endif %}>
 {% for k,proposal in proposals %}
     <option id="input_{{ k }}" value="{{ proposal }}">
         {{ proposal }}

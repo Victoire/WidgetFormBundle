@@ -11,6 +11,7 @@ Then you just have to run the following composer command :
 
 Do not forget to add the bundle in your AppKernel !
 
+```php
     class AppKernel extends Kernel
     {
         public function registerBundles()
@@ -23,5 +24,4 @@ Do not forget to add the bundle in your AppKernel !
             return $bundles;
         }
     }
-
-
+```

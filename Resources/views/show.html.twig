@@ -55,12 +55,12 @@
                         </div>
                     {% elseif question.type == "boolean" %}
                         <div class="input">
-                            <label class="{{ question.type }}{% if question.proposalInline %}-inline{% endif %}" for="input-{{ questionId ~ '-' ~ k }}">
+                            <label class="{{ question.type }}{% if question.proposalInline %}-inline{% endif %}" for="input-{{ questionId }}">
                             {% if question.prefix %}
                             <div class="input-group">
                               <div class="input-group-addon">{{question.prefix|raw}}</div>
                             {% endif %}
-                            <input type="checkbox" name="{{ formName }}[questions][{{ questionId }}][]" id="input-{{ questionId ~ '-' ~ k }}"/>
+                            <input type="checkbox" name="{{ formName }}[questions][{{ questionId }}][]" id="input-{{ questionId }}"/>
                             {% if question.prefix %}
                                 </div>
                             {% endif %}

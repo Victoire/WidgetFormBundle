@@ -1,3 +1,7 @@
+{% if question.prefix %}
+<div class="input-group">
+  <div class="input-group-addon">{{question.prefix|raw}}</div>
+{% endif %}
 <select name="{{ formName }}[questions][{{ questionId }}][proposal][]"{% if question.type == "checkbox" %} multiple{% endif %}>
 {% for k,proposal in proposals %}
     <option id="input_{{ k }}" value="{{ proposal }}">
@@ -5,3 +9,6 @@
     </option>
 {% endfor %}
 </select>
+{% if question.prefix %}
+    </div>
+{% endif %}

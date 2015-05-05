@@ -42,6 +42,18 @@
         <source>widget_form.form.question.type.textarea</source>
         <target>Texte long</target>
       </trans-unit>
+      <trans-unit id="1" resname="widget_form.form.question.prefix.label">
+        <source>widget_form.form.question.prefix.label</source>
+        <target>Préfixe</target>
+      </trans-unit>
+      <trans-unit id="3" resname="victoire_widget_form.boolean.false">
+        <source>victoire_widget_form.boolean.false</source>
+        <target>Non</target>
+      </trans-unit>
+      <trans-unit id="4" resname="victoire_widget_form.boolean.true">
+        <source>victoire_widget_form.boolean.true</source>
+        <target>Oui</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

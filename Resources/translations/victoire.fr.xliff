@@ -176,6 +176,14 @@
         <source>widget_form.form.question.proposalInline.label</source>
         <target>Afficher en ligne</target>
       </trans-unit>
+      <trans-unit id="1" resname="widget_form.form.question.type.boolean">
+        <source>widget_form.form.question.type.boolean</source>
+        <target>Case à cocher</target>
+      </trans-unit>
+      <trans-unit id="2" resname="widget_form.form.question.prefix.label">
+        <source>widget_form.form.question.prefix.label</source>
+        <target>Préfixe</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

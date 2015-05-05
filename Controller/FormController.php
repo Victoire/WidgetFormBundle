@@ -44,6 +44,12 @@ class FormController extends Controller
                 && !empty($question['Year'])) {
                 $label = $question["label"];
                 $data[$label] = $question['Day']." ".$question['Month']." ".$question['Year'];
+            }else if($question['type'] == "boolean"){
+                $label = "victoire_widget_form.boolean.false";
+                if (!empty($question[0])) {
+                    $label = "victoire_widget_form.boolean.true";
+                }
+                $data[$question["label"]] = $this->get('translator')->trans($label);
             }
         }
 

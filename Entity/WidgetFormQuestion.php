@@ -40,6 +40,13 @@ class WidgetFormQuestion
     private $position;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="prefix", type="string", nullable=true)
+     */
+    private $prefix;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="required", type="boolean", nullable=true)
@@ -180,6 +187,30 @@ class WidgetFormQuestion
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    /**
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return $this
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+
+        return $this;
     }
 
     /**

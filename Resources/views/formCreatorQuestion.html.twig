@@ -4,7 +4,15 @@
 {{ form_row(item.position) }}
 {{ form_row(item.title) }}
 <div class="vic-form-group">
-    {{ form_row(item.required) }}
+    <div class= "row">
+        <div class="col-sm-6">
+            {{ form_row(item.prefix) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(item.required) }}
+        </div>
+
+    </div>
 </div>
 <div class="vic-col-row vic-form-group">
     <div class="vic-col-md-8">
@@ -27,6 +35,11 @@
     <div class="question_{{ name }}_textarea question_{{ name }}_" style="display: none">
         <div class="vic-form-group">
             <textarea class="vic-form-control" readonly="readonly"></textarea>
+        </div>
+    </div>
+    <div class="question_{{ name }}_boolean question_{{ name }}_" style="display: none">
+        <div class="vic-form-group">
+            <input type="checkbox" class="vic-form-control" readonly="readonly" />
         </div>
     </div>
     <div class="question_{{ name }}_date question_{{ name }}_" style="display: none;">

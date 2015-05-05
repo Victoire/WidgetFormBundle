@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <h3>{{ widget.title }}</h3>
         {% set formName = 'cms_form_content' %}
-        <form class="form" update="null" id="form-{{ widget.id }}" method="post" action="{{ path('patrimea_result') }}" enctype="multipart/form-data">
+        <form class="form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
         {% set hiddenFields = ["title", "targetEmail","autoAnswer","subject"] %}
             {% for field in hiddenFields %}
                 {% if attribute(widget, field) is defined %}
@@ -31,16 +31,48 @@
                     <input type="hidden" value="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][type]"/>
                     {% if question.type == "text" %}
                         <div class="input">
+                            {% if question.prefix %}
+                            <div class="input-group">
+                              <div class="input-group-addon">{{question.prefix|raw}}</div>
+                            {% endif %}
                             <input class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %}/>
+                            {% if question.prefix %}
+                            </div>
+                            {% endif %}
                             <div class="alert alert-error" style="display: none"></div>
                         </div>
                     {% elseif question.type == "textarea" %}
                         <div class="input">
+                            {% if question.prefix %}
+                            <div class="input-group">
+                              <div class="input-group-addon">{{question.prefix|raw}}</div>
+                            {% endif %}
                             <textarea class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %}></textarea>
+                            {% if question.prefix %}
+                            </div>
+                            {% endif %}
                             <div class="alert alert-error" style="display: none"></div>
+                        </div>
+                    {% elseif question.type == "boolean" %}
+                        <div class="input">
+                            <label class="{{ question.type }}{% if question.proposalInline %}-inline{% endif %}" for="input-{{ questionId ~ '-' ~ k }}">
+                            {% if question.prefix %}
+                            <div class="input-group">
+                              <div class="input-group-addon">{{question.prefix|raw}}</div>
+                            {% endif %}
+                            <input type="checkbox" name="{{ formName }}[questions][{{ questionId }}][]" id="input-{{ questionId ~ '-' ~ k }}"/>
+                            {% if question.prefix %}
+                                </div>
+                            {% endif %}
+                                 {{ question.type }}
+                            </label>
                         </div>
                     {% elseif question.type == "date" %}
                         <div class="input">
+                            {% if question.prefix %}
+                            <div class="input-group">
+                              <div class="input-group-addon">{{question.prefix|raw}}</div>
+                            {% endif %}
                             <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Day]" {% if question.required %}required="required"{% endif %}>
                                 {% for day in 0..31 %}
                                     <option value="{{ day }}"{% if day == "now"|date('d') %} selected="selected"{% endif %}>{{ day }}</option>
@@ -57,6 +89,9 @@
                                     <option value="{{ year }}"{% if year == "now"|date('Y') %}selected="selected"{% endif %}>{{ year }}</option>
                                 {% endfor %}
                             </select>
+                            {% if question.prefix %}
+                            </div>
+                            {% endif %}
                             <div class="alert alert-error" style="display: none"></div>
                         </div>
                     {% elseif question.type == "radio" or question.type == "checkbox" %}

@@ -32,6 +32,10 @@ class WidgetFormQuestionType extends WidgetType
                     ),
                 )
             )
+            ->add('prefix', null, array(
+                    'label'    => "widget_form.form.question.prefix.label",
+                )
+            )
             ->add('required', null, array(
                     'label'    => "widget_form.form.question.required.label",
                 )
@@ -41,6 +45,7 @@ class WidgetFormQuestionType extends WidgetType
                             'text' => "widget_form.form.question.type.text",
                             'textarea' => "widget_form.form.question.type.textarea",
                             'date' => "widget_form.form.question.type.date",
+                            'boolean' => "widget_form.form.question.type.boolean",
                             'checkbox' => "widget_form.form.question.type.choice",
                             'radio' => "widget_form.form.question.type.radio",
                         ),

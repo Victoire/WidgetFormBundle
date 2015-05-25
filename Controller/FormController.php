@@ -32,24 +32,36 @@ class FormController extends Controller
 
         foreach ($taintedValues['questions'] as $question) {
             if (in_array($question['type'], array("text", "textarea")) && !empty($question[0])) {
-                $data[$question["label"]] = $question[0];
+                $data[] =array(
+                    'label' => $question["label"],
+                    'value' => $question[0]
+                );
             } elseif (in_array($question['type'], array("checkbox", "radio"))
                 && !empty($question['proposal'][0])) {
                 $checkboxValues = $question['proposal'];
-                $data[$question["label"]] = implode(', ', $checkboxValues);
+                $data[] = array(
+                    'label' => $question["label"],
+                    'value' => implode(', ', $checkboxValues)
+                );
             } elseif (
                 $question['type'] == "date"
                 && !empty($question['Day'])
                 && !empty($question['Month'])
                 && !empty($question['Year'])) {
                 $label = $question["label"];
-                $data[$label] = $question['Day']." ".$question['Month']." ".$question['Year'];
+                $data[] = array(
+                    'label' => $label,
+                    'value' => $question['Day']." ".$question['Month']." ".$question['Year']
+                );
             }else if($question['type'] == "boolean"){
                 $label = "victoire_widget_form.boolean.false";
                 if (!empty($question[0])) {
                     $label = "victoire_widget_form.boolean.true";
                 }
-                $data[$question["label"]] = $this->get('translator')->trans($label);
+                $data[] = array(
+                    'label' => $question["label"],
+                    'value' => $this->get('translator')->trans($label)
+                );
             }
         }
 
@@ -64,12 +76,13 @@ class FormController extends Controller
                     $from = array(
                         $this->container->getParameter('victoire_widget_form.default_email_address') => $this->container->getParameter('victoire_widget_form.default_email_label'),
                     );
+                    array_push($data, array('label' => 'ip', 'value' => $_SERVER['REMOTE_ADDR']));
                     $body = $this->renderView(
                         'VictoireWidgetFormBundle::managerMailTemplate.html.twig',
                         array(
                             'title' => $taintedValues['title'],
                             'url' => $request->headers->get('referer'),
-                            'data' => array_merge($data, array('ip' => $_SERVER['REMOTE_ADDR'])),
+                            'data' => $data,
                         )
                     );
 

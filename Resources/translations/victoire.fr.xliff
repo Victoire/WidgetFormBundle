@@ -184,6 +184,22 @@
         <source>widget_form.form.question.prefix.label</source>
         <target>Préfixe</target>
       </trans-unit>
+      <trans-unit id="successNotification" resname="widget_form.form.successNotification.label">
+        <source>widget_form.form.successNotification.label</source>
+        <target>Afficher une notification de succès?</target>
+      </trans-unit>
+      <trans-unit id="successMessage" resname="widget_form.form.successMessage.label">
+        <source>widget_form.form.successMessage.label</source>
+        <target>Message de succès :</target>
+      </trans-unit>
+      <trans-unit id="errorNotification" resname="widget_form.form.errorNotification.label">
+        <source>widget_form.form.errorNotification.label</source>
+        <target>Afficher une notification d'erreur?</target>
+      </trans-unit>
+      <trans-unit id="errorMessage" resname="widget_form.form.errorMessage.label">
+        <source>widget_form.form.errorMessage.label</source>
+        <target>Message d'erreur :</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

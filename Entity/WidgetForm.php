@@ -120,6 +120,35 @@ class WidgetForm extends Widget
     protected $questions;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="successNotification", type="boolean", nullable=true)
+     */
+    protected $successNotification;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="successMessage", type="string", length=255, nullable=true)
+     */
+    protected $successMessage;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="errorNotification", type="boolean", nullable=true)
+     */
+    protected $errorNotification;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="errorMessage", type="string", length=255, nullable=true)
+     */
+    protected $errorMessage;
+
+
+    /**
      * constructor
      */
     public function __construct()
@@ -510,5 +539,101 @@ class WidgetForm extends Widget
         $this->submitLabel = $submitLabel;
 
         return $this;
+    }
+
+    /**
+     * Set successNotification
+     *
+     * @param boolean $successNotification
+     *
+     * @return WidgetForm
+     */
+    public function setSuccessNotification($successNotification)
+    {
+        $this->successNotification = $successNotification;
+
+        return $this;
+    }
+
+    /**
+     * Get successNotification
+     *
+     * @return boolean
+     */
+    public function getSuccessNotification()
+    {
+        return $this->successNotification;
+    }
+
+    /**
+     * Set successMessage
+     *
+     * @param string $successMessage
+     *
+     * @return WidgetForm
+     */
+    public function setSuccessMessage($successMessage)
+    {
+        $this->successMessage = $successMessage;
+
+        return $this;
+    }
+
+    /**
+     * Get successMessage
+     *
+     * @return string
+     */
+    public function getSuccessMessage()
+    {
+        return $this->successMessage;
+    }
+
+    /**
+     * Set errorNotification
+     *
+     * @param boolean $errorNotification
+     *
+     * @return WidgetForm
+     */
+    public function setErrorNotification($errorNotification)
+    {
+        $this->errorNotification = $errorNotification;
+
+        return $this;
+    }
+
+    /**
+     * Get errorNotification
+     *
+     * @return boolean
+     */
+    public function getErrorNotification()
+    {
+        return $this->errorNotification;
+    }
+
+    /**
+     * Set errorMessage
+     *
+     * @param string $errorMessage
+     *
+     * @return WidgetForm
+     */
+    public function setErrorMessage($errorMessage)
+    {
+        $this->errorMessage = $errorMessage;
+
+        return $this;
+    }
+
+    /**
+     * Get errorMessage
+     *
+     * @return string
+     */
+    public function getErrorMessage()
+    {
+        return $this->errorMessage;
     }
 }

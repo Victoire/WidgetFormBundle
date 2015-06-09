@@ -1,8 +1,13 @@
 {
     "require_all":
     {
+        "javascripts":
+        {
+            "foot": "bundles/avalertify/toastr/js/toastr.js"
+        },
         "stylesheets":
         {
+            "head": "bundles/avalertify/toastr/css/toastr.css"
         }
     }
 }

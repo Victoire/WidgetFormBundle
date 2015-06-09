@@ -54,6 +54,14 @@
         <source>victoire_widget_form.boolean.true</source>
         <target>Oui</target>
       </trans-unit>
+      <trans-unit id="5" resname="victoire_widget_form.alert.send.email.success.label">
+        <source>victoire_widget_form.alert.send.email.success.label</source>
+        <target>Merci de votre participation.</target>
+      </trans-unit>
+      <trans-unit id="6" resname="victoire_widget_form.alert.send.email.error.label">
+        <source>victoire_widget_form.alert.send.email.error.label</source>
+        <target>Votre participation n'a pas pu être enregistrée.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

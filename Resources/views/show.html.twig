@@ -5,7 +5,7 @@
         <h3>{{ widget.title }}</h3>
         {% set formName = 'cms_form_content' %}
         <form class="form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
-        {% set hiddenFields = ["title", "targetEmail","autoAnswer","subject"] %}
+        {% set hiddenFields = ["title", "targetEmail", "autoAnswer", "subject", "successNotification", "successMessage", "errorNotification", "errorMessage"] %}
             {% for field in hiddenFields %}
                 {% if attribute(widget, field) is defined %}
                     <input type="hidden" name="{{ formName }}[{{ field }}]" value="{{ attribute(widget, field) }}"/>

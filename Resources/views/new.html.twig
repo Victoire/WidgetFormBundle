@@ -33,6 +33,19 @@
                {{ form_widget(form.attachmentUrl7) }}
            </div>
        </div>
+        <div class="vic-form-group">
+           {{form_row(form.successNotification)}}
+        </div>
+        <div id="widget-form-success-messsage" {{form.successNotification.vars.checked == 'on' ? '' : 'class="hidden"'}}>
+            {{form_row(form.successMessage)}}
+        </div>
+
+        <div class="vic-form-group">
+            {{form_row(form.errorNotification)}}
+        </div>
+        <div id="widget-form-error-messsage" {{form.successNotification.vars.checked == 'on' ? '' : 'class="hidden"'}}>
+        {{form_row(form.errorMessage)}}
+        </div>
    </div>
    <div class="col-md-8">
         {% include "VictoireWidgetFormBundle::formCreator.html.twig" with {'form' : form} %}
@@ -45,6 +58,14 @@
 
 
 <script type="text/javascript">
+    $vic(document).ready(function() {
+        $vic('#static_victoire_widget_form_form_successNotification').on('click', function() {
+            $vic('#widget-form-success-messsage').toggleClass('hidden');
+        });
+        $vic('#static_victoire_widget_form_form_errorNotification').on('click', function() {
+            $vic('#widget-form-error-messsage').toggleClass('hidden');
+        });
+    });
     $vic(function() {
         $vic( ".questions-form-list" ).sortable({
             handle: ".question-link",

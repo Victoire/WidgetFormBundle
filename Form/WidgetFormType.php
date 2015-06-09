@@ -116,6 +116,26 @@ class WidgetFormType extends WidgetType
             'label' => 'widget_form.form.submitIcon.label',
             'required' => false,
         ))
+        ->add('successNotification', null, array(
+            'label' => 'widget_form.form.successNotification.label',
+            'required' => false
+            )
+        )
+        ->add('successMessage', null, array(
+            'label' => 'widget_form.form.successMessage.label',
+            'required' => false
+            )
+        )
+        ->add('errorNotification', null, array(
+            'label' => 'widget_form.form.errorNotification.label',
+            'required' => false
+            )
+        )
+        ->add('errorMessage', null, array(
+            'label' => 'widget_form.form.errorMessage.label',
+            'required' => false
+            )
+        )
         ;
 
         if ($this->formPrefill) {

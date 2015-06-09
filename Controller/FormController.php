@@ -25,6 +25,7 @@ class FormController extends Controller
      */
     public function addFormAnswerAction(Request $request)
     {
+        $emailSend = false;
         if ($request->getMethod() != "POST" && $request->getMethod() != "PUT") {
             throw $this->createNotFoundException();
         }
@@ -85,6 +86,7 @@ class FormController extends Controller
                             'data' => $data,
                         )
                     );
+                    $emailSend = true;
 
                     $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, array(), $mailer);
                 } catch (Exception $exc) {
@@ -145,13 +147,26 @@ class FormController extends Controller
                             $attachments[] =  $file;
                         }
                     }
+                    $emailSend = true;
                     $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, $attachments, $mailer);
                 } catch (Exception $exc) {
                     echo $exc->getTraceAsString();
                 }
             }
         }
-        // $this->getUser()->setAttribute('referer',$this->getRequest()->getReferer());
+        if ($emailSend) {
+            if($taintedValues['successNotification'] == true)
+            {
+                $message = $taintedValues['successMessage'] != "" ? $taintedValues['successMessage'] : $this->get('translator')->trans('victoire_widget_form.alert.send.email.success.label');
+                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->congrat($message);
+            }
+        }else{
+            if($taintedValues['errorNotification'] == true)
+            {
+                $message = $taintedValues['errorMessage'] != "" ? $taintedValues['errorMessage'] : $this->get('translator')->trans('victoire_widget_form.alert.send.email.error.label');
+                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->warn($message);
+            }
+        }
         $referer = $this->getRequest()->headers->get('referer');
 
         return $this->redirect($referer);

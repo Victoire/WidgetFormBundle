@@ -71,7 +71,16 @@ class WidgetFormQuestionType extends WidgetType
                 'label'    => "widget_form.form.question.proposal.label",
                 'required' => false,
                 )
-            );
+            )
+            ->add('regex', null, array(
+                    'label'    => "widget_form.form.question.regex.label",
+                )
+            )
+            ->add('regexTitle', null, array(
+                    'label'    => "widget_form.form.question.regexTitle.label",
+                )
+            )
+;
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $widget = $event->getData();
                 $form = $event->getForm();

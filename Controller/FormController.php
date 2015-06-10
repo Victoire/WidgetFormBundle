@@ -26,6 +26,7 @@ class FormController extends Controller
     public function addFormAnswerAction(Request $request)
     {
         $emailSend = false;
+        $regexErrors = [];
         if ($request->getMethod() != "POST" && $request->getMethod() != "PUT") {
             throw $this->createNotFoundException();
         }
@@ -37,6 +38,17 @@ class FormController extends Controller
                     'label' => $question["label"],
                     'value' => $question[0]
                 );
+                if (isset($question['regex']) && !empty($question['regex'])) {
+                    $regex = $question['regex'];
+                    $regexTitle = null;
+                    $isValid = preg_match("/".$regex."/", $question[0]);
+                    if (isset($question['regexTitle']) && !empty($question['regexTitle'])) {
+                        $regexTitle = $question['regexTitle'];
+                    }
+                    if($isValid !== true){
+                        $regexErrors[] = $regexTitle;
+                    }
+                }
             } elseif (in_array($question['type'], array("checkbox", "radio"))
                 && !empty($question['proposal'][0])) {
                 $checkboxValues = $question['proposal'];
@@ -87,8 +99,9 @@ class FormController extends Controller
                         )
                     );
                     $emailSend = true;
-
-                    $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, array(), $mailer);
+                    if(sizeof($regexErrors) == 0){
+                        $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, array(), $mailer);
+                    }
                 } catch (Exception $exc) {
                     echo $exc->getTraceAsString();
                 }
@@ -148,7 +161,9 @@ class FormController extends Controller
                         }
                     }
                     $emailSend = true;
-                    $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, $attachments, $mailer);
+                    if(sizeof($regexErrors) == 0){
+                        $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, $attachments, $mailer);
+                    }
                 } catch (Exception $exc) {
                     echo $exc->getTraceAsString();
                 }
@@ -164,9 +179,14 @@ class FormController extends Controller
             if($taintedValues['errorNotification'] == true)
             {
                 $message = $taintedValues['errorMessage'] != "" ? $taintedValues['errorMessage'] : $this->get('translator')->trans('victoire_widget_form.alert.send.email.error.label');
-                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->warn($message);
+                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($message);
             }
         }
+        foreach ($regexErrors as $key => $error) {
+            if ($error != '') {
+                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($error);
+            }
+       }
         $referer = $this->getRequest()->headers->get('referer');
 
         return $this->redirect($referer);

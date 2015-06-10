@@ -30,6 +30,14 @@
     <div class="question_{{ name }}_text question_{{ name }}_" style='display: none'>
         <div class="vic-form-group">
             <input type="text" class="vic-form-control" readonly="readonly" />
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form_row(item.regex) }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form_row(item.regexTitle) }}
+                </div>
+            </div>
         </div>
     </div>
     <div class="question_{{ name }}_textarea question_{{ name }}_" style="display: none">

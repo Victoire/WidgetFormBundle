@@ -184,6 +184,14 @@
         <source>widget_form.form.question.prefix.label</source>
         <target>Préfixe</target>
       </trans-unit>
+      <trans-unit id="3" resname="widget_form.form.question.regex.label">
+        <source>widget_form.form.question.regex.label</source>
+        <target>Regex</target>
+      </trans-unit>
+      <trans-unit id="4" resname="widget_form.form.question.regexTitle.label">
+        <source>widget_form.form.question.regexTitle.label</source>
+        <target>Regex</target>
+      </trans-unit>
       <trans-unit id="successNotification" resname="widget_form.form.successNotification.label">
         <source>widget_form.form.successNotification.label</source>
         <target>Afficher une notification de succès?</target>

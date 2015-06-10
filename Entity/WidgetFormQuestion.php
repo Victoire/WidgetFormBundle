@@ -35,6 +35,20 @@ class WidgetFormQuestion
     /**
      * @var string
      *
+     * @ORM\Column(name="regex", type="string", length=510)
+     */
+    private $regex;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="regexTitle", type="string", length=255)
+     */
+    private $regexTitle;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="position", type="integer", nullable=true)
      */
     private $position;
@@ -301,6 +315,52 @@ class WidgetFormQuestion
     public function setProposalInline($proposalInline)
     {
         $this->proposalInline = $proposalInline;
+
+        return $this;
+    }
+    /**
+     * Get regex
+     *
+     * @return string
+     */
+    public function getRegex()
+    {
+        return $this->regex;
+    }
+
+    /**
+     * Set regex
+     *
+     * @param string $regex
+     *
+     * @return $this
+     */
+    public function setRegex($regex)
+    {
+        $this->regex = $regex;
+
+        return $this;
+    }
+    /**
+     * Get regexTitle
+     *
+     * @return string
+     */
+    public function getRegexTitle()
+    {
+        return $this->regexTitle;
+    }
+
+    /**
+     * Set regexTitle
+     *
+     * @param string $regexTitle
+     *
+     * @return $this
+     */
+    public function setRegexTitle($regexTitle)
+    {
+        $this->regexTitle = $regexTitle;
 
         return $this;
     }

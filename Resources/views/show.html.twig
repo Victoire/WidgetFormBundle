@@ -35,11 +35,17 @@
                             <div class="input-group">
                               <div class="input-group-addon">{{question.prefix|raw}}</div>
                             {% endif %}
-                            <input class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %}/>
+                            <input class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.regex %}pattern="{{question.regex}}" {% if question.regexTitle %}title="{{question.regexTitle}}" {% endif %}{% endif %} {% if question.required %}required="required"{% endif %}/>
                             {% if question.prefix %}
                             </div>
                             {% endif %}
                             <div class="alert alert-error" style="display: none"></div>
+                            {% if question.regex %}
+                                <input type="hidden" value="{{ question.regex }}" name="{{ formName }}[questions][{{ questionId }}][regex]"/>
+                                {% if question.regexTitle %}
+                                    <input type="hidden" value="{{ question.regexTitle }}" name="{{ formName }}[questions][{{ questionId }}][regexTitle]"/>
+                                {% endif %}
+                            {% endif %}
                         </div>
                     {% elseif question.type == "textarea" %}
                         <div class="input">

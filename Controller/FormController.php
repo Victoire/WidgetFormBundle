@@ -41,11 +41,12 @@ class FormController extends Controller
                 if (isset($question['regex']) && !empty($question['regex'])) {
                     $regex = $question['regex'];
                     $regexTitle = null;
-                    $isValid = preg_match("/".$regex."/", $question[0]);
+                    $regex = "/".$regex."/";
+                    $isValid = preg_match($regex, $question[0]);
                     if (isset($question['regexTitle']) && !empty($question['regexTitle'])) {
                         $regexTitle = $question['regexTitle'];
                     }
-                    if($isValid !== true){
+                    if($isValid !== 1){
                         $regexErrors[] = $regexTitle;
                     }
                 }
@@ -98,8 +99,8 @@ class FormController extends Controller
                             'data' => $data,
                         )
                     );
-                    $emailSend = true;
                     if(sizeof($regexErrors) == 0){
+                        $emailSend = true;
                         $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, array(), $mailer);
                     }
                 } catch (Exception $exc) {
@@ -160,8 +161,8 @@ class FormController extends Controller
                             $attachments[] =  $file;
                         }
                     }
-                    $emailSend = true;
                     if(sizeof($regexErrors) == 0){
+                        $emailSend = true;
                         $this->createAndSendMail($subject, $from, $to, $body, 'text/html', null, $attachments, $mailer);
                     }
                 } catch (Exception $exc) {

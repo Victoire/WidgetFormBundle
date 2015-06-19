@@ -35,14 +35,14 @@ class WidgetFormQuestion
     /**
      * @var string
      *
-     * @ORM\Column(name="regex", type="string", length=510)
+     * @ORM\Column(name="regex", type="string", length=510, nullable=true)
      */
     private $regex;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="regexTitle", type="string", length=255)
+     * @ORM\Column(name="regexTitle", type="string", length=255, nullable=true)
      */
     private $regexTitle;
 

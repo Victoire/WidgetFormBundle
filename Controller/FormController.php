@@ -20,7 +20,7 @@ class FormController extends Controller
      *
      * @param Request $request
      *
-     * @Route("/addFormAnswerAction", name="patrimea_result")
+     * @Route("/addFormAnswerAction", name="victoire_contact_form_result")
      * @return array
      */
     public function addFormAnswerAction(Request $request)
@@ -82,7 +82,7 @@ class FormController extends Controller
         $isSpam = $this->testValues($taintedValues, $request);
         $mailer = 'mailer';
         $subject = $taintedValues['title'];
-        if (isset($taintedValues['targetEmail']) && !empty($taintedValues['targetEmail'])) {
+        if (isset($taintedValues['targetEmail']) && !empty($taintedValues['targetEmail']) && !$isSpam) {
             $targetEmail = !empty($taintedValues['targetEmail']) ? $taintedValues['targetEmail'] : $this->container->getParameter('victoire_widget_form.default_email_address');
             if ($errors = $this->get('validator')->validateValue($taintedValues['targetEmail'], new EmailConstraint())) {
                 try {
@@ -114,7 +114,7 @@ class FormController extends Controller
                 $email = $question[0];
             }
         }
-        if (!empty($taintedValues['autoAnswer']) && $taintedValues['autoAnswer'] == true && !empty($email)) {
+        if (!empty($taintedValues['autoAnswer']) && $taintedValues['autoAnswer'] == true && !empty($email) && !$isSpam) {
             if ($errors = $this->get('validator')->validateValue($taintedValues['targetEmail'], new EmailConstraint())) {
                 try {
                     $body = $taintedValues['message'];
@@ -227,7 +227,6 @@ class FormController extends Controller
      */
     private function testValues($values, Request $request)
     {
-        $akismet = $this->container->get('ornicar_akismet');
         $valuesToTest = array('firstname', 'Email', 'message');
         $valuesToAkismet = array();
         foreach ($valuesToTest as $valueToTest) {
@@ -256,9 +255,15 @@ class FormController extends Controller
         }
         $valuesToAkismet['comment_author_url'] = $request->headers->get('referer');
         $valuesToAkismet['permalink'] = $request->headers->get('referer');
-        $akismet->isSpam($valuesToAkismet);
 
-        return $akismet;
+        if ($this->container->has('ornicar_akismet')) {
+            $akismet = $this->container->get('ornicar_akismet');
+            $akismet->isSpam($valuesToAkismet);
+            return $akismet;
+        }
+
+        return false;
+
     }
 
     protected function createAndSendMail($subject, $from, $to, $body, $contentType = 'text/html', $replyTo = null, $attachments = array(), $mailer = 'mailer')

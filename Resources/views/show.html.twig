@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <h3>{{ widget.title }}</h3>
         {% set formName = 'cms_form_content' %}
-        <form class="form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
+        <form action="{{ path('victoire_contact_form_result') }}" class="form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
         {% set hiddenFields = ["title", "targetEmail", "autoAnswer", "subject", "successNotification", "successMessage", "errorNotification", "errorMessage"] %}
             {% for field in hiddenFields %}
                 {% if attribute(widget, field) is defined %}
@@ -111,7 +111,7 @@
                 </div>
             {% endfor %}
 
-            <button class="btn btn-primary pull-right">
+            <button type="submit" class="btn btn-primary pull-right">
                 {% if submitIcon %}
                     <span class="fa {{ submitIcon }}"></span>&nbsp;
                 {% endif %}

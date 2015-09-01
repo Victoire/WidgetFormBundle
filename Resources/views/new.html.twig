@@ -57,7 +57,13 @@
 {% endblock form %}
 
 
+
 <script type="text/javascript">
+    $vic(document).on('victoire_widget_form_create_presubmit victoire_widget_form_update_presubmit', function(event) {
+        for ( instance in CKEDITOR.instances ) {
+            CKEDITOR.instances[instance].updateElement();
+        }
+    });
     $vic(document).ready(function() {
         $vic('#static_victoire_widget_form_form_successNotification').on('click', function() {
             $vic('#widget-form-success-messsage').toggleClass('hidden');

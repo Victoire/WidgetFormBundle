@@ -3,7 +3,10 @@
     {
         "javascripts":
         {
-            "foot": "bundles/avalertify/toastr/js/toastr.js"
+            "foot": [
+              "@VictoireWidgetFormBundle/Resources/public/js/validator.js",
+              "bundles/avalertify/toastr/js/toastr.js"
+            ]
         },
         "stylesheets":
         {

@@ -144,6 +144,10 @@
         <target>Question ouverte longue</target>
         <jms:reference-file line="32">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="OChJrkMmoOK5AvQC9viS38NK6TikhUZ8v9BbiCgy" resname="widget_form.form.question.type.email">
+        <source>widget_form.form.question.type.email</source>
+        <target>Email</target>
+      </trans-unit>
       <trans-unit id="614244867f2350f3e9defe7193612f76cc06f805" resname="widget_form.form.proposal.delete.label">
         <source>widget_form.form.proposal.delete.label</source>
         <target>Supprimer proposition</target>

@@ -42,6 +42,10 @@
         <source>widget_form.form.question.type.textarea</source>
         <target>Texte long</target>
       </trans-unit>
+      <trans-unit id="OChJrkMmoOK5AvQC9viS38NK6TikhUZ8v9BbiCgy" resname="widget_form.form.question.type.email">
+        <source>widget_form.form.question.type.email</source>
+        <target>Email</target>
+      </trans-unit>
       <trans-unit id="1" resname="widget_form.form.question.prefix.label">
         <source>widget_form.form.question.prefix.label</source>
         <target>Préfixe</target>

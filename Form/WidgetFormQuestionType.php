@@ -45,6 +45,7 @@ class WidgetFormQuestionType extends WidgetType
                             'text' => "widget_form.form.question.type.text",
                             'textarea' => "widget_form.form.question.type.textarea",
                             'date' => "widget_form.form.question.type.date",
+                            'email' => "widget_form.form.question.type.email",
                             'boolean' => "widget_form.form.question.type.boolean",
                             'checkbox' => "widget_form.form.question.type.choice",
                             'radio' => "widget_form.form.question.type.radio",

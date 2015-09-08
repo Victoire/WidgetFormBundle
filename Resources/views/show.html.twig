@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <h3>{{ widget.title }}</h3>
         {% set formName = 'cms_form_content' %}
-        <form action="{{ path('victoire_contact_form_result') }}" class="form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
+        <form action="{{ path('victoire_contact_form_result') }}" class="form widget-form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
         {% set hiddenFields = ["title", "targetEmail", "autoAnswer", "subject", "successNotification", "successMessage", "errorNotification", "errorMessage"] %}
             {% for field in hiddenFields %}
                 {% if attribute(widget, field) is defined %}
@@ -29,7 +29,7 @@
                     <label for="{{ question.type }}-{{ questionId }}" class="control-label">{{ question.title }}{% if question.required %}&nbsp;<span class='required'>*</span>{% endif %}</label>
                     <input type="hidden" value="{{ question.title }}" name="{{ formName }}[questions][{{ questionId }}][label]"/>
                     <input type="hidden" value="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][type]"/>
-                    {% if question.type == "text" %}
+                    {% if question.type == "text" or question.type == "email" %}
                         <div class="input">
                             {% if question.prefix %}
                             <div class="input-group">
@@ -39,7 +39,7 @@
                             {% if question.prefix %}
                             </div>
                             {% endif %}
-                            <div class="alert alert-error" style="display: none"></div>
+                            <div class="help-block" style="display: none"></div>
                             {% if question.regex %}
                                 <input type="hidden" value="{{ question.regex }}" name="{{ formName }}[questions][{{ questionId }}][regex]"/>
                                 {% if question.regexTitle %}
@@ -57,7 +57,7 @@
                             {% if question.prefix %}
                             </div>
                             {% endif %}
-                            <div class="alert alert-error" style="display: none"></div>
+                            <div class="help-block" style="display: none"></div>
                         </div>
                     {% elseif question.type == "boolean" %}
                         <div class="input">
@@ -98,7 +98,7 @@
                             {% if question.prefix %}
                             </div>
                             {% endif %}
-                            <div class="alert alert-error" style="display: none"></div>
+                            <div class="help-block" style="display: none"></div>
                         </div>
                     {% elseif question.type == "radio" or question.type == "checkbox" %}
                         {% set proposals = data_unserialize(question.proposal)%}

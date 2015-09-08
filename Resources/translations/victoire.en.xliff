@@ -149,6 +149,10 @@
         <target>Long open response</target>
         <jms:reference-file line="32">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="OChJrkMmoOK5AvQC9viS38NK6TikhUZ8v9BbiCgy" resname="widget_form.form.question.type.email">
+        <source>widget_form.form.question.type.email</source>
+        <target>Email</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

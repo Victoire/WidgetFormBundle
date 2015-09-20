@@ -4,6 +4,7 @@ namespace Victoire\Widget\FormBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Victoire\Bundle\WidgetBundle\Entity\Traits\LinkTrait;
 use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
 /**
@@ -14,6 +15,8 @@ use Victoire\Bundle\WidgetBundle\Entity\Widget;
  */
 class WidgetForm extends Widget
 {
+    use LinkTrait;
+
     /**
      * @var string
      *
@@ -92,21 +95,21 @@ class WidgetForm extends Widget
     protected $autoAnswer;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="message", type="text", nullable=true)
      */
     protected $message;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="submit_icon", type="text", nullable=true, options={"default"="fa-location-arrow"})
      */
     protected $submitIcon;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="submit_label", type="string", length=255, nullable=true)
      * @Assert\NotBlank()
@@ -121,13 +124,22 @@ class WidgetForm extends Widget
 
     /**
      * @var boolean
+     * @deprecated This property is now handled by successCallback to also allow a redirection after success
      *
      * @ORM\Column(name="successNotification", type="boolean", nullable=true)
      */
     protected $successNotification;
 
     /**
-     * @var text
+     * @var string
+     *
+     * @ORM\Column(name="success_callback", type="string", nullable=true)
+     * @Assert\Choice(choices = {"redirect", "notification"}, message = "victoire.widget-form.successCallback.assert.badChoice")
+     */
+    protected $successCallback;
+
+    /**
+     * @var string
      *
      * @ORM\Column(name="successMessage", type="string", length=255, nullable=true)
      */
@@ -141,7 +153,7 @@ class WidgetForm extends Widget
     protected $errorNotification;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="errorMessage", type="string", length=255, nullable=true)
      */
@@ -237,7 +249,7 @@ class WidgetForm extends Widget
     /**
      * Set autoAnswer
      *
-     * @param string $autoAnswer
+     * @param boolean $autoAnswer
      */
     public function setAutoanswer($autoAnswer)
     {
@@ -249,9 +261,9 @@ class WidgetForm extends Widget
     /**
      * Get autoAnswer
      *
-     * @return string
+     * @return boolean
      */
-    public function getAutoanswer()
+    public function isAutoanswer()
     {
         return $this->autoAnswer;
     }
@@ -545,6 +557,7 @@ class WidgetForm extends Widget
      * Set successNotification
      *
      * @param boolean $successNotification
+     * @deprecated
      *
      * @return WidgetForm
      */
@@ -557,6 +570,7 @@ class WidgetForm extends Widget
 
     /**
      * Get successNotification
+     * @deprecated
      *
      * @return boolean
      */
@@ -635,5 +649,33 @@ class WidgetForm extends Widget
     public function getErrorMessage()
     {
         return $this->errorMessage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSuccessCallback()
+    {
+        return $this->successCallback;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getLinkId()
+    {
+        if ($this->getLink()) {
+            return $this->getLink()->getId();
+        }
+    }
+
+    /**
+     * @param string $successCallback
+     */
+    public function setSuccessCallback($successCallback)
+    {
+        $this->successCallback = $successCallback;
+
+        return $this;
     }
 }

@@ -78,6 +78,11 @@
         <target>Adresse de réponse</target>
         <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="cd04be060fa5584aa8297ed5f9b5d79c87c3ea24" resname="widget_form.form.targetEmail.help_block">
+        <source>widget_form.form.targetEmail.help_block</source>
+        <target>Indiquez sur quelle adresse email l'internaute doit répondre ?</target>
+        <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="ffea1d626eb77b0783a8e6264194b1f3fc1e8015" resname="widget_form.form.title.label">
         <source>widget_form.form.title.label</source>
         <target>Titre</target>
@@ -196,9 +201,21 @@
         <source>widget_form.form.question.regexTitle.label</source>
         <target>Regex</target>
       </trans-unit>
-      <trans-unit id="successNotification" resname="widget_form.form.successNotification.label">
-        <source>widget_form.form.successNotification.label</source>
-        <target>Afficher une notification de succès?</target>
+      <trans-unit id="successCallbackNotification" resname="widget_form.form.successCallback.label">
+        <source>widget_form.form.successCallback.label</source>
+        <target>Action au succès</target>
+      </trans-unit>
+      <trans-unit id="successCallbackNotification" resname="victoire.widget-form.successCallback.choices.none">
+        <source>victoire.widget-form.successCallback.choices.none</source>
+        <target>Aucune</target>
+      </trans-unit>
+      <trans-unit id="successCallbackNotification" resname="victoire.widget-form.successCallback.choices.notification">
+        <source>victoire.widget-form.successCallback.choices.notification</source>
+        <target>Notification</target>
+      </trans-unit>
+      <trans-unit id="successCallbackRedirect" resname="victoire.widget-form.successCallback.choices.redirect">
+        <source>victoire.widget-form.successCallback.choices.redirect</source>
+        <target>Redirection</target>
       </trans-unit>
       <trans-unit id="successMessage" resname="widget_form.form.successMessage.label">
         <source>widget_form.form.successMessage.label</source>

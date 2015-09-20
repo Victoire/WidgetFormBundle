@@ -16,6 +16,15 @@
                 {{ form_row(form.submitIcon) }}
             </div>
         </div>
+        <div class="vic-form-group vic-well">
+           {{ form_row(form.successCallback) }}
+            <div id="widget-form-success-redirect" {{ form.successCallback.vars.value == 'redirect' ? '' : 'class="hidden"' }}>
+                {{ form_widget(form.link) }}
+            </div>
+            <div id="widget-form-success-notification" {{ form.successCallback.vars.value == 'notification' ? '' : 'class="hidden"' }}>
+                {{ form_row(form.successMessage) }}
+            </div>
+        </div>
         {% set params = (form.autoAnswer.vars.checked == 'on' ? 'true' : '') %}
         {{ form_row(form.autoAnswer, {'attr': {'onclick' : 'showTargetField()'}, value : params }) }}
         <div id="target_container" style="{{ form.autoAnswer.vars.checked == 'on' ? "" : "display:none" }}" class="auto_answer_extra_fields_container">
@@ -24,27 +33,20 @@
             {{ form_row(form.message) }}
             {{ 'widget_form.form.message.help_block'|trans({}, 'victoire')|raw }}
             <div id="attachment-container">
-               {{ form_row(form.attachmentUrl) }}
-               {{ form_widget(form.attachmentUrl2) }}<br/>
-               {{ form_widget(form.attachmentUrl3) }}<br/>
-               {{ form_widget(form.attachmentUrl4) }}<br/>
-               {{ form_widget(form.attachmentUrl5) }}<br/>
-               {{ form_widget(form.attachmentUrl6) }}<br/>
-               {{ form_widget(form.attachmentUrl7) }}
-           </div>
-       </div>
+                {{ form_row(form.attachmentUrl) }}
+                {{ form_widget(form.attachmentUrl2) }}<br/>
+                {{ form_widget(form.attachmentUrl3) }}<br/>
+                {{ form_widget(form.attachmentUrl4) }}<br/>
+                {{ form_widget(form.attachmentUrl5) }}<br/>
+                {{ form_widget(form.attachmentUrl6) }}<br/>
+                {{ form_widget(form.attachmentUrl7) }}
+            </div>
+        </div>
         <div class="vic-form-group">
-           {{form_row(form.successNotification)}}
+            {{ form_row(form.errorNotification) }}
         </div>
-        <div id="widget-form-success-messsage" {{form.successNotification.vars.checked == 'on' ? '' : 'class="hidden"'}}>
-            {{form_row(form.successMessage)}}
-        </div>
-
-        <div class="vic-form-group">
-            {{form_row(form.errorNotification)}}
-        </div>
-        <div id="widget-form-error-messsage" {{form.successNotification.vars.checked == 'on' ? '' : 'class="hidden"'}}>
-        {{form_row(form.errorMessage)}}
+        <div id="widget-form-error-messsage" {{ form.errorNotification.vars.checked == 'on' ? '' : 'class="hidden"' }}>
+        {{ form_row(form.errorMessage) }}
         </div>
    </div>
    <div class="col-md-8">
@@ -64,10 +66,12 @@
             CKEDITOR.instances[instance].updateElement();
         }
     });
+    $vic('#static_victoire_widget_form_form_successCallback').on('change', function() {
+        $vic('#widget-form-success-notification, #widget-form-success-redirect').addClass('hidden');
+        $vic('#widget-form-success-' + $vic(this).val()).removeClass('hidden');
+    });
     $vic(document).ready(function() {
-        $vic('#static_victoire_widget_form_form_successNotification').on('click', function() {
-            $vic('#widget-form-success-messsage').toggleClass('hidden');
-        });
+
         $vic('#static_victoire_widget_form_form_errorNotification').on('click', function() {
             $vic('#widget-form-error-messsage').toggleClass('hidden');
         });
@@ -93,7 +97,7 @@
     });
     var questionHolder = $vic('ul#questions-form-list');
 
-    var $addQuestionLink = $vic('<a href="#" class="add_question_link">{{"widget_form.form.question.new.label"|trans|raw}}</a>');
+    var $addQuestionLink = $vic('<a href="#" class="add_question_link">{{ "widget_form.form.question.new.label"|trans|raw }}</a>');
     var $newQuestionLinkLi = $vic('<li class="question-add"></li>').append($addQuestionLink);
     var targetOnOff = {{ form.autoAnswer.vars.checked == 'on' ? "true" : "false" }};
 

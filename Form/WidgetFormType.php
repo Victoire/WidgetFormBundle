@@ -62,6 +62,7 @@ class WidgetFormType extends WidgetType
         ))
         ->add('targetEmail', null, array(
             'label' => 'widget_form.form.targetEmail.label',
+            'vic_help_block' => 'widget_form.form.targetEmail.help_block',
         ))
         ->add('autoAnswer', null, array(
             'label' => 'widget_form.form.autoAnswer.label',
@@ -116,11 +117,17 @@ class WidgetFormType extends WidgetType
             'label' => 'widget_form.form.submitIcon.label',
             'required' => false,
         ))
-        ->add('successNotification', null, array(
-            'label' => 'widget_form.form.successNotification.label',
-            'required' => false
+        ->add('successCallback', 'choice', array(
+                'label'    => 'widget_form.form.successCallback.label',
+                'required' => true,
+                'choices'  => array(
+                    'none'           => 'victoire.widget-form.successCallback.choices.none',
+                    'notification'   => 'victoire.widget-form.successCallback.choices.notification',
+                    'redirect'       => 'victoire.widget-form.successCallback.choices.redirect',
+                ),
             )
         )
+        ->add('link', 'victoire_link')
         ->add('successMessage', null, array(
             'label' => 'widget_form.form.successMessage.label',
             'required' => false

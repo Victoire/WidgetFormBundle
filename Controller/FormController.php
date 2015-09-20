@@ -170,16 +170,23 @@ class FormController extends Controller
                 }
             }
         }
+
+        ///////////////////////// BUILD REDIRECT URL ACCORDING TO SUCCESS CALLBACK /////////////////////////////////////
+        $redirectUrl = null;
         if ($emailSend) {
-            if($taintedValues['successNotification'] == true)
+            if($widget->getSuccessCallback() == 'notification')
             {
-                $message = $taintedValues['successMessage'] != "" ? $taintedValues['successMessage'] : $this->get('translator')->trans('victoire_widget_form.alert.send.email.success.label');
+                $message = $widget->getSuccessMessage() != "" ? $widget->getSuccessMessage() : $this->get('translator')->trans('victoire_widget_form.alert.send.email.success.label');
                 $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->congrat($message);
+            } else {
+                if ($link = $widget->getLink()) {
+                    $redirectUrl = $this->get('victoire_widget.twig.link_extension')->victoireLinkUrl($link->getParameters());
+                }
             }
         }else{
-            if($taintedValues['errorNotification'] == true)
+            if($widget->getErrorNotification() == true)
             {
-                $message = $taintedValues['errorMessage'] != "" ? $taintedValues['errorMessage'] : $this->get('translator')->trans('victoire_widget_form.alert.send.email.error.label');
+                $message = $widget->getErrorMessage() != "" ? $widget->getErrorMessage() : $this->get('translator')->trans('victoire_widget_form.alert.send.email.error.label');
                 $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($message);
             }
         }
@@ -188,44 +195,15 @@ class FormController extends Controller
                 $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($error);
             }
        }
-        $referer = $this->getRequest()->headers->get('referer');
+        $redirectUrl = $redirectUrl ?: $request->headers->get('referer');
 
-        return $this->redirect($referer);
-    }
-
-    /**
-     * Modifies a string to remove all non ASCII characters and spaces.
-     */
-    private function slugify($text)
-    {
-        // replace non letter or digits by -
-        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
-
-        // trim
-        $text = trim($text, '-');
-
-        // transliterate
-        if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // lowercase
-        $text = strtolower($text);
-
-        // remove unwanted characters
-        $text = preg_replace('~[^-\w]+~', '', $text);
-
-        if (empty($text)) {
-            return 'n-a';
-        }
-
-        return $text;
+        return $this->redirect($redirectUrl);
     }
 
     /**
      * test if values is spam for a client
      */
-    private function testValues($values, Request $request)
+    private function testForSpam($values, Request $request)
     {
         $valuesToTest = array('firstname', 'Email', 'message');
         $valuesToAkismet = array();
@@ -268,6 +246,7 @@ class FormController extends Controller
 
     protected function createAndSendMail($subject, $from, $to, $body, $contentType = 'text/html', $replyTo = null, $attachments = array(), $mailer = 'mailer')
     {
+        /** @var Swift_Message $message */
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($from)

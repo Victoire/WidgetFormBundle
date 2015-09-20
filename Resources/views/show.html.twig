@@ -5,23 +5,7 @@
         <h3>{{ widget.title }}</h3>
         {% set formName = 'cms_form_content' %}
         <form action="{{ path('victoire_contact_form_result') }}" class="form widget-form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
-        {% set hiddenFields = ["title", "targetEmail", "autoAnswer", "subject", "successNotification", "successMessage", "errorNotification", "errorMessage"] %}
-            {% for field in hiddenFields %}
-                {% if attribute(widget, field) is defined %}
-                    <input type="hidden" name="{{ formName }}[{{ field }}]" value="{{ attribute(widget, field) }}"/>
-                {% endif %}
-            {% endfor %}
-            {% set hiddenAttachments = ["attachmentUrl","attachmentUrl2","attachmentUrl3","attachmentUrl4","attachmentUrl5","attachmentUrl6","attachmentUrl7"] %}
-            {% for attachment in hiddenAttachments %}
-                {% if attribute(widget, attachment) != "" %}
-                    <input type="hidden" name="{{ formName }}[{{ attachment }}]" value="{{ attribute(attribute(widget, attachment), 'id') }}"/>
-                {% endif %}
-            {% endfor %}
-            <div style="display:none">
-                <textarea name="{{ formName }}[message]">
-                    {{ attribute(widget, 'message') }}
-                </textarea>
-            </div>
+            <input type="hidden" name="{{ formName }}[id]" value="{{ widget.id }}"/>
 
             {% for question in widget.questions %}
                 {% set questionId = loop.index0 %}
@@ -53,7 +37,7 @@
                             <div class="input-group">
                               <div class="input-group-addon">{{question.prefix|raw}}</div>
                             {% endif %}
-                            <textarea class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %}></textarea>
+                            <textarea class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %} rows="10"></textarea>
                             {% if question.prefix %}
                             </div>
                             {% endif %}

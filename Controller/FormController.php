@@ -39,7 +39,7 @@ class FormController extends Controller
         $widget = $this->get('doctrine.orm.entity_manager')->getRepository('VictoireWidgetFormBundle:WidgetForm')->find($_taintedValues['id']);
 
         foreach ($_taintedValues['questions'] as $question) {
-            if (in_array($question['type'], array("text", "textarea")) && !empty($question[0])) {
+            if (in_array($question['type'], array("text", "textarea", "email")) && !empty($question[0])) {
                 $data[] =array(
                     'label' => $question["label"],
                     'value' => $question[0]

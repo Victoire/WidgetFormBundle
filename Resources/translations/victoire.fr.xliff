@@ -229,6 +229,14 @@
         <source>widget_form.form.errorMessage.label</source>
         <target>Message d'erreur :</target>
       </trans-unit>
+      <trans-unit id="noReply" resname="widget_form.form.noReply.label">
+        <source>widget_form.form.noReply.label</source>
+        <target>Email de réponse pour la réponse automatique.</target>
+      </trans-unit>
+      <trans-unit id="noReply" resname="widget_form.form.noReply.help_block">
+        <source>widget_form.form.noReply.help_block</source>
+        <target>Le destinataire du mail verra cette e-mail comme adresse de réponse.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,10 +1,11 @@
 <?php
+
 namespace Victoire\Widget\FormBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Question
+ * Question.
  *
  * @ORM\Table("vic_widget_form_question")
  * @ORM\Entity
@@ -13,11 +14,11 @@ class WidgetFormQuestion
 {
     public function __construct()
     {
-        $this->proposal = array();
+        $this->proposal = [];
     }
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -61,7 +62,7 @@ class WidgetFormQuestion
     private $prefix;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="required", type="boolean", nullable=true)
      */
@@ -76,7 +77,6 @@ class WidgetFormQuestion
 
     /**
      * @ORM\ManyToOne(targetEntity="Victoire\Widget\FormBundle\Entity\WidgetForm", inversedBy="questions", cascade={"persist"})
-     *
      */
     private $form;
 
@@ -88,23 +88,23 @@ class WidgetFormQuestion
     protected $proposal = null;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="proposal_expanded", type="boolean", nullable=true)
      */
     protected $proposalExpanded = null;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="proposal_inline", type="boolean", nullable=true)
      */
     protected $proposalInline = null;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -112,9 +112,10 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string   $title
+     * @param string $title
+     *
      * @return Question
      */
     public function setTitle($title)
@@ -125,7 +126,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -135,9 +136,10 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set required
+     * Set required.
      *
-     * @param  boolean  $required
+     * @param bool $required
+     *
      * @return Question
      */
     public function setRequired($required)
@@ -148,9 +150,9 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get required
+     * Get required.
      *
-     * @return boolean
+     * @return bool
      */
     public function getRequired()
     {
@@ -158,9 +160,10 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set type
+     * Set type.
      *
-     * @param  string   $type
+     * @param string $type
+     *
      * @return Question
      */
     public function setType($type)
@@ -171,7 +174,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get type
+     * Get type.
      *
      * @return string
      */
@@ -181,9 +184,10 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set position
+     * Set position.
      *
-     * @param  integer  $position
+     * @param int $position
+     *
      * @return Question
      */
     public function setPosition($position)
@@ -194,9 +198,9 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get position
+     * Get position.
      *
-     * @return integer
+     * @return int
      */
     public function getPosition()
     {
@@ -204,7 +208,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get prefix
+     * Get prefix.
      *
      * @return string
      */
@@ -214,7 +218,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set prefix
+     * Set prefix.
      *
      * @param string $prefix
      *
@@ -228,9 +232,10 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set proposal
+     * Set proposal.
      *
-     * @param  string   $proposal
+     * @param string $proposal
+     *
      * @return Question
      */
     public function setProposal($proposal)
@@ -241,7 +246,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get proposal
+     * Get proposal.
      *
      * @return string
      */
@@ -251,9 +256,10 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set form
+     * Set form.
      *
-     * @param  \Victoire\Widget\FormBundle\Entity\WidgetForm $form
+     * @param \Victoire\Widget\FormBundle\Entity\WidgetForm $form
+     *
      * @return Question
      */
     public function setForm(\Victoire\Widget\FormBundle\Entity\WidgetForm $form = null)
@@ -264,7 +270,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get form
+     * Get form.
      *
      * @return \Victoire\Widget\FormBundle\Entity\WidgetForm
      */
@@ -274,7 +280,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get proposalExpanded
+     * Get proposalExpanded.
      *
      * @return string
      */
@@ -284,7 +290,8 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set proposalExpanded
+     * Set proposalExpanded.
+     *
      * @param string $proposalExpanded
      *
      * @return $this
@@ -297,7 +304,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Get proposalInline
+     * Get proposalInline.
      *
      * @return string
      */
@@ -307,7 +314,8 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set proposalInline
+     * Set proposalInline.
+     *
      * @param string $proposalInline
      *
      * @return $this
@@ -318,8 +326,9 @@ class WidgetFormQuestion
 
         return $this;
     }
+
     /**
-     * Get regex
+     * Get regex.
      *
      * @return string
      */
@@ -329,7 +338,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set regex
+     * Set regex.
      *
      * @param string $regex
      *
@@ -341,8 +350,9 @@ class WidgetFormQuestion
 
         return $this;
     }
+
     /**
-     * Get regexTitle
+     * Get regexTitle.
      *
      * @return string
      */
@@ -352,7 +362,7 @@ class WidgetFormQuestion
     }
 
     /**
-     * Set regexTitle
+     * Set regexTitle.
      *
      * @param string $regexTitle
      *

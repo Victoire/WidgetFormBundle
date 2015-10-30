@@ -1,14 +1,15 @@
 <?php
+
 namespace Victoire\Widget\FormBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Victoire\Bundle\WidgetBundle\Entity\Traits\LinkTrait;
 use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
 /**
- * WidgetForm
+ * WidgetForm.
  *
  * @ORM\Table("vic_widget_form")
  * @ORM\Entity
@@ -95,7 +96,7 @@ class WidgetForm extends Widget
     protected $noReply;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="autoAnswer", type="boolean", nullable=true)
      */
@@ -130,7 +131,8 @@ class WidgetForm extends Widget
     protected $questions;
 
     /**
-     * @var boolean
+     * @var bool
+     *
      * @deprecated This property is now handled by successCallback to also allow a redirection after success
      *
      * @ORM\Column(name="successNotification", type="boolean", nullable=true)
@@ -153,7 +155,7 @@ class WidgetForm extends Widget
     protected $successMessage;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="errorNotification", type="boolean", nullable=true)
      */
@@ -166,21 +168,20 @@ class WidgetForm extends Widget
      */
     protected $errorMessage;
 
-
     /**
-     * constructor
+     * constructor.
      */
     public function __construct()
     {
         $this->questions = new ArrayCollection();
-        $this->submitIcon = "fa-location-arrow";
+        $this->submitIcon = 'fa-location-arrow';
     }
 
     /**
      * To String function
-     * Used in render choices type (Especially in VictoireWidgetRenderBundle)
+     * Used in render choices type (Especially in VictoireWidgetRenderBundle).
      *
-     * @return String
+     * @return string
      */
     public function __toString()
     {
@@ -188,7 +189,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      */
@@ -200,7 +201,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -210,7 +211,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set subject
+     * Set subject.
      *
      * @param string $subject
      */
@@ -222,7 +223,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get subject
+     * Get subject.
      *
      * @return string
      */
@@ -232,7 +233,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set targetEmail
+     * Set targetEmail.
      *
      * @param string $targetEmail
      */
@@ -244,7 +245,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get targetEmail
+     * Get targetEmail.
      *
      * @return string
      */
@@ -254,9 +255,9 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set autoAnswer
+     * Set autoAnswer.
      *
-     * @param boolean $autoAnswer
+     * @param bool $autoAnswer
      */
     public function setAutoanswer($autoAnswer)
     {
@@ -266,9 +267,9 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get autoAnswer
+     * Get autoAnswer.
      *
-     * @return boolean
+     * @return bool
      */
     public function isAutoanswer()
     {
@@ -276,7 +277,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set captcha
+     * Set captcha.
      *
      * @param string $captcha
      */
@@ -288,7 +289,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get captcha
+     * Get captcha.
      *
      * @return string
      */
@@ -298,7 +299,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set message
+     * Set message.
      *
      * @param string $message
      */
@@ -310,7 +311,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get message
+     * Get message.
      *
      * @return string
      */
@@ -320,9 +321,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Add questions
+     * Add questions.
      *
-     * @param  \Victoire\Widget\FormBundle\Entity\WidgetFormQuestion $questions
+     * @param \Victoire\Widget\FormBundle\Entity\WidgetFormQuestion $questions
+     *
      * @return WidgetFormSlot
      */
     public function addQuestion(\Victoire\Widget\FormBundle\Entity\WidgetFormQuestion $question)
@@ -334,7 +336,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Remove questions
+     * Remove questions.
      *
      * @param \Victoire\Widget\FormBundle\Entity\WidgetFormQuestion $questions
      */
@@ -344,7 +346,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get questions
+     * Get questions.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -354,9 +356,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set attachmentUrl
+     * Set attachmentUrl.
      *
-     * @param  \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl
+     * @param \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl
+     *
      * @return WidgetFormSlot
      */
     public function setAttachmentUrl(\Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl = null)
@@ -367,7 +370,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get attachmentUrl
+     * Get attachmentUrl.
      *
      * @return \Victoire\Bundle\MediaBundle\Entity\Media
      */
@@ -377,9 +380,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set attachmentUrl2
+     * Set attachmentUrl2.
      *
-     * @param  \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl2
+     * @param \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl2
+     *
      * @return WidgetFormSlot
      */
     public function setAttachmentUrl2(\Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl2 = null)
@@ -390,7 +394,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get attachmentUrl2
+     * Get attachmentUrl2.
      *
      * @return \Victoire\Bundle\MediaBundle\Entity\Media
      */
@@ -400,9 +404,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set attachmentUrl3
+     * Set attachmentUrl3.
      *
-     * @param  \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl3
+     * @param \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl3
+     *
      * @return WidgetFormSlot
      */
     public function setAttachmentUrl3(\Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl3 = null)
@@ -413,7 +418,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get attachmentUrl3
+     * Get attachmentUrl3.
      *
      * @return \Victoire\Bundle\MediaBundle\Entity\Media
      */
@@ -423,9 +428,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set attachmentUrl4
+     * Set attachmentUrl4.
      *
-     * @param  \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl4
+     * @param \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl4
+     *
      * @return WidgetFormSlot
      */
     public function setAttachmentUrl4(\Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl4 = null)
@@ -436,7 +442,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get attachmentUrl4
+     * Get attachmentUrl4.
      *
      * @return \Victoire\Bundle\MediaBundle\Entity\Media
      */
@@ -446,9 +452,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set attachmentUrl5
+     * Set attachmentUrl5.
      *
-     * @param  \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl5
+     * @param \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl5
+     *
      * @return WidgetFormSlot
      */
     public function setAttachmentUrl5(\Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl5 = null)
@@ -459,7 +466,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get attachmentUrl5
+     * Get attachmentUrl5.
      *
      * @return \Victoire\Bundle\MediaBundle\Entity\Media
      */
@@ -469,9 +476,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set attachmentUrl6
+     * Set attachmentUrl6.
      *
-     * @param  \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl6
+     * @param \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl6
+     *
      * @return WidgetFormSlot
      */
     public function setAttachmentUrl6(\Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl6 = null)
@@ -482,7 +490,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get attachmentUrl6
+     * Get attachmentUrl6.
      *
      * @return \Victoire\Bundle\MediaBundle\Entity\Media
      */
@@ -492,9 +500,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set attachmentUrl7
+     * Set attachmentUrl7.
      *
-     * @param  \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl7
+     * @param \Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl7
+     *
      * @return WidgetFormSlot
      */
     public function setAttachmentUrl7(\Victoire\Bundle\MediaBundle\Entity\Media $attachmentUrl7 = null)
@@ -505,7 +514,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get attachmentUrl7
+     * Get attachmentUrl7.
      *
      * @return \Victoire\Bundle\MediaBundle\Entity\Media
      */
@@ -515,7 +524,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get submitIcon
+     * Get submitIcon.
      *
      * @return string
      */
@@ -525,7 +534,8 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set submitIcon
+     * Set submitIcon.
+     *
      * @param string $submitIcon
      *
      * @return WidgetForm
@@ -538,7 +548,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get submitLabel
+     * Get submitLabel.
      *
      * @return string
      */
@@ -548,7 +558,8 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set submitLabel
+     * Set submitLabel.
+     *
      * @param string $submitLabel
      *
      * @return WidgetForm
@@ -561,9 +572,10 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set successNotification
+     * Set successNotification.
      *
-     * @param boolean $successNotification
+     * @param bool $successNotification
+     *
      * @deprecated
      *
      * @return WidgetForm
@@ -576,10 +588,11 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get successNotification
+     * Get successNotification.
+     *
      * @deprecated
      *
-     * @return boolean
+     * @return bool
      */
     public function getSuccessNotification()
     {
@@ -587,7 +600,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set successMessage
+     * Set successMessage.
      *
      * @param string $successMessage
      *
@@ -601,7 +614,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get successMessage
+     * Get successMessage.
      *
      * @return string
      */
@@ -611,9 +624,9 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set errorNotification
+     * Set errorNotification.
      *
-     * @param boolean $errorNotification
+     * @param bool $errorNotification
      *
      * @return WidgetForm
      */
@@ -625,9 +638,9 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get errorNotification
+     * Get errorNotification.
      *
-     * @return boolean
+     * @return bool
      */
     public function getErrorNotification()
     {
@@ -635,7 +648,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Set errorMessage
+     * Set errorMessage.
      *
      * @param string $errorMessage
      *
@@ -649,7 +662,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * Get errorMessage
+     * Get errorMessage.
      *
      * @return string
      */
@@ -667,7 +680,7 @@ class WidgetForm extends Widget
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getLinkId()
     {

@@ -1,25 +1,26 @@
 <?php
+
 namespace Victoire\Widget\FormBundle\Twig;
 
 class WidgetFormExtension extends \Twig_Extension
 {
     public function getFilters()
     {
-        return array(
-            'camelize' => new \Twig_SimpleFilter('camelize', array($this, 'camelizeFilter')),
-        );
+        return [
+            'camelize' => new \Twig_SimpleFilter('camelize', [$this, 'camelizeFilter']),
+        ];
     }
 
     /**
-     * register twig functions
+     * register twig functions.
      *
      * @return array The list of extensions
      */
     public function getFunctions()
     {
-        return array(
-            'data_unserialize'           => new \Twig_Function_Method($this, 'dataUnserialize', array('is_safe' => array('html'))),
-        );
+        return [
+            'data_unserialize'           => new \Twig_Function_Method($this, 'dataUnserialize', ['is_safe' => ['html']]),
+        ];
     }
 
     public function dataUnserialize($data)
@@ -28,7 +29,7 @@ class WidgetFormExtension extends \Twig_Extension
             try {
                 return unserialize($data);
             } catch (\Exception $e) {
-                throw new \Exception(sprintf("Please check the validity of the proposal value %s. %s", $data, $e->getMessage()));
+                throw new \Exception(sprintf('Please check the validity of the proposal value %s. %s', $data, $e->getMessage()));
             }
         }
 
@@ -37,7 +38,7 @@ class WidgetFormExtension extends \Twig_Extension
 
     public function camelizeFilter($id)
     {
-        return strtr(ucwords(strtr($id, array('_' => ' ', '.' => '_ ', '\\' => '_ '))), array(' ' => ''));
+        return strtr(ucwords(strtr($id, ['_' => ' ', '.' => '_ ', '\\' => '_ '])), [' ' => '']);
     }
 
     public function getName()

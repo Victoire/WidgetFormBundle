@@ -3,21 +3,21 @@
 namespace Victoire\Widget\FormBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
 use Victoire\Widget\FormBundle\Entity\WidgetFormQuestion;
 
 /**
- * WidgetForm form type
+ * WidgetForm form type.
  */
 class WidgetFormType extends WidgetType
 {
     private $formPrefill;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct($formPrefill)
     {
@@ -25,125 +25,130 @@ class WidgetFormType extends WidgetType
     }
 
     /**
-     * define form fields
+     * define form fields.
+     *
      * @param FormBuilderInterface $builder
+     *
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('title', null, array(
+        $builder->add('title', null, [
             'label' => 'widget_form.form.title.label',
-        ))
-        ->add('attachmentUrl', 'media', array(
+        ])
+        ->add('attachmentUrl', 'media', [
             'label' => 'widget_form.form.attachmentUrl.label',
-        ))
-        ->add('attachmentUrl2', 'media', array(
+        ])
+        ->add('attachmentUrl2', 'media', [
             'label' => 'widget_form.form.attachmentUrl2.label',
-        ))
-        ->add('attachmentUrl3', 'media', array(
+        ])
+        ->add('attachmentUrl3', 'media', [
             'label' => 'widget_form.form.attachmentUrl3.label',
-        ))
-        ->add('attachmentUrl4', 'media', array(
+        ])
+        ->add('attachmentUrl4', 'media', [
             'label' => 'widget_form.form.attachmentUrl4.label',
-        ))
-        ->add('attachmentUrl5', 'media', array(
+        ])
+        ->add('attachmentUrl5', 'media', [
             'label' => 'widget_form.form.attachmentUrl5.label',
-        ))
-        ->add('attachmentUrl6', 'media', array(
+        ])
+        ->add('attachmentUrl6', 'media', [
             'label' => 'widget_form.form.attachmentUrl6.label',
-        ))
-        ->add('attachmentUrl7', 'media', array(
+        ])
+        ->add('attachmentUrl7', 'media', [
             'label' => 'widget_form.form.attachmentUrl7.label',
-        ))
-        ->add('subject', null, array(
+        ])
+        ->add('subject', null, [
             'label' => 'widget_form.form.subject.label',
-        ))
-        ->add('targetEmail', null, array(
-            'label' => 'widget_form.form.targetEmail.label',
+        ])
+        ->add('targetEmail', null, [
+            'label'          => 'widget_form.form.targetEmail.label',
             'vic_help_block' => 'widget_form.form.targetEmail.help_block',
-        ))
-        ->add('autoAnswer', null, array(
+        ])
+        ->add('noReply', null, [
+            'label'          => 'widget_form.form.noReply.label',
+            'vic_help_block' => 'widget_form.form.noReply.help_block',
+        ])
+        ->add('autoAnswer', null, [
             'label' => 'widget_form.form.autoAnswer.label',
-        ))
-        ->add('autoAnswer', null, array(
+        ])
+        ->add('autoAnswer', null, [
             'label' => 'widget_form.form.autoAnswer.label',
-        ))
-        ->add('message', 'ckeditor', array(
-            'label' => 'widget_form.form.message.label',
-            'required' => true,
+        ])
+        ->add('message', 'ckeditor', [
+            'label'          => 'widget_form.form.message.label',
+            'required'       => true,
             'vic_help_block' => 'widget_form.form.message.help_block',
-            'config' => array(
-                'toolbar' => array(
-                    array(
+            'config'         => [
+                'toolbar' => [
+                    [
                         'name'  => 'styles',
-                        'items' => array('Font', 'FontSize'),
-                    ),
-                    array(
+                        'items' => ['Font', 'FontSize'],
+                    ],
+                    [
                         'name'  => 'basicstyles',
-                        'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'),
-                    ),
-                    array(
+                        'items' => ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+                    ],
+                    [
                         'name'  => 'paragraph',
-                        'items' => array('NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'),
-                    ),
+                        'items' => ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                    ],
                     '/',
-                    array(
+                    [
                         'name'  => 'clipboard',
-                        'items' => array('Undo', 'Redo'),
-                    ),
-                    array(
+                        'items' => ['Undo', 'Redo'],
+                    ],
+                    [
                         'name'  => 'insert',
-                        'items' => array('Table', 'HorizontalRule', 'SpecialChar'),
-                    ),
-                ),
-            ),
-        ))->add('questions', 'collection', array(
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-                'type'  => new WidgetFormQuestionType(),
-                'label' => 'widget_form.form.questions.label',
-                'vic_widget_items_attr' => array(
-                    'class' => "question",
-                ),
-        ))
-        ->add('submitLabel', null, array(
-            'label' => 'widget_form.form.submitLabel.label',
+                        'items' => ['Table', 'HorizontalRule', 'SpecialChar'],
+                    ],
+                ],
+            ],
+        ])->add('questions', 'collection', [
+                'allow_add'             => true,
+                'allow_delete'          => true,
+                'by_reference'          => false,
+                'type'                  => new WidgetFormQuestionType(),
+                'label'                 => 'widget_form.form.questions.label',
+                'vic_widget_items_attr' => [
+                    'class' => 'question',
+                ],
+        ])
+        ->add('submitLabel', null, [
+            'label'    => 'widget_form.form.submitLabel.label',
             'required' => true,
-        ))
-        ->add('submitIcon', 'font_awesome_picker', array(
-            'label' => 'widget_form.form.submitIcon.label',
+        ])
+        ->add('submitIcon', 'font_awesome_picker', [
+            'label'    => 'widget_form.form.submitIcon.label',
             'required' => false,
-        ))
-        ->add('successCallback', 'choice', array(
+        ])
+        ->add('successCallback', 'choice', [
                 'label'    => 'widget_form.form.successCallback.label',
                 'required' => true,
-                'choices'  => array(
+                'choices'  => [
                     'none'           => 'victoire.widget-form.successCallback.choices.none',
                     'notification'   => 'victoire.widget-form.successCallback.choices.notification',
                     'redirect'       => 'victoire.widget-form.successCallback.choices.redirect',
-                ),
-            )
+                ],
+            ]
         )
         ->add('link', 'victoire_link')
-        ->add('successMessage', null, array(
-            'label' => 'widget_form.form.successMessage.label',
-            'required' => false
-            )
+        ->add('successMessage', null, [
+            'label'    => 'widget_form.form.successMessage.label',
+            'required' => false,
+            ]
         )
-        ->add('errorNotification', null, array(
-            'label' => 'widget_form.form.errorNotification.label',
-            'required' => false
-            )
+        ->add('errorNotification', null, [
+            'label'    => 'widget_form.form.errorNotification.label',
+            'required' => false,
+            ]
         )
-        ->add('errorMessage', null, array(
-            'label' => 'widget_form.form.errorMessage.label',
-            'required' => false
-            )
-        )
-        ;
+        ->add('errorMessage', null, [
+            'label'    => 'widget_form.form.errorMessage.label',
+            'required' => false,
+            ]
+        );
 
         if ($this->formPrefill) {
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
@@ -167,23 +172,24 @@ class WidgetFormType extends WidgetType
     }
 
     /**
-     * bind form to WidgetFormSlot entity
+     * bind form to WidgetFormSlot entity.
+     *
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         parent::setDefaultOptions($resolver);
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class'         => 'Victoire\Widget\FormBundle\Entity\WidgetForm',
             'widget'             => 'Form',
             'translation_domain' => 'victoire',
-            )
+            ]
         );
     }
 
     /**
-     * get form name
+     * get form name.
      *
      * @return string The form name
      */

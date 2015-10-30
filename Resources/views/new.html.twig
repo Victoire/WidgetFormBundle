@@ -24,11 +24,12 @@
             <div id="widget-form-success-notification" {{ form.successCallback.vars.value == 'notification' ? '' : 'class="hidden"' }}>
                 {{ form_row(form.successMessage) }}
             </div>
+            {{ form_row(form.targetEmail) }}
         </div>
         {% set params = (form.autoAnswer.vars.checked == 'on' ? 'true' : '') %}
         {{ form_row(form.autoAnswer, {'attr': {'onclick' : 'showTargetField()'}, value : params }) }}
         <div id="target_container" style="{{ form.autoAnswer.vars.checked == 'on' ? "" : "display:none" }}" class="auto_answer_extra_fields_container">
-            {{ form_row(form.targetEmail) }}
+            {{ form_row(form.noReply) }}
             {{ form_row(form.subject) }}
             {{ form_row(form.message) }}
             {{ 'widget_form.form.message.help_block'|trans({}, 'victoire')|raw }}

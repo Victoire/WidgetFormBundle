@@ -3,13 +3,13 @@
 namespace Victoire\Widget\FormBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormEvent;
 
 /**
- * WidgetFormQuestion form type
+ * WidgetFormQuestion form type.
  */
 class WidgetFormQuestionType extends WidgetType
 {
@@ -20,68 +20,67 @@ class WidgetFormQuestionType extends WidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', array(
+            ->add('title', 'text', [
                     'required' => true,
-                    'label'    => "widget_form.form.question.title.label",
-                )
+                    'label'    => 'widget_form.form.question.title.label',
+                ]
             )
-            ->add('position', 'hidden', array(
+            ->add('position', 'hidden', [
                 'data' => '__name__',
-                'attr' => array(
+                'attr' => [
                         'class' => 'question-position',
-                    ),
-                )
+                    ],
+                ]
             )
-            ->add('prefix', null, array(
-                    'label'    => "widget_form.form.question.prefix.label",
-                )
+            ->add('prefix', null, [
+                    'label'    => 'widget_form.form.question.prefix.label',
+                ]
             )
-            ->add('required', null, array(
-                    'label'    => "widget_form.form.question.required.label",
-                )
+            ->add('required', null, [
+                    'label'    => 'widget_form.form.question.required.label',
+                ]
             )
-            ->add('type', 'choice', array(
-                    'choices' => array(
-                            'text' => "widget_form.form.question.type.text",
-                            'textarea' => "widget_form.form.question.type.textarea",
-                            'date' => "widget_form.form.question.type.date",
-                            'email' => "widget_form.form.question.type.email",
-                            'boolean' => "widget_form.form.question.type.boolean",
-                            'checkbox' => "widget_form.form.question.type.choice",
-                            'radio' => "widget_form.form.question.type.radio",
-                        ),
+            ->add('type', 'choice', [
+                    'choices' => [
+                            'text'     => 'widget_form.form.question.type.text',
+                            'textarea' => 'widget_form.form.question.type.textarea',
+                            'date'     => 'widget_form.form.question.type.date',
+                            'email'    => 'widget_form.form.question.type.email',
+                            'boolean'  => 'widget_form.form.question.type.boolean',
+                            'checkbox' => 'widget_form.form.question.type.choice',
+                            'radio'    => 'widget_form.form.question.type.radio',
+                        ],
                     'required' => true,
-                    'label'    => "widget_form.form.question.type.label",
-                    'attr' => array(
-                        'class' => 'selector-type',
+                    'label'    => 'widget_form.form.question.type.label',
+                    'attr'     => [
+                        'class'    => 'selector-type',
                         'onchange' => 'showQuestionFormBySelect(this)',
-                    ),
-                )
+                    ],
+                ]
             )
-            ->add('proposalExpanded', null, array(
-                'label'    => "widget_form.form.question.proposalExpanded.label",
+            ->add('proposalExpanded', null, [
+                'label'    => 'widget_form.form.question.proposalExpanded.label',
                 'required' => false,
-                )
+                ]
             )
-            ->add('proposalInline', null, array(
-                'label'    => "widget_form.form.question.proposalInline.label",
+            ->add('proposalInline', null, [
+                'label'    => 'widget_form.form.question.proposalInline.label',
                 'required' => false,
-                )
+                ]
             )
-            ->add('proposal', 'hidden', array(
-                'label'    => "widget_form.form.question.proposal.label",
+            ->add('proposal', 'hidden', [
+                'label'    => 'widget_form.form.question.proposal.label',
                 'required' => false,
-                )
+                ]
             )
-            ->add('regex', null, array(
-                    'label'    => "widget_form.form.question.regex.label",
-                )
+            ->add('regex', null, [
+                    'label'    => 'widget_form.form.question.regex.label',
+                ]
             )
-            ->add('regexTitle', null, array(
-                    'label'    => "widget_form.form.question.regexTitle.label",
-                )
-            )
-;
+            ->add('regexTitle', null, [
+                    'label'    => 'widget_form.form.question.regexTitle.label',
+                ]
+            );
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $widget = $event->getData();
                 $form = $event->getForm();
@@ -95,9 +94,9 @@ class WidgetFormQuestionType extends WidgetType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Victoire\Widget\FormBundle\Entity\WidgetFormQuestion',
-        ));
+        ]);
     }
 
     /**

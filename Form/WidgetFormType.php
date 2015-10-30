@@ -64,6 +64,10 @@ class WidgetFormType extends WidgetType
             'label' => 'widget_form.form.targetEmail.label',
             'vic_help_block' => 'widget_form.form.targetEmail.help_block',
         ))
+        ->add('noReply', null, array(
+            'label' => 'widget_form.form.noReply.label',
+            'vic_help_block' => 'widget_form.form.noReply.help_block',
+        ))
         ->add('autoAnswer', null, array(
             'label' => 'widget_form.form.autoAnswer.label',
         ))

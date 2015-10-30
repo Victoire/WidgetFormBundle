@@ -124,7 +124,7 @@ class FormController extends Controller
             }
         }
         if ($widget->isAutoAnswer() === true && $email) {
-            if ($errors = $this->get('validator')->validateValue($widget->getTargetEmail(), new EmailConstraint())) {
+            if ($errors = $this->get('validator')->validateValue($widget->getNoReply(), new EmailConstraint())) {
                 try {
                     $urlizer = new Urlizer();
                     $body = $widget->getMessage();
@@ -177,7 +177,7 @@ class FormController extends Controller
                     }
                     if(sizeof($regexErrors) == 0){
                         $emailSend = true;
-                        $this->createAndSendMail($widget->getSubject(), $from, $email, $body, 'text/html', $widget->getTargetemail(), $attachments, $mailer);
+                        $this->createAndSendMail($widget->getSubject(), $from, $email, $body, 'text/html', $widget->getNoReply(), $attachments, $mailer);
                     }
                 } catch (\Exception $exc) {
                     echo $exc->getTraceAsString();

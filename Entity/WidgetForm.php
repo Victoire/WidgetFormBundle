@@ -88,6 +88,13 @@ class WidgetForm extends Widget
     protected $targetEmail;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="noReply", type="string", length=255, nullable=true)
+     */
+    protected $noReply;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="autoAnswer", type="boolean", nullable=true)
@@ -677,5 +684,21 @@ class WidgetForm extends Widget
         $this->successCallback = $successCallback;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNoReply()
+    {
+        return $this->noReply;
+    }
+
+    /**
+     * @param string $noReply
+     */
+    public function setNoReply($noReply)
+    {
+        $this->noReply = $noReply;
     }
 }

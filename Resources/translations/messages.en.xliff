@@ -6,14 +6,6 @@
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="a4645fefa99ecba8ea86e8296dda9f27a214f01c" resname="widget_form.form.question.proposal.label">
-        <source>widget_form.form.question.proposal.label</source>
-        <target state="new">widget_form.form.question.proposal.label</target>
-      </trans-unit>
-      <trans-unit id="c7df432984d9bef91b722a1d5e0627a60ec6fba9" resname="widget_form.form.question.required.label">
-        <source>widget_form.form.question.required.label</source>
-        <target state="new">widget_form.form.question.required.label</target>
-      </trans-unit>
       <trans-unit id="ce7b6620779bb48c7af1ef037d8fdb995ddf1d6d" resname="widget_form.form.question.title.label">
         <source>widget_form.form.question.title.label</source>
         <target>Label</target>
@@ -45,6 +37,26 @@
       <trans-unit id="OChJrkMmoOK5AvQC9viS38NK6TikhUZ8v9BbiCgy" resname="widget_form.form.question.type.email">
         <source>widget_form.form.question.type.email</source>
         <target>Email</target>
+      </trans-unit>
+      <trans-unit id="1" resname="widget_form.form.question.prefix.label">
+        <source>widget_form.form.question.prefix.label</source>
+        <target>Prefix</target>
+      </trans-unit>
+      <trans-unit id="3" resname="victoire_widget_form.boolean.false">
+        <source>victoire_widget_form.boolean.false</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="4" resname="victoire_widget_form.boolean.true">
+        <source>victoire_widget_form.boolean.true</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="5" resname="victoire_widget_form.alert.send.email.success.label">
+        <source>victoire_widget_form.alert.send.email.success.label</source>
+        <target>Thank you for your participation</target>
+      </trans-unit>
+      <trans-unit id="6" resname="victoire_widget_form.alert.send.email.error.label">
+        <source>victoire_widget_form.alert.send.email.error.label</source>
+        <target>Your participation couldn't be registered</target>
       </trans-unit>
     </body>
   </file>

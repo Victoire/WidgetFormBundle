@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2014-09-01T18:05:44Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2014-09-01T18:05:44Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,19 +8,19 @@
     <body>
       <trans-unit id="ce7b6620779bb48c7af1ef037d8fdb995ddf1d6d" resname="widget_form.form.question.title.label">
         <source>widget_form.form.question.title.label</source>
-        <target>Libellé</target>
+        <target>Etiqueta</target>
       </trans-unit>
       <trans-unit id="3cdc008d402817170a8e3cd1586a514f362b0561" resname="widget_form.form.question.type.choice">
         <source>widget_form.form.question.type.choice</source>
-        <target>Type</target>
+        <target>Tipo</target>
       </trans-unit>
       <trans-unit id="d6135249cfd626eaf1c2e9cfbf91b5bd969a96af" resname="widget_form.form.question.type.date">
         <source>widget_form.form.question.type.date</source>
-        <target>Date</target>
+        <target>Fecha</target>
       </trans-unit>
       <trans-unit id="3c01757079a27994a0874a13abb402c95fef70eb" resname="widget_form.form.question.type.label">
         <source>widget_form.form.question.type.label</source>
-        <target>Type</target>
+        <target>Tipo</target>
       </trans-unit>
       <trans-unit id="e57c83c836b3fb648e1e44a9bb444641588b76c7" resname="widget_form.form.question.type.radio">
         <source>widget_form.form.question.type.radio</source>
@@ -28,11 +28,11 @@
       </trans-unit>
       <trans-unit id="04176dffd8a22299830b20ba219b8e79cdee0062" resname="widget_form.form.question.type.text">
         <source>widget_form.form.question.type.text</source>
-        <target>Texte</target>
+        <target>Texto</target>
       </trans-unit>
       <trans-unit id="0d82cea0cc3e28fd896f544152d1cd922d7f2c1b" resname="widget_form.form.question.type.textarea">
         <source>widget_form.form.question.type.textarea</source>
-        <target>Texte long</target>
+        <target>Texto largo</target>
       </trans-unit>
       <trans-unit id="OChJrkMmoOK5AvQC9viS38NK6TikhUZ8v9BbiCgy" resname="widget_form.form.question.type.email">
         <source>widget_form.form.question.type.email</source>
@@ -40,23 +40,23 @@
       </trans-unit>
       <trans-unit id="1" resname="widget_form.form.question.prefix.label">
         <source>widget_form.form.question.prefix.label</source>
-        <target>Préfixe</target>
+        <target>Prefijo</target>
       </trans-unit>
       <trans-unit id="3" resname="victoire_widget_form.boolean.false">
         <source>victoire_widget_form.boolean.false</source>
-        <target>Non</target>
+        <target>No</target>
       </trans-unit>
       <trans-unit id="4" resname="victoire_widget_form.boolean.true">
         <source>victoire_widget_form.boolean.true</source>
-        <target>Oui</target>
+        <target>Si</target>
       </trans-unit>
       <trans-unit id="5" resname="victoire_widget_form.alert.send.email.success.label">
         <source>victoire_widget_form.alert.send.email.success.label</source>
-        <target>Merci de votre participation.</target>
+        <target>Gracias por su participación.</target>
       </trans-unit>
       <trans-unit id="6" resname="victoire_widget_form.alert.send.email.error.label">
         <source>victoire_widget_form.alert.send.email.error.label</source>
-        <target>Votre participation n'a pas pu être enregistrée.</target>
+        <target>Su participación no se pudo guardar.</target>
       </trans-unit>
     </body>
   </file>

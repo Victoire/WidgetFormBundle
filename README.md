@@ -1,17 +1,23 @@
 Victoire CMS Form Bundle
 ============
 
-Need to add a form in a victoire cms website ?
-Get this form bundle and so on
+##What is the purpose of this bundle
 
-First you need to have a valid Symfony2 Victoire edition.
-Then you just have to run the following composer command :
+This bundle gives you access to the *Form Widget*.
+With this widget, you can install any contact form.
+
+##Set Up Victoire
+
+If you haven't already, you can follow the steps to set up Victoire *[here](https://github.com/Victoire/victoire/blob/master/setup.md)*
+
+##Install the Bundle :
+
+Run the following composer command :
 
     php composer.phar require friendsofvictoire/form-widget
 
 Do not forget to add the bundle in your AppKernel !
 
-```php
     class AppKernel extends Kernel
     {
         public function registerBundles()
@@ -24,4 +30,3 @@ Do not forget to add the bundle in your AppKernel !
             return $bundles;
         }
     }
-```

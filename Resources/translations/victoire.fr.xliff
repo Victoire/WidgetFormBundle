@@ -75,12 +75,12 @@
       </trans-unit>
       <trans-unit id="84aa8297edcd04be060fa557c3ea245f9b5d79c8" resname="widget_form.form.targetEmail.label">
         <source>widget_form.form.targetEmail.label</source>
-        <target>Adresse de réponse</target>
+        <target>Adresse de réception des donnés du formulaire</target>
         <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="cd04be060fa5584aa8297ed5f9b5d79c87c3ea24" resname="widget_form.form.targetEmail.help_block">
         <source>widget_form.form.targetEmail.help_block</source>
-        <target>Indiquez à quelle adresse email l'internaute doit répondre</target>
+        <target>Indiquez l'adresse email sur laquelle vous souhaitez recevoir les information du formulaire.</target>
         <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ffea1d626eb77b0783a8e6264194b1f3fc1e8015" resname="widget_form.form.title.label">
@@ -236,6 +236,10 @@
       <trans-unit id="noReply" resname="widget_form.form.noReply.help_block">
         <source>widget_form.form.noReply.help_block</source>
         <target>Le destinataire du mail verra cet e-mail comme adresse de réponse.</target>
+      </trans-unit>
+      <trans-unit id="noReply" resname="victoire.widget-form.successCallback.assert.badChoice">
+        <source>victoire.widget-form.successCallback.assert.badChoice</source>
+        <target>Veuillez préciser une action dans le menu déroulant.</target>
       </trans-unit>
     </body>
   </file>

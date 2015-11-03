@@ -76,7 +76,7 @@
       </trans-unit>
       <trans-unit id="84aa8297edcd04be060fa557c3ea245f9b5d79c8" resname="widget_form.form.targetEmail.label">
         <source>widget_form.form.targetEmail.label</source>
-        <target>Reply Address</target>
+        <target>Receiving email address of the form's datas</target>
         <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ffea1d626eb77b0783a8e6264194b1f3fc1e8015" resname="widget_form.form.title.label">
@@ -145,7 +145,7 @@
       </trans-unit>
       <trans-unit id="noReply" resname="widget_form.form.noReply.label">
         <source>widget_form.form.noReply.label</source>
-        <target>Auto-reply address</target>
+        <target>Reply-to email address</target>
       </trans-unit>
       <trans-unit id="noReply" resname="widget_form.form.noReply.help_block">
         <source>widget_form.form.noReply.help_block</source>
@@ -153,7 +153,7 @@
       </trans-unit>
       <trans-unit id="cd04be060fa5584aa8297ed5f9b5d79c87c3ea24" resname="widget_form.form.targetEmail.help_block">
         <source>widget_form.form.targetEmail.help_block</source>
-        <target>Set the reply adress</target>
+        <target>Enter the email address to which you want to receive information on the form.</target>
         <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="5d3caa050d880bbcffa8b710019cb49780eb70d9" resname="widget_form.form.question.delete.label">
@@ -228,6 +228,10 @@
       <trans-unit id="errorMessage" resname="widget_form.form.errorMessage.label">
         <source>widget_form.form.errorMessage.label</source>
         <target>Error message :</target>
+      </trans-unit>
+      <trans-unit id="noReply" resname="victoire.widget-form.successCallback.assert.badChoice">
+        <source>victoire.widget-form.successCallback.assert.badChoice</source>
+        <target>Please specify an action from the dropdown menu.</target>
       </trans-unit>
     </body>
   </file>

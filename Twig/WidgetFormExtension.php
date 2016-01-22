@@ -7,7 +7,7 @@ class WidgetFormExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            'camelize' => new \Twig_SimpleFilter('camelize', [$this, 'camelizeFilter']),
+            new \Twig_SimpleFilter('camelize', [$this, 'camelizeFilter']),
         ];
     }
 
@@ -19,7 +19,7 @@ class WidgetFormExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'data_unserialize'           => new \Twig_Function_Method($this, 'dataUnserialize', ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('data_unserialize', [$this, 'dataUnserialize'], ['is_safe' => ['html']]),
         ];
     }
 

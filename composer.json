@@ -20,12 +20,12 @@
             "email": "charlie@victoire.io"
         }
     ],
-    "require": {
-        "php": ">=5.5.9",
-        "symfony/framework-bundle" : "~3.0",
-        "victoire/victoire": "~1.5",
-        "appventus/alertify-bundle": "~1.0",
-        "ornicar/akismet-bundle": "dev-master"
+    "require"          : {
+        "php"                      : ">=5.3.3",
+        "symfony/framework-bundle" : "~2.3",
+        "victoire/victoire"        : "~1.3.0",
+        "appventus/alertify-bundle": "^1.0",
+        "ornicar/akismet-bundle"   : "dev-master"
     },
     "autoload": {
         "psr-0": {

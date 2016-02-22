@@ -2,10 +2,13 @@
 
 namespace Victoire\Widget\FormBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
 
 /**
@@ -20,12 +23,12 @@ class WidgetFormQuestionType extends WidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', [
+            ->add('title', TextType::class, [
                     'required' => true,
                     'label'    => 'widget_form.form.question.title.label',
                 ]
             )
-            ->add('position', 'hidden', [
+            ->add('position', HiddenType::class, [
                 'data' => '__name__',
                 'attr' => [
                         'class' => 'question-position',
@@ -33,23 +36,23 @@ class WidgetFormQuestionType extends WidgetType
                 ]
             )
             ->add('prefix', null, [
-                    'label'    => 'widget_form.form.question.prefix.label',
+                    'label' => 'widget_form.form.question.prefix.label',
                 ]
             )
             ->add('required', null, [
-                    'label'    => 'widget_form.form.question.required.label',
+                    'label' => 'widget_form.form.question.required.label',
                 ]
             )
-            ->add('type', 'choice', [
+            ->add('type', ChoiceType::class, [
                     'choices' => [
-                            'text'     => 'widget_form.form.question.type.text',
-                            'textarea' => 'widget_form.form.question.type.textarea',
-                            'date'     => 'widget_form.form.question.type.date',
-                            'email'    => 'widget_form.form.question.type.email',
-                            'boolean'  => 'widget_form.form.question.type.boolean',
-                            'checkbox' => 'widget_form.form.question.type.choice',
-                            'radio'    => 'widget_form.form.question.type.radio',
-                        ],
+                        'widget_form.form.question.type.text'     => 'text',
+                        'widget_form.form.question.type.textarea' => 'textarea',
+                        'widget_form.form.question.type.date'     => 'date',
+                        'widget_form.form.question.type.email'    => 'email',
+                        'widget_form.form.question.type.boolean'  => 'boolean',
+                        'widget_form.form.question.type.choice'   => 'checkbox',
+                        'widget_form.form.question.type.radio'    => 'radio',
+                    ],
                     'required' => true,
                     'label'    => 'widget_form.form.question.type.label',
                     'attr'     => [
@@ -68,42 +71,33 @@ class WidgetFormQuestionType extends WidgetType
                 'required' => false,
                 ]
             )
-            ->add('proposal', 'hidden', [
+            ->add('proposal', HiddenType::class, [
                 'label'    => 'widget_form.form.question.proposal.label',
                 'required' => false,
                 ]
             )
             ->add('regex', null, [
-                    'label'    => 'widget_form.form.question.regex.label',
+                    'label' => 'widget_form.form.question.regex.label',
                 ]
             )
             ->add('regexTitle', null, [
-                    'label'    => 'widget_form.form.question.regexTitle.label',
+                    'label' => 'widget_form.form.question.regexTitle.label',
                 ]
             );
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $widget = $event->getData();
-                $form = $event->getForm();
                 $widget->setProposal(serialize($widget->getProposal()));
             }
         );
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => 'Victoire\Widget\FormBundle\Entity\WidgetFormQuestion',
         ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'victoire_widget_form_question';
     }
 }

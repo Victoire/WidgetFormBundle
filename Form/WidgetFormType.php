@@ -2,11 +2,17 @@
 
 namespace Victoire\Widget\FormBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
+use Victoire\Bundle\FormBundle\Form\Type\FontAwesomePickerType;
+use Victoire\Bundle\FormBundle\Form\Type\LinkType;
+use Victoire\Bundle\MediaBundle\Form\Type\MediaType;
 use Victoire\Widget\FormBundle\Entity\WidgetFormQuestion;
 
 /**
@@ -38,25 +44,25 @@ class WidgetFormType extends WidgetType
         $builder->add('title', null, [
             'label' => 'widget_form.form.title.label',
         ])
-        ->add('attachmentUrl', 'media', [
+        ->add('attachmentUrl', MediaType::class, [
             'label' => 'widget_form.form.attachmentUrl.label',
         ])
-        ->add('attachmentUrl2', 'media', [
+        ->add('attachmentUrl2', MediaType::class, [
             'label' => 'widget_form.form.attachmentUrl2.label',
         ])
-        ->add('attachmentUrl3', 'media', [
+        ->add('attachmentUrl3', MediaType::class, [
             'label' => 'widget_form.form.attachmentUrl3.label',
         ])
-        ->add('attachmentUrl4', 'media', [
+        ->add('attachmentUrl4', MediaType::class, [
             'label' => 'widget_form.form.attachmentUrl4.label',
         ])
-        ->add('attachmentUrl5', 'media', [
+        ->add('attachmentUrl5', MediaType::class, [
             'label' => 'widget_form.form.attachmentUrl5.label',
         ])
-        ->add('attachmentUrl6', 'media', [
+        ->add('attachmentUrl6', MediaType::class, [
             'label' => 'widget_form.form.attachmentUrl6.label',
         ])
-        ->add('attachmentUrl7', 'media', [
+        ->add('attachmentUrl7', MediaType::class, [
             'label' => 'widget_form.form.attachmentUrl7.label',
         ])
         ->add('subject', null, [
@@ -76,7 +82,7 @@ class WidgetFormType extends WidgetType
         ->add('autoAnswer', null, [
             'label' => 'widget_form.form.autoAnswer.label',
         ])
-        ->add('message', 'ckeditor', [
+        ->add('message', CKEditorType::class, [
             'label'          => 'widget_form.form.message.label',
             'required'       => true,
             'vic_help_block' => 'widget_form.form.message.help_block',
@@ -105,11 +111,11 @@ class WidgetFormType extends WidgetType
                     ],
                 ],
             ],
-        ])->add('questions', 'collection', [
+        ])->add('questions', CollectionType::class, [
                 'allow_add'             => true,
                 'allow_delete'          => true,
                 'by_reference'          => false,
-                'type'                  => new WidgetFormQuestionType(),
+                'entry_type'            => WidgetFormQuestionType::class,
                 'label'                 => 'widget_form.form.questions.label',
                 'vic_widget_items_attr' => [
                     'class' => 'question',
@@ -119,21 +125,21 @@ class WidgetFormType extends WidgetType
             'label'    => 'widget_form.form.submitLabel.label',
             'required' => true,
         ])
-        ->add('submitIcon', 'font_awesome_picker', [
+        ->add('submitIcon', FontAwesomePickerType::class, [
             'label'    => 'widget_form.form.submitIcon.label',
             'required' => false,
         ])
-        ->add('successCallback', 'choice', [
+        ->add('successCallback', ChoiceType::class, [
                 'label'    => 'widget_form.form.successCallback.label',
                 'required' => true,
                 'choices'  => [
-                    'none'           => 'victoire.widget-form.successCallback.choices.none',
-                    'notification'   => 'victoire.widget-form.successCallback.choices.notification',
-                    'redirect'       => 'victoire.widget-form.successCallback.choices.redirect',
+                    'victoire.widget-form.successCallback.choices.none'         => 'none',
+                    'victoire.widget-form.successCallback.choices.notification' => 'notification',
+                    'victoire.widget-form.successCallback.choices.redirect'     => 'redirect',
                 ],
             ]
         )
-        ->add('link', 'victoire_link')
+        ->add('link', LinkType::class)
         ->add('successMessage', null, [
             'label'    => 'widget_form.form.successMessage.label',
             'required' => false,
@@ -153,7 +159,6 @@ class WidgetFormType extends WidgetType
         if ($this->formPrefill) {
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $widgetFormSlot = $event->getData();
-                $form = $event->getForm();
                 if (!$widgetFormSlot || null === $widgetFormSlot->getId()) {
                     $formPrefill = $this->formPrefill;
                     foreach ($formPrefill as $question) {
@@ -172,13 +177,11 @@ class WidgetFormType extends WidgetType
     }
 
     /**
-     * bind form to WidgetFormSlot entity.
-     *
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        parent::setDefaultOptions($resolver);
+        parent::configureOptions($resolver);
 
         $resolver->setDefaults([
             'data_class'         => 'Victoire\Widget\FormBundle\Entity\WidgetForm',
@@ -186,15 +189,5 @@ class WidgetFormType extends WidgetType
             'translation_domain' => 'victoire',
             ]
         );
-    }
-
-    /**
-     * get form name.
-     *
-     * @return string The form name
-     */
-    public function getName()
-    {
-        return 'victoire_widget_form_form';
     }
 }

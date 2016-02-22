@@ -14,7 +14,7 @@ services:
         arguments:
             - %victoire_widget_form.prefill%
         tags:
-            - { name: form.type , alias: victoire_widget_form_form }
+            - { name: form.type }
 
     victoire.form_widget.twig.extension:
         class: Victoire\Widget\FormBundle\Twig\WidgetFormExtension

@@ -137,6 +137,7 @@ class WidgetFormType extends WidgetType
                     'victoire.widget-form.successCallback.choices.notification' => 'notification',
                     'victoire.widget-form.successCallback.choices.redirect'     => 'redirect',
                 ],
+                'choices_as_values' => true
             ]
         )
         ->add('link', LinkType::class)

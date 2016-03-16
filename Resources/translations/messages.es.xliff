@@ -58,6 +58,14 @@
         <source>victoire_widget_form.alert.send.email.error.label</source>
         <target>Su participación no se pudo guardar.</target>
       </trans-unit>
+      <trans-unit>
+        <source>victoire_widget_form.message.admin.greeting</source>
+        <target>Ola,</target>
+      </trans-unit>
+      <trans-unit>
+        <source>victoire_widget_form.message.admin.newMessage</source>
+        <target>Nuevo puesto:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

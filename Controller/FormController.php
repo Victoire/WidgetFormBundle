@@ -42,7 +42,7 @@ class FormController extends Controller
             if (in_array($question['type'], ['text', 'textarea', 'email']) && !empty($question[0])) {
                 $data[] = [
                     'label' => $question['label'],
-                    'value' => $question[0],
+                    'value' => nl2br($question[0]),
                 ];
                 if (isset($question['regex']) && !empty($question['regex'])) {
                     $regex = $question['regex'];

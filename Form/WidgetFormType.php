@@ -68,6 +68,10 @@ class WidgetFormType extends WidgetType
         ->add('subject', null, [
             'label' => 'widget_form.form.subject.label',
         ])
+        ->add('adminSubject', null, [
+            'label' => 'widget_form.form.adminSubject.label',
+            'vic_help_block' => 'widget_form.form.adminSubject.help_block',
+        ])
         ->add('targetEmail', null, [
             'label'          => 'widget_form.form.targetEmail.label',
             'vic_help_block' => 'widget_form.form.targetEmail.help_block',

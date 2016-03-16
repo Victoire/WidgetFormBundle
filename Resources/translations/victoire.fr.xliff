@@ -237,6 +237,14 @@
         <source>victoire.widget-form.successCallback.assert.badChoice</source>
         <target>Veuillez préciser une action dans le menu déroulant.</target>
       </trans-unit>
+      <trans-unit id="noReply" resname="widget_form.form.adminSubject.label">
+        <source>widget_form.form.adminSubject.label</source>
+        <target>Sujet du mail</target>
+      </trans-unit>
+      <trans-unit id="noReply" resname="widget_form.form.adminSubject.help_block">
+        <source>widget_form.form.adminSubject.help_block</source>
+        <target>Indiquez le sujet du message que le destinataire verra.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

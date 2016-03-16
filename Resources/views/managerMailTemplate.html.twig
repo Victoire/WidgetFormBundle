@@ -1,11 +1,17 @@
-<p>Données du formulaire {{ title }}</p>
-<table style="margin-bottom:40px">
-    {% for field in data %}
-    <tr>
-        <th style="background:#5f9be3;color:#fff;float:left;font-weight:bold;margin-right:10px;padding:5px;">{{ field.label }}</th>
-        <td style="margin:2px 0;padding:5px 0;">{{ field.value }}</td>
-    </tr>
-    {% endfor %}
-</table>
+<p>{{ 'victoire_widget_form.message.admin.greeting'|trans }}</p>
+<p>{{ 'victoire_widget_form.message.admin.newMessage'|trans }}</p>
+<br/>
+<dl>
+{% for field in data %}
+    <dt>
+        <strong>{{ field.label }}</strong>
+    </dt>
+    <dd>
+        <p style="border-radius: 5px; background-color: #dedede; padding: 15px; margin-bottom: 10px;">
+            {{ field.value|raw }}
+        </p>
+    </dd>
+{% endfor %}
+</dl>
 
-<p>Adresse du formulaire <a href="{{ url }}">{{ url }}</a></p>
+<p><a href="{{ url }}">{{ url }}</a></p>

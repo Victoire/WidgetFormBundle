@@ -67,13 +67,13 @@
             CKEDITOR.instances[instance].updateElement();
         }
     });
-    $vic('#static_victoire_widget_form_form_successCallback').on('change', function() {
+    $vic('#static_widget_form_successCallback').on('change', function() {
         $vic('#widget-form-success-notification, #widget-form-success-redirect').addClass('hidden');
         $vic('#widget-form-success-' + $vic(this).val()).removeClass('hidden');
     });
     $vic(document).ready(function() {
 
-        $vic('#static_victoire_widget_form_form_errorNotification').on('click', function() {
+        $vic('#static_widget_form_errorNotification').on('click', function() {
             $vic('#widget-form-error-messsage').toggleClass('hidden');
         });
     });

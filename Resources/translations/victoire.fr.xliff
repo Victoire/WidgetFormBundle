@@ -205,10 +205,6 @@
         <source>widget_form.form.successCallback.label</source>
         <target>Action au succès</target>
       </trans-unit>
-      <trans-unit id="successCallbackNotification" resname="victoire.widget-form.successCallback.choices.none">
-        <source>victoire.widget-form.successCallback.choices.none</source>
-        <target>Aucune</target>
-      </trans-unit>
       <trans-unit id="successCallbackNotification" resname="victoire.widget-form.successCallback.choices.notification">
         <source>victoire.widget-form.successCallback.choices.notification</source>
         <target>Notification</target>

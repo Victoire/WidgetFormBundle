@@ -71,12 +71,12 @@
         </div>
     </div>
     <div class="question_{{ name }}_proposal question_{{ name }}_" style="display: none">
-        <ul id="question_{{ name }}_proposals-form-list"  data-prototype="<div class='vic-input-group'><input type='text' class='vic-form-control' id ='static_victoire_widget_form_form_questions_{{ name }}_proposal__nameProposal__' name='_static_victoire_widget_form_form[questions][{{ name }}][proposal][__nameProposal__]' value=''></div>">
+        <ul id="question_{{ name }}_proposals-form-list"  data-prototype="<div class='vic-input-group'><input type='text' class='vic-form-control' id ='static_widget_form_questions_{{ name }}_proposal__nameProposal__' name='_static_widget_form[questions][{{ name }}][proposal][__nameProposal__]' value=''></div>">
 
             {% for proposal in proposals %}
                 <li class="proposals{{ name }}">
                     <div class='vic-input-group'>
-                        <input type="text" id ="static_victoire_widget_form_form_questions_{{ name }}_proposal_{{ loop.index0 }}" class="vic-form-control" value="{{ proposal }}" name="_static_victoire_widget_form_form[questions][{{ name }}][proposal][{{ loop.index0 }}]">
+                        <input type="text" id ="static_widget_form_questions_{{ name }}_proposal_{{ loop.index0 }}" class="vic-form-control" value="{{ proposal }}" name="_static_widget_form[questions][{{ name }}][proposal][{{ loop.index0 }}]">
                     </div>
                 </li>
             {% endfor %}

@@ -133,7 +133,6 @@ class WidgetFormType extends WidgetType
                 'label'    => 'widget_form.form.successCallback.label',
                 'required' => true,
                 'choices'  => [
-                    'victoire.widget-form.successCallback.choices.none'         => 'none',
                     'victoire.widget-form.successCallback.choices.notification' => 'notification',
                     'victoire.widget-form.successCallback.choices.redirect'     => 'redirect',
                 ],

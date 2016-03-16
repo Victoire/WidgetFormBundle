@@ -53,6 +53,7 @@ class WidgetFormQuestionType extends WidgetType
                         'widget_form.form.question.type.choice'   => 'checkbox',
                         'widget_form.form.question.type.radio'    => 'radio',
                     ],
+                    'choices_as_values' => true,
                     'required' => true,
                     'label'    => 'widget_form.form.question.type.label',
                     'attr'     => [

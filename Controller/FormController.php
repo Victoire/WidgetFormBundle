@@ -89,7 +89,6 @@ class FormController extends Controller
 
         //$isSpam = $this->testForSpam($taintedValues, $request);
         $mailer = 'mailer';
-        $subject = $widget->getTitle();
         $targetEmail = $widget->getTargetEmail() ? $widget->getTargetEmail() : $this->container->getParameter(
             'victoire_widget_form.default_email_address'
         );
@@ -109,7 +108,7 @@ class FormController extends Controller
                 );
                 if (count($regexErrors) == 0) {
                     $emailSend = true;
-                    $this->createAndSendMail($subject, $from, $targetEmail, $body, 'text/html', null, [], $mailer);
+                    $this->createAndSendMail($widget->getAdminSubject(), $from, $targetEmail, $body, 'text/html', null, [], $mailer);
                 }
             } catch (\Exception $e) {
                 echo $e->getTraceAsString();

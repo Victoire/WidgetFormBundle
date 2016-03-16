@@ -25,6 +25,7 @@
                 {{ form_row(form.successMessage) }}
             </div>
             {{ form_row(form.targetEmail) }}
+            {{ form_row(form.adminSubject) }}
         </div>
         {% set params = (form.autoAnswer.vars.checked == 'on' ? 'true' : '') %}
         {{ form_row(form.autoAnswer, {'attr': {'onclick' : 'showTargetField()'}, value : params }) }}

@@ -84,6 +84,13 @@ class WidgetForm extends Widget
     /**
      * @var string
      *
+     * @ORM\Column(name="adminSubject", type="string", length=255, nullable=true)
+     */
+    protected $adminSubject;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="targetEmail", type="string", length=255, nullable=true)
      */
     protected $targetEmail;
@@ -713,5 +720,21 @@ class WidgetForm extends Widget
     public function setNoReply($noReply)
     {
         $this->noReply = $noReply;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdminSubject()
+    {
+        return $this->adminSubject;
+    }
+
+    /**
+     * @param string $adminSubject
+     */
+    public function setAdminSubject($adminSubject)
+    {
+        $this->adminSubject = $adminSubject;
     }
 }

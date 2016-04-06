@@ -180,6 +180,7 @@ class WidgetForm extends Widget
      */
     public function __construct()
     {
+        parent::__construct();
         $this->questions = new ArrayCollection();
         $this->submitIcon = 'fa-location-arrow';
     }

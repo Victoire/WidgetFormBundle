@@ -1,146 +1,141 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 {% block content %}
-<div class="row">
-    <div class="col-md-12">
-        <h3>{{ widget.title }}</h3>
-        {% set formName = 'cms_form_content' %}
-        <form action="{{ path('victoire_contact_form_result') }}" class="form widget-form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="{{ formName }}[id]" value="{{ widget.id }}"/>
+    <h3>{{ widget.title }}</h3>
+    {% set formName = 'cms_form_content' %}
+    <form action="{{ path('victoire_contact_form_result') }}" class="form widget-form" update="null" id="form-{{ widget.id }}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="{{ formName }}[id]" value="{{ widget.id }}"/>
 
-            {% set prev_alignment = false %}
-            <div class="row">
-                {% for question in widget.questions %}
-                    {% set questionId = loop.index0 %}
+        <div class="row">
+            {% for question in widget.questions %}
+                {% set questionId = loop.index0 %}
 
 
-                    {% set alignment = question.alignment %}
-                    {% if alignment is not defined %}
-                        {% set col = 'full' %}
+                {% set alignment = question.alignment %}
+                {% if alignment is not defined %}
+                    {% set col = 'full' %}
+                {% else %}
+                    {% if prev_alignment is not defined %}
+                        {% if alignment == 'left' %}
+                            {% set col = 'half' %}
+                        {% elseif alignment == 'right' %}
+                            {% set col = 'half--offset' %}
+                        {% else %}
+                            {% set col = 'full' %}
+                        {% endif %}
                     {% else %}
-                        {% if prev_alignment is not defined %}
-                            {% if alignment == 'left' %}
-                                {% set col = 'half' %}
-                            {% elseif alignment == 'right' %}
-                                {% set col = 'half--offset' %}
-                            {% else %}
+                        {% if alignment != prev_alignment %}
+                            {# close the col of the previous siblings questions with same alignment  #}
+                            </div>
+
+                            {% if alignment == 'full' %}
                                 {% set col = 'full' %}
+                            {% else %}
+                                {% set col = 'half' %}
                             {% endif %}
                         {% else %}
-                            {% if alignment != prev_alignment %}
-                                {# close the col of the previous siblings questions with same alignment  #}
-                                </div>
-
-                                {% if alignment == 'full' %}
-                                    {% set col = 'full' %}
-                                {% else %}
-                                    {% set col = 'half' %}
-                                {% endif %}
-                            {% else %}
-                                {% set col = false %}
-                            {% endif %}
+                            {% set col = false %}
                         {% endif %}
                     {% endif %}
-
-                    {% if col is defined and col == 'full' %}<div class="col-xs-12">{% endif %}
-                    {% if col is defined and col == 'half' %}<div class="col-sm-6">{% endif %}
-                    {% if col is defined and col == 'half--offset' %}<div class="col-sm-6 col-sm-offset-6">{% endif %}
-
-                        <div class="form-group">
-                            <label for="{{ question.type }}-{{ questionId }}" class="control-label">{{ question.title }}{% if question.required %}&nbsp;<span class='required'>*</span>{% endif %}</label>
-                            <input type="hidden" value="{{ question.title }}" name="{{ formName }}[questions][{{ questionId }}][label]"/>
-                            <input type="hidden" value="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][type]"/>
-                            {% if question.type == "text" or question.type == "email" %}
-                                <div class="input">
-                                    {% if question.prefix %}
-                                    <div class="input-group">
-                                      <div class="input-group-addon">{{question.prefix|raw}}</div>
-                                    {% endif %}
-                                    <input class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.regex %}pattern="{{question.regex}}" {% if question.regexTitle %}title="{{question.regexTitle}}" {% endif %}{% endif %} {% if question.required %}required="required"{% endif %}/>
-                                    {% if question.prefix %}
-                                    </div>
-                                    {% endif %}
-                                    <div class="help-block" style="display: none"></div>
-                                    {% if question.regex %}
-                                        <input type="hidden" value="{{ question.regex }}" name="{{ formName }}[questions][{{ questionId }}][regex]"/>
-                                        {% if question.regexTitle %}
-                                            <input type="hidden" value="{{ question.regexTitle }}" name="{{ formName }}[questions][{{ questionId }}][regexTitle]"/>
-                                        {% endif %}
-                                    {% endif %}
-                                </div>
-                            {% elseif question.type == "textarea" %}
-                                <div class="input">
-                                    {% if question.prefix %}
-                                    <div class="input-group">
-                                      <div class="input-group-addon">{{question.prefix|raw}}</div>
-                                    {% endif %}
-                                    <textarea class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %} rows="10"></textarea>
-                                    {% if question.prefix %}
-                                    </div>
-                                    {% endif %}
-                                    <div class="help-block" style="display: none"></div>
-                                </div>
-                            {% elseif question.type == "boolean" %}
-                                <div class="input">
-                                    <label class="{{ question.type }}{% if question.proposalInline %}-inline{% endif %}" for="input-{{ questionId }}">
-                                    {% if question.prefix %}
-                                    <div class="input-group">
-                                      <div class="input-group-addon">{{question.prefix|raw}}</div>
-                                    {% endif %}
-                                    <input type="checkbox" name="{{ formName }}[questions][{{ questionId }}][]" id="input-{{ questionId }}"/>
-                                    {% if question.prefix %}
-                                        </div>
-                                    {% endif %}
-                                         {{ question.type }}
-                                    </label>
-                                </div>
-                            {% elseif question.type == "date" %}
-                                <div class="input">
-                                    {% if question.prefix %}
-                                    <div class="input-group">
-                                      <div class="input-group-addon">{{question.prefix|raw}}</div>
-                                    {% endif %}
-                                    <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Day]" {% if question.required %}required="required"{% endif %}>
-                                        {% for day in 0..31 %}
-                                            <option value="{{ day }}"{% if day == "now"|date('d') %} selected="selected"{% endif %}>{{ day }}</option>
-                                        {% endfor %}
-                                    </select>
-                                    <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Month]"{% if question.required %}required="required"{% endif %}>
-                                        {% set months =  {'1' : 'Janvier','2' : 'Février','3' : 'Mars','4' : 'Avril','5' : "Mai", '6' : "Juin", '7' : "Juillet", '8' : "Aout", '9' : "Septembre", '10' : "Octobre", '11' : "Novembre", '12' : "Décembre"} %}
-                                        {% for key, month in months %}
-                                            <option value="{{ month }}"{% if key == "now"|date('n') %} selected="selected"{% endif %}>{{ month }}</option>
-                                        {% endfor %}
-                                    </select>
-                                    <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Year]" {% if question.required %}required="required"{% endif %}>
-                                        {% for year in range(1900, "now"|date("Y") + 25) %}
-                                            <option value="{{ year }}"{% if year == "now"|date('Y') %}selected="selected"{% endif %}>{{ year }}</option>
-                                        {% endfor %}
-                                    </select>
-                                    {% if question.prefix %}
-                                    </div>
-                                    {% endif %}
-                                    <div class="help-block" style="display: none"></div>
-                                </div>
-                            {% elseif question.type == "radio" or question.type == "checkbox" %}
-                                {% set proposals = data_unserialize(question.proposal)%}
-                                {% if question.proposalExpanded %}
-                                    {% include 'VictoireWidgetFormBundle:form:_choiceExpanded.html.twig' %}
-                                {% else %}
-                                    {% include 'VictoireWidgetFormBundle:form:_choice.html.twig' %}
-                                {% endif %}
-                            {% endif %}
-                        </div>
-
-                    {% set prev_alignment = alignment %}
-                {% endfor %}
-            </div>
-
-            <button type="submit" class="btn btn-primary pull-right">
-                {% if submitIcon %}
-                    <span class="fa {{ submitIcon }}"></span>&nbsp;
                 {% endif %}
-                {{ submitLabel }}
-            </button>
-        </form>
-    </div>
-</div>
+
+                {% if col is defined and col == 'full' %}<div class="col-xs-12">{% endif %}
+                {% if col is defined and col == 'half' %}<div class="col-sm-6">{% endif %}
+                {% if col is defined and col == 'half--offset' %}<div class="col-sm-6 col-sm-offset-6">{% endif %}
+
+                    <div class="form-group">
+                        <label for="{{ question.type }}-{{ questionId }}" class="control-label">{{ question.title }}{% if question.required %}&nbsp;<span class='required'>*</span>{% endif %}</label>
+                        <input type="hidden" value="{{ question.title }}" name="{{ formName }}[questions][{{ questionId }}][label]"/>
+                        <input type="hidden" value="{{ question.type }}" name="{{ formName }}[questions][{{ questionId }}][type]"/>
+                        {% if question.type == "text" or question.type == "email" %}
+                            <div class="input">
+                                {% if question.prefix %}
+                                <div class="input-group">
+                                  <div class="input-group-addon">{{question.prefix|raw}}</div>
+                                {% endif %}
+                                <input class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.regex %}pattern="{{question.regex}}" {% if question.regexTitle %}title="{{question.regexTitle}}" {% endif %}{% endif %} {% if question.required %}required="required"{% endif %}/>
+                                {% if question.prefix %}
+                                </div>
+                                {% endif %}
+                                <div class="help-block" style="display: none"></div>
+                                {% if question.regex %}
+                                    <input type="hidden" value="{{ question.regex }}" name="{{ formName }}[questions][{{ questionId }}][regex]"/>
+                                    {% if question.regexTitle %}
+                                        <input type="hidden" value="{{ question.regexTitle }}" name="{{ formName }}[questions][{{ questionId }}][regexTitle]"/>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        {% elseif question.type == "textarea" %}
+                            <div class="input">
+                                {% if question.prefix %}
+                                <div class="input-group">
+                                  <div class="input-group-addon">{{question.prefix|raw}}</div>
+                                {% endif %}
+                                <textarea class="form-control" id="{{ question.type }}-{{ questionId }}" name="{{ formName }}[questions][{{ questionId }}][]" type="{{ question.type }}" {% if question.required %}required="required"{% endif %} rows="10"></textarea>
+                                {% if question.prefix %}
+                                </div>
+                                {% endif %}
+                                <div class="help-block" style="display: none"></div>
+                            </div>
+                        {% elseif question.type == "boolean" %}
+                            <div class="input">
+                                <label class="{{ question.type }}{% if question.proposalInline %}-inline{% endif %}" for="input-{{ questionId }}">
+                                {% if question.prefix %}
+                                <div class="input-group">
+                                  <div class="input-group-addon">{{question.prefix|raw}}</div>
+                                {% endif %}
+                                <input type="checkbox" name="{{ formName }}[questions][{{ questionId }}][]" id="input-{{ questionId }}"/>
+                                {% if question.prefix %}
+                                    </div>
+                                {% endif %}
+                                     {{ question.type }}
+                                </label>
+                            </div>
+                        {% elseif question.type == "date" %}
+                            <div class="input">
+                                {% if question.prefix %}
+                                <div class="input-group">
+                                  <div class="input-group-addon">{{question.prefix|raw}}</div>
+                                {% endif %}
+                                <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Day]" {% if question.required %}required="required"{% endif %}>
+                                    {% for day in 0..31 %}
+                                        <option value="{{ day }}"{% if day == "now"|date('d') %} selected="selected"{% endif %}>{{ day }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Month]"{% if question.required %}required="required"{% endif %}>
+                                    {% set months =  {'1' : 'Janvier','2' : 'Février','3' : 'Mars','4' : 'Avril','5' : "Mai", '6' : "Juin", '7' : "Juillet", '8' : "Aout", '9' : "Septembre", '10' : "Octobre", '11' : "Novembre", '12' : "Décembre"} %}
+                                    {% for key, month in months %}
+                                        <option value="{{ month }}"{% if key == "now"|date('n') %} selected="selected"{% endif %}>{{ month }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="form-control" style="width: auto;float:left;margin:0 5px;" name="{{ formName }}[questions][{{ questionId }}][Year]" {% if question.required %}required="required"{% endif %}>
+                                    {% for year in range(1900, "now"|date("Y") + 25) %}
+                                        <option value="{{ year }}"{% if year == "now"|date('Y') %}selected="selected"{% endif %}>{{ year }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% if question.prefix %}
+                                </div>
+                                {% endif %}
+                                <div class="help-block" style="display: none"></div>
+                            </div>
+                        {% elseif question.type == "radio" or question.type == "checkbox" %}
+                            {% set proposals = data_unserialize(question.proposal)%}
+                            {% if question.proposalExpanded %}
+                                {% include 'VictoireWidgetFormBundle:form:_choiceExpanded.html.twig' %}
+                            {% else %}
+                                {% include 'VictoireWidgetFormBundle:form:_choice.html.twig' %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+
+                {% set prev_alignment = alignment %}
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary pull-right">
+            {% if submitIcon %}
+                <span class="fa {{ submitIcon }}"></span>&nbsp;
+            {% endif %}
+            {{ submitLabel }}
+        </button>
+    </form>
 {% endblock content %}

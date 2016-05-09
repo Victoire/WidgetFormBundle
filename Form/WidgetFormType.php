@@ -69,7 +69,7 @@ class WidgetFormType extends WidgetType
             'label' => 'widget_form.form.subject.label',
         ])
         ->add('adminSubject', null, [
-            'label' => 'widget_form.form.adminSubject.label',
+            'label'          => 'widget_form.form.adminSubject.label',
             'vic_help_block' => 'widget_form.form.adminSubject.help_block',
         ])
         ->add('targetEmail', null, [
@@ -140,7 +140,7 @@ class WidgetFormType extends WidgetType
                     'victoire.widget-form.successCallback.choices.notification' => 'notification',
                     'victoire.widget-form.successCallback.choices.redirect'     => 'redirect',
                 ],
-                'choices_as_values' => true
+                'choices_as_values' => true,
             ]
         )
         ->add('link', LinkType::class)

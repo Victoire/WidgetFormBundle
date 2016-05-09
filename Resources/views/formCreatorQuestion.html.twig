@@ -17,6 +17,7 @@
 <div class="vic-col-row vic-form-group">
     <div class="vic-col-md-8">
         {{ form_row(item.type) }}
+        {{ form_row(item.alignment) }}
     </div>
     {% set proposalType = (item.type.vars.value != 'checkbox' and item.type.vars.value != 'radio' ? true : false) %}
     <div class="vic-col-md-4 expanded_container"{% if proposalType %} style="display: none"{% endif %}>

@@ -134,6 +134,22 @@
         <target>Type de réponse attendue</target>
         <jms:reference-file line="38">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
+      <trans-unit resname="widget_form.form.question.alignment.label">
+        <source>widget_form.form.question.alignment.label</source>
+        <target>Agencement de la question</target>
+      </trans-unit>
+      <trans-unit resname="widget_form.form.question.alignment.full">
+        <source>widget_form.form.question.alignment.full</source>
+        <target>Toute la largeur</target>
+      </trans-unit>
+      <trans-unit resname="widget_form.form.question.alignment.left">
+        <source>widget_form.form.question.alignment.left</source>
+        <target>Gauche</target>
+      </trans-unit>
+      <trans-unit resname="widget_form.form.question.alignment.right">
+        <source>widget_form.form.question.alignment.right</source>
+        <target>Droite</target>
+      </trans-unit>
       <trans-unit id="e57c83c836b3fb648e1e44a9bb444641588b76c7" resname="widget_form.form.question.type.radio">
         <source>widget_form.form.question.type.radio</source>
         <target>Choix unique</target>

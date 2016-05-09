@@ -84,6 +84,18 @@ class WidgetFormQuestionType extends WidgetType
             ->add('regexTitle', null, [
                     'label' => 'widget_form.form.question.regexTitle.label',
                 ]
+            )
+            ->add('alignment', ChoiceType::class, [
+                    'label' => 'widget_form.form.question.alignment.label',
+                    'choices' => [
+                        'widget_form.form.question.alignment.full' => 'full',
+                        'widget_form.form.question.alignment.left' => 'left',
+                        'widget_form.form.question.alignment.right' => 'right',
+                    ],
+                    'data' => 'full',
+                    'choices_as_values' => true,
+                    'expanded' => true
+                ]
             );
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $widget = $event->getData();

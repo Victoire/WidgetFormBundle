@@ -76,6 +76,13 @@ class WidgetFormQuestion
     private $type;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="alignment", type="string", length=25)
+     */
+    private $alignment;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Victoire\Widget\FormBundle\Entity\WidgetForm", inversedBy="questions", cascade={"persist"})
      */
     private $form;
@@ -371,6 +378,30 @@ class WidgetFormQuestion
     public function setRegexTitle($regexTitle)
     {
         $this->regexTitle = $regexTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get alignment.
+     *
+     * @return string
+     */
+    public function getAlignment()
+    {
+        return $this->alignment;
+    }
+
+    /**
+     * Set alignment.
+     *
+     * @param string $alignment
+     *
+     * @return $this
+     */
+    public function setAlignment($alignment)
+    {
+        $this->alignment = $alignment;
 
         return $this;
     }

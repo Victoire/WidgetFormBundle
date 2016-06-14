@@ -2,17 +2,18 @@
 
 {% trans_default_domain "victoire" %}
 {% set widgetId = widget.id|default('null') %}
-{% block body %}
-{% block form %}
+
+{% block form_static %}
+<div id="picker-{{ form.mode.vars.data }}" class="vic-tab-pane vic-active">
 {{ form_start(form, {'attr' : {'id' : 'victoire_widget_form' }}) }}
-<div class="row">
-    <div class="col-md-4">
+<div class="vic-row">
+    <div class="vic-col-md-4">
         {{ form_row(form.title) }}
-        <div class="row">
-            <div class="col-md-6">
+        <div class="vic-row">
+            <div class="vic-col-md-6">
                 {{ form_row(form.submitLabel) }}
             </div>
-            <div class="col-md-6">
+            <div class="vic-col-md-6">
                 {{ form_row(form.submitIcon) }}
             </div>
         </div>
@@ -58,10 +59,11 @@
 </div>
 {{ form_rest(form) }}
 {{ form_end(form) }}
-{% endblock form %}
+</div>
+{% endblock form_static %}
 
-
-
+{% block body %}
+{{ parent() }}
 <script type="text/javascript">
     $vic(document).on('victoire_widget_form_create_presubmit victoire_widget_form_update_presubmit', function(event) {
         for ( instance in CKEDITOR.instances ) {

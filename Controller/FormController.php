@@ -34,7 +34,7 @@ class FormController extends Controller
         if ($request->getMethod() != 'POST' && $request->getMethod() != 'PUT') {
             throw $this->createNotFoundException();
         }
-        $_taintedValues = $this->getRequest()->request->all()['cms_form_content'];
+        $_taintedValues = $request->request->all()['cms_form_content'];
         /** @var WidgetForm $widget */
         $widget = $this->get('doctrine.orm.entity_manager')->getRepository('VictoireWidgetFormBundle:WidgetForm')->find($_taintedValues['id']);
 
@@ -111,7 +111,7 @@ class FormController extends Controller
                     $this->createAndSendMail($widget->getAdminSubject(), $from, $targetEmail, $body, 'text/html', null, [], $mailer);
                 }
             } catch (\Exception $e) {
-                echo $e->getTraceAsString();
+                throw $e;
             }
         }
         ///////////////////////// AUTOANSWER (if email field exists and is filled properly)  //////////////////////////////////////////
@@ -178,7 +178,7 @@ class FormController extends Controller
                         $this->createAndSendMail($widget->getSubject(), $from, $email, $body, 'text/html', $widget->getNoReply(), $attachments, $mailer);
                     }
                 } catch (\Exception $exc) {
-                    echo $exc->getTraceAsString();
+                    throw $e;
                 }
             }
         }

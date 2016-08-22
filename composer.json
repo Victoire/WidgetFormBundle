@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "victoire/victoire": "~1.5",
+        "victoire/victoire": ">=2.0.0",
         "appventus/alertify-bundle": "^1.0",
         "ornicar/akismet-bundle": "dev-master"
     },
@@ -30,11 +30,5 @@
             "Victoire\\Widget\\FormBundle": ""
         }
     },
-    "minimum-stability": "dev",
-    "target-dir": "Victoire/Widget/FormBundle",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.5.x-dev"
-        }
-    }
+    "target-dir": "Victoire/Widget/FormBundle"
 }

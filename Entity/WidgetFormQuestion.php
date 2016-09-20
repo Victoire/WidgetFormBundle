@@ -90,7 +90,7 @@ class WidgetFormQuestion
     /**
      * @var string
      *
-     * @ORM\Column(name="proposal", type="string", length=255, options={"default": "N;"})
+     * @ORM\Column(name="proposal", type="text", options={"default": "N;"})
      */
     protected $proposal = null;
 

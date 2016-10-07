@@ -4,13 +4,8 @@
         "javascripts":
         {
             "foot": [
-              "@VictoireWidgetFormBundle/Resources/public/js/validator.js",
-              "bundles/avalertify/toastr/js/toastr.js"
+              "@VictoireWidgetFormBundle/Resources/public/js/validator.js"
             ]
-        },
-        "stylesheets":
-        {
-            "head": "bundles/avalertify/toastr/css/toastr.css"
         }
     }
 }

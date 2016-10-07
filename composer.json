@@ -21,8 +21,8 @@
         }
     ],
     "require": {
-        "victoire/victoire": ">=2.0.0",
-        "appventus/alertify-bundle": "^1.0",
+        "victoire/victoire": "~2.0",
+        "troopers/alertify-bundle": "^2.0.1",
         "ornicar/akismet-bundle": "dev-master"
     },
     "autoload": {

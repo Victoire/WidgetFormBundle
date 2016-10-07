@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
+use Troopers\AlertifyBundle\Controller\AlertifyControllerTrait;
 use Victoire\Bundle\MediaBundle\Entity\Media;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
 
@@ -18,6 +19,8 @@ use Victoire\Widget\FormBundle\Entity\WidgetForm;
  */
 class FormController extends Controller
 {
+    use AlertifyControllerTrait;
+
     /**
      * Handle the form submission.
      *
@@ -188,7 +191,7 @@ class FormController extends Controller
         if ($emailSend) {
             if ($widget->getSuccessCallback() == 'notification') {
                 $message = $widget->getSuccessMessage() != '' ? $widget->getSuccessMessage() : $this->get('translator')->trans('victoire_widget_form.alert.send.email.success.label');
-                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->congrat($message);
+                $this->congrat($message);
             } else {
                 if ($link = $widget->getLink()) {
                     $redirectUrl = $this->get('victoire_widget.twig.link_extension')->victoireLinkUrl($link->getParameters());
@@ -197,12 +200,12 @@ class FormController extends Controller
         } else {
             if ($widget->getErrorNotification() == true) {
                 $message = $widget->getErrorMessage() != '' ? $widget->getErrorMessage() : $this->get('translator')->trans('victoire_widget_form.alert.send.email.error.label');
-                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($message);
+                $this->scold($message);
             }
         }
         foreach ($regexErrors as $key => $error) {
             if ($error != '') {
-                $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($error);
+                $this->scold($error);
             }
         }
         $redirectUrl = $redirectUrl ?: $request->headers->get('referer');

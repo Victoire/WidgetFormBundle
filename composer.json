@@ -22,7 +22,7 @@
     ],
     "require": {
         "victoire/victoire": "~2.0",
-        "troopers/alertify-bundle": "^2.0.1",
+        "troopers/alertify-bundle": "~3.0",
         "ornicar/akismet-bundle": "dev-master"
     },
     "autoload": {

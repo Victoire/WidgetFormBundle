@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 use Troopers\AlertifyBundle\Controller\AlertifyControllerTrait;
 use Victoire\Bundle\MediaBundle\Entity\Media;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
+use Victoire\Widget\FormBundle\Event\WidgetFormeMailEvent;
 
 /**
  * FormController.
@@ -100,13 +101,18 @@ class FormController extends Controller
                 $from = [
                     $this->container->getParameter('victoire_widget_form.default_email_address') => $this->container->getParameter('victoire_widget_form.default_email_label'),
                 ];
-                array_push($data, ['label' => 'ip', 'value' => $_SERVER['REMOTE_ADDR']]);
+
+                $event = new WidgetFormeMailEvent($data);
+                $this->get('event_dispatcher')->dispatch('victoire.widget_form.pre_send_mail', $event);
+
+                $event->appendData('ip', $_SERVER['REMOTE_ADDR']);
+
                 $body = $this->renderView(
                     'VictoireWidgetFormBundle::managerMailTemplate.html.twig',
                     [
                         'title' => $widget->getTitle(),
                         'url'   => $request->headers->get('referer'),
-                        'data'  => $data,
+                        'data'  => $event->getData(),
                     ]
                 );
                 if (count($regexErrors) == 0) {

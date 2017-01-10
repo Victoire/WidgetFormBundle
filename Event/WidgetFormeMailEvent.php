@@ -35,7 +35,7 @@ class WidgetFormeMailEvent extends Event
     public function prependData($label, $value)
     {
         $newField = ['label' => $label, 'value' => $value];
-        $this->data = array_merge($newField, $this->data);
+        array_unshift($this->data, $newField);
     }
 
     /**
@@ -47,6 +47,6 @@ class WidgetFormeMailEvent extends Event
     public function appendData($label, $value)
     {
         $newField = ['label' => $label, 'value' => $value];
-        $this->data = array_merge($this->data, $newField);
+        array_push($this->data, $newField);
     }
 }

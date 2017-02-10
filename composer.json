@@ -22,8 +22,10 @@
     ],
     "require": {
         "victoire/victoire": "~2.0",
-        "troopers/alertify-bundle": "~3.0",
-        "ornicar/akismet-bundle": "dev-master"
+        "troopers/alertify-bundle": "~3.0"
+    },
+    "suggest": {
+        "ornicar/akismet-bundle": "Analyze form content thanks to akismet"
     },
     "autoload": {
         "psr-0": {

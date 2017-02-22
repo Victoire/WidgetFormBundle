@@ -133,6 +133,18 @@ class WidgetFormType extends WidgetType
             'label'    => 'widget_form.form.submitIcon.label',
             'required' => false,
         ])
+        ->add('submitClass', ChoiceType::class, [
+            'label'    => 'widget_form.form.submitClass.label',
+            'choices'   => [
+                'widget_form.form.choice.style.label.default' => 'default',
+                'widget_form.form.choice.style.label.primary' => 'primary',
+                'widget_form.form.choice.style.label.success' => 'success',
+                'widget_form.form.choice.style.label.info'    => 'info',
+                'widget_form.form.choice.style.label.warning' => 'warning',
+                'widget_form.form.choice.style.label.danger'  => 'danger',
+                ],
+            'choices_as_values' => true,
+        ])
         ->add('successCallback', ChoiceType::class, [
                 'label'    => 'widget_form.form.successCallback.label',
                 'required' => true,

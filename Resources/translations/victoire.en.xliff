@@ -233,6 +233,34 @@
         <source>victoire.widget-form.successCallback.assert.badChoice</source>
         <target>Please specify an action from the dropdown menu.</target>
       </trans-unit>
+      <trans-unit id="submitClassLabel" resname="widget_form.form.submitClass.label">
+        <source>widget_form.form.submitClass.label</source>
+        <target>Submission button Style:</target>
+      </trans-unit>
+      <trans-unit id="submitClassDefaultLabel" resname="widget_form.form.choice.style.label.default">
+        <source>widget_form.form.choice.style.label.default</source>
+        <target>Default</target>
+      </trans-unit>
+      <trans-unit id="submitClassPrimaryLabel" resname="widget_form.form.choice.style.label.primary">
+        <source>widget_form.form.choice.style.label.primary</source>
+        <target>Principal</target>
+      </trans-unit>
+      <trans-unit id="submitClassSuccessLabel" resname="widget_form.form.choice.style.label.success">
+        <source>widget_form.form.choice.style.label.success</source>
+        <target>Succès</target>
+      </trans-unit>
+      <trans-unit id="submitClassInfoLabel" resname="widget_form.form.choice.style.label.info">
+        <source>widget_form.form.choice.style.label.info</source>
+        <target>Informatif</target>
+      </trans-unit>
+      <trans-unit id="submitClassWarningLabel" resname="widget_form.form.choice.style.label.warning">
+        <source>widget_form.form.choice.style.label.warning</source>
+        <target>Avertissement</target>
+      </trans-unit>
+      <trans-unit id="submitClassDangerLabel" resname="widget_form.form.choice.style.label.danger">
+        <source>widget_form.form.choice.style.label.danger</source>
+        <target>Danger</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

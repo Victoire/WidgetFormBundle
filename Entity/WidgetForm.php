@@ -132,6 +132,15 @@ class WidgetForm extends Widget
     protected $submitLabel;
 
     /**
+     * @var string
+     *
+     * Nullable for not break with old install but it's required in form and default value is set in template
+     * @ORM\Column(name="submit_class", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     */
+    protected $submitClass;
+
+    /**
      * @ORM\OneToMany(targetEntity="Victoire\Widget\FormBundle\Entity\WidgetFormQuestion", mappedBy="form", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
@@ -183,6 +192,7 @@ class WidgetForm extends Widget
         parent::__construct();
         $this->questions = new ArrayCollection();
         $this->submitIcon = 'fa-location-arrow';
+        $this->submitClass = 'primary';
     }
 
     /**
@@ -737,5 +747,21 @@ class WidgetForm extends Widget
     public function setAdminSubject($adminSubject)
     {
         $this->adminSubject = $adminSubject;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubmitClass()
+    {
+        return $this->submitClass;
+    }
+
+    /**
+     * @param mixed $submitClass
+     */
+    public function setSubmitClass($submitClass)
+    {
+        $this->submitClass = $submitClass;
     }
 }

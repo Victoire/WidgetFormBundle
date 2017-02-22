@@ -134,6 +134,7 @@ class WidgetForm extends Widget
     /**
      * @var string
      *
+     * Nullable for not break with old install but it's required in form and default value is set in template
      * @ORM\Column(name="submit_class", type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */

@@ -131,7 +131,7 @@
             {% endfor %}
         </div>
 
-        <button type="submit" class="btn btn-{{ submitClass }} pull-right">
+        <button type="submit" class="btn btn-{{ submitClass|default('primary') }} pull-right">
             {% if submitIcon %}
                 <span class="fa {{ submitIcon }}"></span>&nbsp;
             {% endif %}

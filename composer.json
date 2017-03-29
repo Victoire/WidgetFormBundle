@@ -22,7 +22,8 @@
     ],
     "require": {
         "victoire/victoire": "~2.0",
-        "troopers/alertify-bundle": "~3.0"
+        "troopers/alertify-bundle": "~3.0",
+        "egeloen/ckeditor-bundle": "~4.0"
     },
     "suggest": {
         "ornicar/akismet-bundle": "Analyze form content thanks to akismet"

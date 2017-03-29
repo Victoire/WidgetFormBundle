@@ -1,22 +1,22 @@
 Victoire CMS Form Bundle
 ============
 
-##What is the purpose of this bundle
+## What is the purpose of this bundle
 
 This bundle gives you access to the *Form Widget*.
 With this widget, you can install any contact form.
 
-##Set Up Victoire
+## Set Up Victoire
 
-If you haven't already, you can follow the steps to set up Victoire *[here](https://github.com/Victoire/victoire/blob/master/setup.md)*
+If you haven't already, you can follow the steps to set up Victoire *[here](https://github.com/Victoire/victoire/blob/master/doc/setup.md)*
 
-##Install the Bundle :
+## Install the Bundle :
 
 Run the following composer command :
 
-    php composer.phar require friendsofvictoire/form-widget
+    php composer.phar require victoire/form-widget
 
-Do not forget to add the bundle in your AppKernel !
+Do not forget to add the bundle in your AppKernel!
 
     class AppKernel extends Kernel
     {
@@ -25,17 +25,18 @@ Do not forget to add the bundle in your AppKernel !
             $bundles = array(
                 ...
                 new Victoire\Widget\FormBundle\VictoireWidgetFormBundle(),
+                new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             );
 
             return $bundles;
         }
     }
 
-##Inject Data before send mail
+## Inject Data before send mail
 
 When widget is configure to send mail with form data, you can inject some other data before send mail.
 
-###Create a EventLister :
+### Create a EventLister :
     <?php
     namespace AppBundle\EventListener;
     
@@ -50,7 +51,7 @@ When widget is configure to send mail with form data, you can inject some other 
         }
     }
 
-###Declare listener in Service :
+### Declare listener in Service :
     #service.yml
     
     widget_form_listener:

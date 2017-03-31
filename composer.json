@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "victoire/victoire": "~2.0",
+        "victoire/victoire": "~2.0 | ~3.0",
         "troopers/alertify-bundle": "~3.0",
         "egeloen/ckeditor-bundle": "~4.0"
     },

@@ -58,11 +58,11 @@
         <source>victoire_widget_form.alert.send.email.error.label</source>
         <target>Your participation couldn't be registered</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="58e25b0a671b3">
         <source>victoire_widget_form.message.admin.greeting</source>
         <target>Hello,</target>
       </trans-unit>
-      <trans-unit>
+      <trans-unit id="58e25b0a671cf">
         <source>victoire_widget_form.message.admin.newMessage</source>
         <target>New message:</target>
       </trans-unit>

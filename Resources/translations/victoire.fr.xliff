@@ -6,11 +6,11 @@
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit resname="widget.form.new.action.label">
+      <trans-unit resname="widget.form.new.action.label" id="58e25b0a68483">
         <source>widget.form.new.action.label</source>
         <target>Formulaire</target>
       </trans-unit>
-      <trans-unit resname="modal.form.widget.type.form.label">
+      <trans-unit resname="modal.form.widget.type.form.label" id="58e25b0a68496">
         <source>modal.form.widget.type.form.label</source>
         <target>Formulaire</target>
       </trans-unit>
@@ -134,19 +134,19 @@
         <target>Type de réponse attendue</target>
         <jms:reference-file line="38">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.label">
+      <trans-unit resname="widget_form.form.question.alignment.label" id="58e25b0a684cd">
         <source>widget_form.form.question.alignment.label</source>
         <target>Agencement de la question</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.full">
+      <trans-unit resname="widget_form.form.question.alignment.full" id="58e25b0a684f7">
         <source>widget_form.form.question.alignment.full</source>
         <target>Toute la largeur</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.left">
+      <trans-unit resname="widget_form.form.question.alignment.left" id="58e25b0a68519">
         <source>widget_form.form.question.alignment.left</source>
         <target>Gauche</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.right">
+      <trans-unit resname="widget_form.form.question.alignment.right" id="58e25b0a68534">
         <source>widget_form.form.question.alignment.right</source>
         <target>Droite</target>
       </trans-unit>

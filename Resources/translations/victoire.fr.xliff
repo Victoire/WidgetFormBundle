@@ -6,286 +6,259 @@
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit resname="widget.form.new.action.label" id="58e25b0a68483">
+      <trans-unit resname="widget.form.new.action.label" id="58e3ad09ec67b">
         <source>widget.form.new.action.label</source>
         <target>Formulaire</target>
       </trans-unit>
-      <trans-unit resname="modal.form.widget.type.form.label" id="58e25b0a68496">
+      <trans-unit resname="modal.form.widget.type.form.label" id="58e3ad09ec71b">
         <source>modal.form.widget.type.form.label</source>
         <target>Formulaire</target>
       </trans-unit>
-      <trans-unit id="c8bb92c13e3b78714de6d44f61e5f049dcec2ead" resname="widget_form.form.attachmentUrl.label">
+      <trans-unit resname="widget_form.form.attachmentUrl.label" id="58e3ad09ec8d4">
         <source>widget_form.form.attachmentUrl.label</source>
         <target>Pièce jointe</target>
       </trans-unit>
-      <trans-unit id="78e4752db0a9b406b45710f3b29793cbe2b6f159" resname="widget_form.form.attachmentUrl2.label">
+      <trans-unit resname="widget_form.form.attachmentUrl2.label" id="58e3ad09ec8fc">
         <source>widget_form.form.attachmentUrl2.label</source>
         <target>Pièce jointe</target>
-        <jms:reference-file line="29">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="f0f3384a6a44d0774b8eab68f47327c40d97ffe8" resname="widget_form.form.attachmentUrl3.label">
+      <trans-unit resname="widget_form.form.attachmentUrl3.label" id="58e3ad09ec935">
         <source>widget_form.form.attachmentUrl3.label</source>
         <target>Pièce jointe</target>
-        <jms:reference-file line="32">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="defc1df1982ca30870f86911f16f26b4410378a1" resname="widget_form.form.attachmentUrl4.label">
+      <trans-unit resname="widget_form.form.attachmentUrl4.label" id="58e3ad09ec992">
         <source>widget_form.form.attachmentUrl4.label</source>
         <target>Pièce jointe</target>
-        <jms:reference-file line="35">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="e1c7499f37faed8a2f0982a3a2f13d5c0502b83c" resname="widget_form.form.attachmentUrl5.label">
+      <trans-unit resname="widget_form.form.attachmentUrl5.label" id="58e3ad09ecba7">
         <source>widget_form.form.attachmentUrl5.label</source>
         <target>Pièce jointe</target>
-        <jms:reference-file line="38">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="474396596ba4c126183c0d8c5da058511712a8cb" resname="widget_form.form.attachmentUrl6.label">
+      <trans-unit resname="widget_form.form.attachmentUrl6.label" id="58e3ad09ee30c">
         <source>widget_form.form.attachmentUrl6.label</source>
         <target>Pièce jointe</target>
-        <jms:reference-file line="41">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="17708b37816b214f74ea5a40150f3668f52d2abe" resname="widget_form.form.attachmentUrl7.label">
+      <trans-unit resname="widget_form.form.attachmentUrl7.label" id="58e3ad09ee527">
         <source>widget_form.form.attachmentUrl7.label</source>
         <target>Pièce jointe</target>
-        <jms:reference-file line="44">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="bdce0079b72abd1f198b75a83827be2bebd51ff5" resname="widget_form.form.autoAnswer.label">
+      <trans-unit resname="widget_form.form.autoAnswer.label" id="58e3ad09eef95">
         <source>widget_form.form.autoAnswer.label</source>
         <target>Réponse automatique</target>
-        <jms:reference-file line="53">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="eab503edf2431b8205d0f87ce17821b70a80cb47" resname="widget_form.form.captcha.label">
+      <trans-unit resname="widget_form.form.captcha.label" id="58e3ad09eefdb">
         <source>widget_form.form.captcha.label</source>
         <target>Captcha</target>
-        <jms:reference-file line="56">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="998b8bb64d2275f837b5501e03150a4f964519e0" resname="widget_form.form.message.label">
+      <trans-unit resname="widget_form.form.message.label" id="58e3ad09ef404">
         <source>widget_form.form.message.label</source>
         <target>Message</target>
-        <jms:reference-file line="59">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="4766ad230b355e85caa7f842022883241da8b66f" resname="widget_form.form.questions.label">
+      <trans-unit resname="widget_form.form.questions.label" id="58e3ad09ef4be">
         <source>widget_form.form.questions.label</source>
         <target>Questions</target>
-        <jms:reference-file line="97">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="37f58cf11c8fa7334c294601d42cff310f308884" resname="widget_form.form.subject.label">
+      <trans-unit resname="widget_form.form.subject.label" id="58e3ad09ef4ed">
         <source>widget_form.form.subject.label</source>
         <target>Sujet</target>
-        <jms:reference-file line="47">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="84aa8297edcd04be060fa557c3ea245f9b5d79c8" resname="widget_form.form.targetEmail.label">
+      <trans-unit resname="widget_form.form.targetEmail.label" id="58e3ad09ef562">
         <source>widget_form.form.targetEmail.label</source>
         <target>Adresse de réception des donnés du formulaire</target>
-        <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="cd04be060fa5584aa8297ed5f9b5d79c87c3ea24" resname="widget_form.form.targetEmail.help_block">
+      <trans-unit resname="widget_form.form.targetEmail.help_block" id="58e3ad09ef5fc">
         <source>widget_form.form.targetEmail.help_block</source>
         <target>Indiquez l'adresse email sur laquelle vous souhaitez recevoir les informations du formulaire.</target>
-        <jms:reference-file line="50">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="ffea1d626eb77b0783a8e6264194b1f3fc1e8015" resname="widget_form.form.title.label">
+      <trans-unit resname="widget_form.form.title.label" id="58e3ad09ef6b5">
         <source>widget_form.form.title.label</source>
         <target>Titre</target>
-        <jms:reference-file line="23">FormSlotBundle/Form/WidgetFormSlotType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="8a16a2794b0ece68b04adda077aae584ae5687e0" resname="widget_form.form.proposal.new.label">
+      <trans-unit resname="widget_form.form.proposal.new.label" id="58e3ad09ef860">
         <source>widget_form.form.proposal.new.label</source>
         <target>Nouvelle proposition</target>
-        <jms:reference-file line="67">Resources/views/_formCreatorQuestion.html.twig</jms:reference-file>
-        <jms:reference-file line="91">Resources/views/_formCreatorQuestion.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="5d3caa050d880bbcffa8b710019cb49780eb70d9" resname="widget_form.form.question.delete.label">
+      <trans-unit resname="widget_form.form.question.delete.label" id="58e3ad09f02df">
         <source>widget_form.form.question.delete.label</source>
         <target>Supprimer la question</target>
-        <jms:reference-file line="80">Resources/views/form.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="633d6b7aaf8a9a8d13819b62a7994fbf15a8d2c0" resname="widget_form.form.question.new.label">
+      <trans-unit resname="widget_form.form.question.new.label" id="58e3ad09f0344">
         <source>widget_form.form.question.new.label</source>
         <target>Nouvelle question</target>
-        <jms:reference-file line="53">Resources/views/form.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="a4645fefa99ecba8ea86e8296dda9f27a214f01c" resname="widget_form.form.question.proposal.label">
+      <trans-unit resname="widget_form.form.question.proposal.label" id="58e3ad09f0424">
         <source>widget_form.form.question.proposal.label</source>
         <target>Proposition</target>
-        <jms:reference-file line="46">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="c7df432984d9bef91b722a1d5e0627a60ec6fba9" resname="widget_form.form.question.required.label">
+      <trans-unit resname="widget_form.form.question.required.label" id="58e3ad09f0479">
         <source>widget_form.form.question.required.label</source>
         <target>Obligatoire</target>
-        <jms:reference-file line="26">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="ce7b6620779bb48c7af1ef037d8fdb995ddf1d6d" resname="widget_form.form.question.title.label">
+      <trans-unit resname="widget_form.form.question.title.label" id="58e3ad09f0d18">
         <source>widget_form.form.question.title.label</source>
         <target>Question posée</target>
-        <jms:reference-file line="22">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="3cdc008d402817170a8e3cd1586a514f362b0561" resname="widget_form.form.question.type.choice">
+      <trans-unit resname="widget_form.form.question.type.choice" id="58e3ad09f13bd">
         <source>widget_form.form.question.type.choice</source>
         <target>Choix multiple</target>
-        <jms:reference-file line="34">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="d6135249cfd626eaf1c2e9cfbf91b5bd969a96af" resname="widget_form.form.question.type.date">
+      <trans-unit resname="widget_form.form.question.type.date" id="58e3ad09f16f8">
         <source>widget_form.form.question.type.date</source>
         <target>Date</target>
-        <jms:reference-file line="33">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="3c01757079a27994a0874a13abb402c95fef70eb" resname="widget_form.form.question.type.label">
+      <trans-unit resname="widget_form.form.question.type.label" id="58e3ad09f217c">
         <source>widget_form.form.question.type.label</source>
         <target>Type de réponse attendue</target>
-        <jms:reference-file line="38">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.label" id="58e25b0a684cd">
+      <trans-unit resname="widget_form.form.question.alignment.label" id="58e3ad09f28ea">
         <source>widget_form.form.question.alignment.label</source>
         <target>Agencement de la question</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.full" id="58e25b0a684f7">
+      <trans-unit resname="widget_form.form.question.alignment.full" id="58e3ad09f2a66">
         <source>widget_form.form.question.alignment.full</source>
         <target>Toute la largeur</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.left" id="58e25b0a68519">
+      <trans-unit resname="widget_form.form.question.alignment.left" id="58e3ad09f2cba">
         <source>widget_form.form.question.alignment.left</source>
         <target>Gauche</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.question.alignment.right" id="58e25b0a68534">
+      <trans-unit resname="widget_form.form.question.alignment.right" id="58e3ad09f2e17">
         <source>widget_form.form.question.alignment.right</source>
         <target>Droite</target>
       </trans-unit>
-      <trans-unit id="e57c83c836b3fb648e1e44a9bb444641588b76c7" resname="widget_form.form.question.type.radio">
+      <trans-unit resname="widget_form.form.question.type.radio" id="58e3ad09f2ee7">
         <source>widget_form.form.question.type.radio</source>
         <target>Choix unique</target>
-        <jms:reference-file line="35">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="04176dffd8a22299830b20ba219b8e79cdee0062" resname="widget_form.form.question.type.text">
+      <trans-unit resname="widget_form.form.question.type.text" id="58e3ad09f2f6a">
         <source>widget_form.form.question.type.text</source>
         <target>Question ouverte courte</target>
-        <jms:reference-file line="31">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="0d82cea0cc3e28fd896f544152d1cd922d7f2c1b" resname="widget_form.form.question.type.textarea">
+      <trans-unit resname="widget_form.form.question.type.textarea" id="58e3ad09f3447">
         <source>widget_form.form.question.type.textarea</source>
         <target>Question ouverte longue</target>
-        <jms:reference-file line="32">FormSlotBundle/Form/QuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="OChJrkMmoOK5AvQC9viS38NK6TikhUZ8v9BbiCgy" resname="widget_form.form.question.type.email">
+      <trans-unit resname="widget_form.form.question.type.email" id="58e3ad09f36c5">
         <source>widget_form.form.question.type.email</source>
         <target>Email</target>
       </trans-unit>
-      <trans-unit id="614244867f2350f3e9defe7193612f76cc06f805" resname="widget_form.form.proposal.delete.label">
+      <trans-unit resname="widget_form.form.proposal.delete.label" id="58e3ad0a00e51">
         <source>widget_form.form.proposal.delete.label</source>
         <target>Supprimer la proposition</target>
       </trans-unit>
-      <trans-unit id="8a16a2794b0ece68b04adda077aae584ae5687e0" resname="widget_form.form.proposal.new.label">
+      <trans-unit resname="widget_form.form.proposal.new.label" id="58e3ad0a01130">
         <source>widget_form.form.proposal.new.label</source>
         <target>Ajouter une proposition</target>
       </trans-unit>
-      <trans-unit id="94b0ec8a16a27e68b0dda077aae584ae5687e04a" resname="widget_form.form.submitLabel.label">
+      <trans-unit resname="widget_form.form.submitLabel.label" id="58e3ad0a011f9">
         <source>widget_form.form.submitLabel.label</source>
         <target>Bouton de soumission</target>
       </trans-unit>
-      <trans-unit id="a16a27e68b94b0ec80dda84ae5687e04a077aae5" resname="widget_form.form.submitIcon.label">
+      <trans-unit resname="widget_form.form.submitIcon.label" id="58e3ad0a03235">
         <source>widget_form.form.submitIcon.label</source>
         <target>Icône</target>
       </trans-unit>
-      <trans-unit id="5687e04a077aae5a16a27e68b94b0ec80dda84ae" resname="widget_form.form.message.help_block">
+      <trans-unit resname="widget_form.form.message.help_block" id="58e3ad0a03298">
         <source>widget_form.form.message.help_block</source>
         <target><![CDATA[<p class="vic-help-block"><span class="fa fa-info-circle"></span>&nbsp;Vous pouvez utiliser les variables présentes dans le formulaire en entourant le nom par des doubles accolades : {{Nom}}</p>]]></target>
       </trans-unit>
-      <trans-unit id="4a07568a16a27e68b94b0ec80dda84ae7e07aae5" resname="widget_form.form.question.new.label">
+      <trans-unit resname="widget_form.form.question.new.label" id="58e3ad0a032e6">
         <source>widget_form.form.question.new.label</source>
         <target><![CDATA[<span class="fa fa-plus"></span>&nbsp;Ajouter une nouvelle question]]></target>
       </trans-unit>
-      <trans-unit id="ec80dda84ae7e07aae54a07568a16a27e68b94b0" resname="widget_form.form.question.proposalExpanded.label">
+      <trans-unit resname="widget_form.form.question.proposalExpanded.label" id="58e3ad0a0393f">
         <source>widget_form.form.question.proposalExpanded.label</source>
         <target>Utiliser des cases à cocher</target>
       </trans-unit>
-      <trans-unit id="7e07aae54a07568a16a27e68b94b0ec80dda84ae" resname="widget_form.form.question.proposalInline.label">
+      <trans-unit resname="widget_form.form.question.proposalInline.label" id="58e3ad0a039c4">
         <source>widget_form.form.question.proposalInline.label</source>
         <target>Afficher en ligne</target>
       </trans-unit>
-      <trans-unit id="1" resname="widget_form.form.question.type.boolean">
+      <trans-unit resname="widget_form.form.question.type.boolean" id="58e3ad0a03a67">
         <source>widget_form.form.question.type.boolean</source>
         <target>Case à cocher</target>
       </trans-unit>
-      <trans-unit id="2" resname="widget_form.form.question.prefix.label">
+      <trans-unit resname="widget_form.form.question.prefix.label" id="58e3ad0a04ab9">
         <source>widget_form.form.question.prefix.label</source>
         <target>Préfixe</target>
       </trans-unit>
-      <trans-unit id="3" resname="widget_form.form.question.regex.label">
+      <trans-unit resname="widget_form.form.question.regex.label" id="58e3ad0a05019">
         <source>widget_form.form.question.regex.label</source>
         <target>Expression régulière (Regex)</target>
       </trans-unit>
-      <trans-unit id="4" resname="widget_form.form.question.regexTitle.label">
+      <trans-unit resname="widget_form.form.question.regexTitle.label" id="58e3ad0a05072">
         <source>widget_form.form.question.regexTitle.label</source>
         <target>Expression régulière (Regex)</target>
       </trans-unit>
-      <trans-unit id="successCallbackNotification" resname="widget_form.form.successCallback.label">
+      <trans-unit resname="widget_form.form.successCallback.label" id="58e3ad0a050b6">
         <source>widget_form.form.successCallback.label</source>
         <target>Action au succès</target>
       </trans-unit>
-      <trans-unit id="successCallbackNotification" resname="victoire.widget-form.successCallback.choices.notification">
+      <trans-unit resname="victoire.widget-form.successCallback.choices.notification" id="58e3ad0a05c12">
         <source>victoire.widget-form.successCallback.choices.notification</source>
         <target>Notification</target>
       </trans-unit>
-      <trans-unit id="successCallbackRedirect" resname="victoire.widget-form.successCallback.choices.redirect">
+      <trans-unit resname="victoire.widget-form.successCallback.choices.redirect" id="58e3ad0a05ce2">
         <source>victoire.widget-form.successCallback.choices.redirect</source>
         <target>Redirection</target>
       </trans-unit>
-      <trans-unit id="successMessage" resname="widget_form.form.successMessage.label">
+      <trans-unit resname="widget_form.form.successMessage.label" id="58e3ad0a05d94">
         <source>widget_form.form.successMessage.label</source>
         <target>Message de succès :</target>
       </trans-unit>
-      <trans-unit id="errorNotification" resname="widget_form.form.errorNotification.label">
+      <trans-unit resname="widget_form.form.errorNotification.label" id="58e3ad0a05e34">
         <source>widget_form.form.errorNotification.label</source>
         <target>Afficher une notification d'erreur ?</target>
       </trans-unit>
-      <trans-unit id="errorMessage" resname="widget_form.form.errorMessage.label">
+      <trans-unit resname="widget_form.form.errorMessage.label" id="58e3ad0a05f4a">
         <source>widget_form.form.errorMessage.label</source>
         <target>Message d'erreur :</target>
       </trans-unit>
-      <trans-unit id="noReply" resname="widget_form.form.noReply.label">
+      <trans-unit resname="widget_form.form.noReply.label" id="58e3ad0a05f9f">
         <source>widget_form.form.noReply.label</source>
         <target>Email de réponse automatique.</target>
       </trans-unit>
-      <trans-unit id="noReply" resname="widget_form.form.noReply.help_block">
+      <trans-unit resname="widget_form.form.noReply.help_block" id="58e3ad0a06008">
         <source>widget_form.form.noReply.help_block</source>
         <target>Le destinataire du mail verra cet e-mail comme adresse de réponse.</target>
       </trans-unit>
-      <trans-unit id="noReply" resname="victoire.widget-form.successCallback.assert.badChoice">
+      <trans-unit resname="victoire.widget-form.successCallback.assert.badChoice" id="58e3ad0a06048">
         <source>victoire.widget-form.successCallback.assert.badChoice</source>
         <target>Veuillez préciser une action dans le menu déroulant.</target>
       </trans-unit>
-      <trans-unit id="noReply" resname="widget_form.form.adminSubject.label">
+      <trans-unit resname="widget_form.form.adminSubject.label" id="58e3ad0a060b1">
         <source>widget_form.form.adminSubject.label</source>
         <target>Sujet du mail</target>
       </trans-unit>
-      <trans-unit id="noReply" resname="widget_form.form.adminSubject.help_block">
+      <trans-unit resname="widget_form.form.adminSubject.help_block" id="58e3ad0a0620b">
         <source>widget_form.form.adminSubject.help_block</source>
         <target>Indiquez le sujet du message que le destinataire verra.</target>
       </trans-unit>
-      <trans-unit id="submitClassLabel" resname="widget_form.form.submitClass.label">
+      <trans-unit resname="widget_form.form.submitClass.label" id="58e3ad0a06262">
         <source>widget_form.form.submitClass.label</source>
         <target>Style du bouton de soumission:</target>
       </trans-unit>
-      <trans-unit id="submitClassDefaultLabel" resname="widget_form.form.choice.style.label.default">
+      <trans-unit resname="widget_form.form.choice.style.label.default" id="58e3ad0a062c0">
         <source>widget_form.form.choice.style.label.default</source>
         <target>Par défaut</target>
       </trans-unit>
-      <trans-unit id="submitClassPrimaryLabel" resname="widget_form.form.choice.style.label.primary">
+      <trans-unit resname="widget_form.form.choice.style.label.primary" id="58e3ad0a06334">
         <source>widget_form.form.choice.style.label.primary</source>
         <target>Primary</target>
       </trans-unit>
-      <trans-unit id="submitClassSuccessLabel" resname="widget_form.form.choice.style.label.success">
+      <trans-unit resname="widget_form.form.choice.style.label.success" id="58e3ad0a063b9">
         <source>widget_form.form.choice.style.label.success</source>
         <target>Succes</target>
       </trans-unit>
-      <trans-unit id="submitClassInfoLabel" resname="widget_form.form.choice.style.label.info">
+      <trans-unit resname="widget_form.form.choice.style.label.info" id="58e3ad0a06528">
         <source>widget_form.form.choice.style.label.info</source>
         <target>Informative</target>
       </trans-unit>
-      <trans-unit id="submitClassWarningLabel" resname="widget_form.form.choice.style.label.warning">
+      <trans-unit resname="widget_form.form.choice.style.label.warning" id="58e3ad0a06591">
         <source>widget_form.form.choice.style.label.warning</source>
         <target>Warning</target>
       </trans-unit>
-      <trans-unit id="submitClassDangerLabel" resname="widget_form.form.choice.style.label.danger">
+      <trans-unit resname="widget_form.form.choice.style.label.danger" id="58e3ad0a065fc">
         <source>widget_form.form.choice.style.label.danger</source>
         <target>Danger</target>
       </trans-unit>

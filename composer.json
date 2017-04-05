@@ -1,13 +1,11 @@
 {
     "name": "victoire/form-widget",
     "type": "symfony-bundle",
-    "description": "Create custom forms in Victoire website",
+    "description": "Victoire Form widget",
     "keywords": [
-        "DCMS",
         "Victoire",
-        "widget",
-        "FriendsofVictoire",
-        "Form"
+        "Form",
+        "Widget"
     ],
     "license": "MIT",
     "authors": [
@@ -21,7 +19,7 @@
         }
     ],
     "require": {
-        "victoire/victoire": "~2.0 | ~3.0",
+        "victoire/victoire": "~2.3 | ~3.0",
         "troopers/alertify-bundle": "~3.0",
         "egeloen/ckeditor-bundle": "~4.0"
     },

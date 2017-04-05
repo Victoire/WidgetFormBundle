@@ -1,4 +1,6 @@
-Victoire CMS Form Bundle
+[![CircleCI](https://circleci.com/gh/Victoire/WidgetFormBundle.svg?style=shield)](https://circleci.com/gh/Victoire/WidgetFormBundle)
+
+Victoire Form Bundle
 ============
 
 ## What is the purpose of this bundle

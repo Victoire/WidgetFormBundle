@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/Victoire/WidgetFormBundle.svg?style=shield)](https://circleci.com/gh/Victoire/WidgetFormBundle)
+
 Victoire CMS Form Bundle
 ============
 

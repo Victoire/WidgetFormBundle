@@ -6,7 +6,7 @@ $(document).ready(function () {
                 var form_group = $(this).parents('.form-group');
                 if(re.test($(this).val()) !== true) {
                     form_group.addClass('has-error');
-                    form_group.find('.help-block').text($(this).val() + ' n\'est pas un email valide').show();
+                    form_group.find('.help-block').text(Translator.trans('victoire_widget_form.email.not.valid', {'email' : $(this).val()})).show();
                     event.preventDefault();
                 } else {
                     form_group.removeClass('has-error');

@@ -6,6 +6,7 @@ machine:
     en.victoire.io: 127.0.0.1
   services:
     - redis
+    - docker
   php:
     version: 7.1.0
 

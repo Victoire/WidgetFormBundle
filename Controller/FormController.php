@@ -96,7 +96,7 @@ class FormController extends Controller
         $targetEmail = $widget->getTargetEmail() ? $widget->getTargetEmail() : $this->container->getParameter(
             'victoire_widget_form.default_email_address'
         );
-        if ($errors = $this->get('validator')->validateValue($widget->getTargetEmail(), new EmailConstraint())) {
+        if ($errors = $this->get('validator')->validate($widget->getTargetEmail(), new EmailConstraint())) {
             try {
                 $from = [
                     $this->container->getParameter('victoire_widget_form.default_email_address') => $this->container->getParameter('victoire_widget_form.default_email_label'),

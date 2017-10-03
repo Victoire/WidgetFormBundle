@@ -8,8 +8,6 @@
         <div class="row">
             {% for question in widget.questions %}
                 {% set questionId = loop.index0 %}
-
-
                 {% set alignment = question.alignment %}
                 {% if alignment is not defined %}
                     {% set col = 'full' %}
@@ -128,6 +126,9 @@
                     </div>
 
                 {% set prev_alignment = alignment %}
+                {% if loop.last %}
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
 

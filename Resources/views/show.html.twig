@@ -126,6 +126,9 @@
         </div>
 
                 {% set prev_alignment = alignment %}
+                {% if loop.last %}
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
 

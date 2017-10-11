@@ -41,6 +41,7 @@ class FormController extends Controller
         $_taintedValues = $request->request->all()['cms_form_content'];
         /** @var WidgetForm $widget */
         $widget = $this->get('doctrine.orm.entity_manager')->getRepository('VictoireWidgetFormBundle:WidgetForm')->find($_taintedValues['id']);
+        $data = [];
 
         foreach ($_taintedValues['questions'] as $question) {
             if (in_array($question['type'], ['text', 'textarea', 'email']) && !empty($question[0])) {

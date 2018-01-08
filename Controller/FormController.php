@@ -132,7 +132,7 @@ class FormController extends Controller
             }
         }
         if ($widget->isAutoAnswer() === true && $email) {
-            if ($errors = $this->get('validator')->validateValue($widget->getNoReply(), new EmailConstraint())) {
+            if ($errors = $this->get('validator')->validate($widget->getNoReply(), new EmailConstraint())) {
                 try {
                     $urlizer = new Urlizer();
                     $body = $widget->getMessage();

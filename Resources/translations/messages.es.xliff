@@ -66,6 +66,10 @@
         <source>victoire_widget_form.message.admin.newMessage</source>
         <target>Nuevo puesto:</target>
       </trans-unit>
+      <trans-unit id="58e25b0a67145" resname="victoire_widget_form.email.not.valid">
+        <source>victoire_widget_form.email.not.valid</source>
+        <target>%email% no es una dirección de e-mail valida</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

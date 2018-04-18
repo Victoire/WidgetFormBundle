@@ -242,23 +242,23 @@
         <source>widget_form.form.choice.style.label.default</source>
         <target>Par défaut</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.choice.style.label.primary" id="58e3ad0a06334">
+      <trans-unit resname="widget_form.form.choice.style.label.primary" id="58e3ad09e9d32">
         <source>widget_form.form.choice.style.label.primary</source>
-        <target>Primary</target>
+        <target>Principal</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.choice.style.label.success" id="58e3ad0a063b9">
+      <trans-unit resname="widget_form.form.choice.style.label.success" id="58e3ad09e9e8a">
         <source>widget_form.form.choice.style.label.success</source>
-        <target>Succes</target>
+        <target>Succès</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.choice.style.label.info" id="58e3ad0a06528">
+      <trans-unit resname="widget_form.form.choice.style.label.info" id="58e3ad09e9f29">
         <source>widget_form.form.choice.style.label.info</source>
-        <target>Informative</target>
+        <target>Informatif</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.choice.style.label.warning" id="58e3ad0a06591">
+      <trans-unit resname="widget_form.form.choice.style.label.warning" id="58e3ad09e9fb2">
         <source>widget_form.form.choice.style.label.warning</source>
-        <target>Warning</target>
+        <target>Avertissement</target>
       </trans-unit>
-      <trans-unit resname="widget_form.form.choice.style.label.danger" id="58e3ad0a065fc">
+      <trans-unit resname="widget_form.form.choice.style.label.danger" id="58e3ad09ea039">
         <source>widget_form.form.choice.style.label.danger</source>
         <target>Danger</target>
       </trans-unit>

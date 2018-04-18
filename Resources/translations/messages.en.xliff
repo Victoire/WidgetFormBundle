@@ -66,6 +66,10 @@
         <source>victoire_widget_form.message.admin.newMessage</source>
         <target>New message:</target>
       </trans-unit>
+      <trans-unit id="58e25b0a67145" resname="victoire_widget_form.email.not.valid">
+        <source>victoire_widget_form.email.not.valid</source>
+        <target>%email% is not a valid email</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

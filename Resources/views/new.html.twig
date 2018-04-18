@@ -20,11 +20,11 @@
         </div>
         <div class="vic-form-group vic-well">
            {{ form_row(form.successCallback) }}
+            <div id="widget-form-success-notification" {{ (form.successCallback.vars.value == 'notification' or form.successCallback.vars.value  == '') ? '' : 'class="hidden"' }}>
+                {{ form_row(form.successMessage) }}
+            </div>
             <div id="widget-form-success-redirect" {{ form.successCallback.vars.value == 'redirect' ? '' : 'class="hidden"' }}>
                 {{ form_widget(form.link) }}
-            </div>
-            <div id="widget-form-success-notification" {{ form.successCallback.vars.value == 'notification' ? '' : 'class="hidden"' }}>
-                {{ form_row(form.successMessage) }}
             </div>
             {{ form_row(form.targetEmail) }}
             {{ form_row(form.adminSubject) }}
@@ -71,13 +71,13 @@
             CKEDITOR.instances[instance].updateElement();
         }
     });
-    $vic('#static_widget_form_successCallback').on('change', function() {
+    $vic('#{{ quantum }}_static_widget_form_successCallback').on('change', function() {
         $vic('#widget-form-success-notification, #widget-form-success-redirect').addClass('hidden');
         $vic('#widget-form-success-' + $vic(this).val()).removeClass('hidden');
     });
     $vic(document).ready(function() {
 
-        $vic('#static_widget_form_errorNotification').on('click', function() {
+        $vic('#{{ quantum }}_static_widget_form_errorNotification').on('click', function() {
             $vic('#widget-form-error-messsage').toggleClass('hidden');
         });
     });

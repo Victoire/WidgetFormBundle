@@ -1,0 +1,10 @@
+swiftmailer:
+    transport: smtp
+    host: 127.0.0.1
+    username: ~
+    password: ~
+    port: 1025
+
+victoire_widget_form:
+    default_email_address: 'darth.vador@galactic.empire.com'
+    default_email_label: 'Darth Vador'

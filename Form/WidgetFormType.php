@@ -170,7 +170,10 @@ class WidgetFormType extends WidgetType
             'label'    => 'widget_form.form.errorMessage.label',
             'required' => false,
             ]
-        );
+        )
+        ->add('recaptcha', null, [
+            'label' => 'Use Recaptcha',
+        ]);
 
         if ($this->formPrefill) {
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {

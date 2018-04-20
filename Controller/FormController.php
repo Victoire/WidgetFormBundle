@@ -52,9 +52,7 @@ class FormController extends Controller
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
             if (!$resp->isSuccess()) {
-                foreach ($resp->getErrorCodes() as $errorCode) {
-                    $this->scold($recaptcha_helper->getFormatedError($errorCode));
-                }
+                $this->scold($this->get('translator')->trans('widget_form.form.captcha.error', [],'victoire'));
                 return $this->redirect($request->headers->get('referer'));
             }
         }

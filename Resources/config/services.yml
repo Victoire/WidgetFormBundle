@@ -1,6 +1,10 @@
 services:
     victoire_core.widget_form_content_resolver:
-        class: Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver
+        parent: victoire_widget.base_widget_content_resolver
+        class: Victoire\Widget\FormBundle\Resolver\WidgetFormContentResolver
+        arguments:
+                    - '@service_container'
+                    - '@victoire.form_widget.helper.recaptcha'
         tags:
             - { name: victoire_widget.widget_content_resolver, alias: Form }
 
@@ -16,7 +20,6 @@ services:
             - '@victoire.form_widget.helper.recaptcha'
         tags:
             - { name: form.type }
-
 
     victoire.form_widget.helper.recaptcha:
       class: Victoire\Widget\FormBundle\Helper\RecaptchaHelper

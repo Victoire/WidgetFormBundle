@@ -176,7 +176,7 @@ class WidgetFormType extends WidgetType
         );
         if ($this->recaptchaHelper->canUseReCaptcha()) {
             $builder->add('recaptcha', null, [
-                'label' => 'Use Recaptcha',
+                'label' => 'widget_form.form.captcha.label',
             ]);
         }
         if ($this->formPrefill) {

@@ -20,7 +20,7 @@ services:
 
     victoire.form_widget.helper.recaptcha:
       class: Victoire\Widget\FormBundle\Helper\RecaptchaHelper
-      arguments: ['@service_container']
+      arguments: ['@service_container', '@translator']
 
     victoire.form_widget.twig.extension:
         class: Victoire\Widget\FormBundle\Twig\WidgetFormExtension

@@ -50,6 +50,26 @@
         <source>widget_form.form.captcha.label</source>
         <target>Captcha</target>
       </trans-unit>
+      <trans-unit resname="widget_form.form.captcha.error.missing.input.secret">
+        <source>widget_form.form.captcha.error.missing.input.secret</source>
+        <target>La clé privée est manquante</target>
+      </trans-unit>
+      <trans-unit resname="widget_form.form.captcha.error.invalid.input.secret">
+        <source>widget_form.form.captcha.error.invalid.input.secret</source>
+        <target>La clé privée est invalide ou malformée</target>
+      </trans-unit>
+      <trans-unit resname="widget_form.form.captcha.error.missing.input.response">
+        <source>widget_form.form.captcha.error.missing.input.response</source>
+        <target>Le paramètre de réponse est manquant</target>
+      </trans-unit>
+      <trans-unit resname="widget_form.form.captcha.error.invalid.input.response">
+        <source>widget_form.form.captcha.error.invalid.input.response</source>
+        <target>Le paramètre de réponse est invalide ou malformé</target>
+      </trans-unit>
+      <trans-unit resname="widget_form.form.captcha.error.bad.request">
+        <source>widget_form.form.captcha.error.bad.request</source>
+        <target>La requête est invalide ou malformée.</target>
+      </trans-unit>
       <trans-unit resname="widget_form.form.message.label" id="58e3ad09ef404">
         <source>widget_form.form.message.label</source>
         <target>Message</target>

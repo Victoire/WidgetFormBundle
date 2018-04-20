@@ -46,13 +46,14 @@ class FormController extends Controller
         $data = [];
 
         ///////////////////////// validation reCAPTCHA (if reCAPTCHA field checked) //////////////////////////////////////////
-        if ($widget->isRecaptcha()) {
+        $recaptcha_helper = $this->container->get('victoire.form_widget.helper.recaptcha');
+        if ($widget->isRecaptcha() && $recaptcha_helper->canUseReCaptcha()) {
             $recaptcha = new ReCaptcha($this->container->getParameter('victoire_widget_form.recaptcha_private_key'));
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
             if (!$resp->isSuccess()) {
                 foreach ($resp->getErrorCodes() as $errorCode) {
-                    $this->scold($errorCode);
+                    $this->scold($recaptcha_helper->getFormatedError($errorCode));
                 }
                 return $this->redirect($request->headers->get('referer'));
             }

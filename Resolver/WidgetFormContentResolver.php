@@ -30,10 +30,10 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     {
         $parameters = parent::getWidgetStaticContent($widget);
         /* @var WidgetForm $widget */
-        if ($widget->isRecaptcha()) {
+        if ($widget->isRecaptcha() && $this->recaptchaHelper->canUseReCaptcha()) {
             return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
         } else {
-            return $parameters;
+            return array_merge($parameters, ['test' => 'test']);
         }
     }
 
@@ -51,7 +51,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
         if ($widget->isRecaptcha() && $this->recaptchaHelper->canUseReCaptcha()) {
             return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
         } else {
-            return $parameters;
+            return array_merge($parameters, ['test' => 'test']);
         }
     }
 
@@ -69,7 +69,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
         if ($widget->isRecaptcha()) {
             return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
         } else {
-            return $parameters;
+            return array_merge($parameters, ['test' => 'test']);
         }
     }
 
@@ -87,7 +87,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
         if ($widget->isRecaptcha()) {
             return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
         } else {
-            return $parameters;
+            return array_merge($parameters, ['test' => 'test']);
         }
     }
 

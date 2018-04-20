@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class VictoireWidgetFormExtension extends Extension implements PrependExtensionInterface
+class VictoireWidgetFormExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -31,18 +31,5 @@ class VictoireWidgetFormExtension extends Extension implements PrependExtensionI
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-    }
-
-    /**
-     * Allow an extension to prepend the extension configurations.
-     */
-    public function prepend(ContainerBuilder $container)
-    {
-        if ($container->hasParameter('victoire_widget_form.recaptcha_public_key')) {
-            $twigConfig['globals']['recaptcha_helper'] = '@victoire.form_widget.helper.recaptcha';
-            $container->prependExtensionConfig('twig', $twigConfig);
-            $configs = $container->getExtensionConfig($this->getAlias());
-            $config = $this->processConfiguration(new Configuration(), $configs);
-        }
     }
 }

@@ -3,16 +3,13 @@
 namespace Victoire\Widget\FormBundle\Helper;
 
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class RecaptchaHelper {
 
     private $container;
-    private $translator;
 
-    public function __construct(Container $container, TranslatorInterface $translator) {
+    public function __construct(Container $container) {
         $this->container = $container;
-        $this->translator = $translator;
     }
 
     public function canUseReCaptcha () {

@@ -13,8 +13,14 @@ services:
         class: Victoire\Widget\FormBundle\Form\WidgetFormType
         arguments:
             - %victoire_widget_form.prefill%
+            - '@victoire.form_widget.helper.recaptcha'
         tags:
             - { name: form.type }
+
+
+    victoire.form_widget.helper.recaptcha:
+      class: Victoire\Widget\FormBundle\Helper\RecaptchaHelper
+      arguments: ['@service_container']
 
     victoire.form_widget.twig.extension:
         class: Victoire\Widget\FormBundle\Twig\WidgetFormExtension

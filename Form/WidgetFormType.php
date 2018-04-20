@@ -14,6 +14,7 @@ use Victoire\Bundle\FormBundle\Form\Type\FontAwesomePickerType;
 use Victoire\Bundle\FormBundle\Form\Type\LinkType;
 use Victoire\Bundle\MediaBundle\Form\Type\MediaType;
 use Victoire\Widget\FormBundle\Entity\WidgetFormQuestion;
+use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 
 /**
  * WidgetForm form type.
@@ -21,13 +22,15 @@ use Victoire\Widget\FormBundle\Entity\WidgetFormQuestion;
 class WidgetFormType extends WidgetType
 {
     private $formPrefill;
+    private $recaptchaHelper;
 
     /**
      * Constructor.
      */
-    public function __construct($formPrefill)
+    public function __construct($formPrefill, RecaptchaHelper $recaptchaHelper)
     {
         $this->formPrefill = $formPrefill;
+        $this->recaptchaHelper = $recaptchaHelper;
     }
 
     /**
@@ -170,11 +173,12 @@ class WidgetFormType extends WidgetType
             'label'    => 'widget_form.form.errorMessage.label',
             'required' => false,
             ]
-        )
-        ->add('recaptcha', null, [
-            'label' => 'Use Recaptcha',
-        ]);
-
+        );
+        if ($this->recaptchaHelper->canUseReCaptcha()) {
+            $builder->add('recaptcha', null, [
+                'label' => 'Use Recaptcha',
+            ]);
+        }
         if ($this->formPrefill) {
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $widgetFormSlot = $event->getData();

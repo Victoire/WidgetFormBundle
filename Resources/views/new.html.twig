@@ -29,9 +29,11 @@
             {{ form_row(form.targetEmail) }}
             {{ form_row(form.adminSubject) }}
         </div>
-        <div class="vic-form-group">
-            {{ form_row(form.recaptcha) }}
-        </div>
+        {% if recaptcha_helper.canUseReCaptcha %}
+            <div class="vic-form-group">
+                {{ form_row(form.recaptcha) }}
+            </div>
+        {% endif %}
         {% set params = (form.autoAnswer.vars.checked == 'on' ? 'true' : '') %}
         {{ form_row(form.autoAnswer, {'attr': {'onclick' : 'showTargetField()'}, value : params }) }}
         <div id="target_container" style="{{ form.autoAnswer.vars.checked == 'on' ? "" : "display:none" }}" class="auto_answer_extra_fields_container">

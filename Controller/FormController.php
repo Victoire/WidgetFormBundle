@@ -3,6 +3,7 @@
 namespace Victoire\Widget\FormBundle\Controller;
 
 use Gedmo\Sluggable\Util\Urlizer;
+use ReCaptcha\ReCaptcha;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -38,10 +39,24 @@ class FormController extends Controller
         if ($request->getMethod() != 'POST' && $request->getMethod() != 'PUT') {
             throw $this->createNotFoundException();
         }
+
         $_taintedValues = $request->request->all()['cms_form_content'];
         /** @var WidgetForm $widget */
         $widget = $this->get('doctrine.orm.entity_manager')->getRepository('VictoireWidgetFormBundle:WidgetForm')->find($_taintedValues['id']);
         $data = [];
+
+        ///////////////////////// validation reCAPTCHA (if reCAPTCHA field checked) //////////////////////////////////////////
+        if ($widget->isRecaptcha()) {
+            $recaptcha = new ReCaptcha($this->container->getParameter('victoire_widget_form.recaptcha_private_key'));
+            $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+
+            if (!$resp->isSuccess()) {
+                foreach ($resp->getErrorCodes() as $errorCode) {
+                    $this->scold($errorCode);
+                }
+                return $this->redirect($request->headers->get('referer'));
+            }
+        }
 
         foreach ($_taintedValues['questions'] as $question) {
             if (in_array($question['type'], ['text', 'textarea', 'email']) && !empty($question[0])) {

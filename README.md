@@ -68,7 +68,7 @@ When widget is configure to send mail with form data, you can inject some other 
 ### Parameters 
 
 To use reCAPTCHA on your website, you'll need to :
-* Register your website in the[reCAPTCHA homepage here](https://www.google.com/recaptcha/intro/android.html)
+* Register your website in the [reCAPTCHA homepage here](https://www.google.com/recaptcha/intro/android.html)
 * Add your api keys in your app parameters
 
 ```yaml

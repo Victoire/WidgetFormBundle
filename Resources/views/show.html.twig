@@ -1,4 +1,5 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
+{% import 'VictoireWidgetFormBundle:macros:form_elements.html.twig' as formElements %}
 {% block content %}
     <h3>{{ widget.title }}</h3>
     {% set formName = 'cms_form_content' %}
@@ -132,9 +133,11 @@
             {% endfor %}
         </div>
 
-            {% if widget.recaptcha and recaptcha_helper.canUseReCaptcha %}
-                <div class="col-xs-12">
-                    {{formElements.recaptcha(recaptcha_public_key)}}
+            {% if recaptcha_public_key is defined %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{formElements.recaptcha(recaptcha_public_key)}}
+                    </div>
                 </div>
             {% endif %}
 

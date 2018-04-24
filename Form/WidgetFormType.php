@@ -209,7 +209,7 @@ class WidgetFormType extends WidgetType
         $resolver->setDefaults([
             'data_class'         => 'Victoire\Widget\FormBundle\Entity\WidgetForm',
             'widget'             => 'Form',
-            'translation_domain' => 'victoire',
+            'translation_domain' => 'victoire'
             ]
         );
     }

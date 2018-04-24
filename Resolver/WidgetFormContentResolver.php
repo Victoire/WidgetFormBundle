@@ -4,18 +4,17 @@ namespace Victoire\Widget\FormBundle\Resolver;
 
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
 use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 
 class WidgetFormContentResolver extends BaseWidgetContentResolver
 {
-    protected $container;
+    protected $recaptchaPublicKey;
     protected $recaptchaHelper;
 
-    public function __construct(Container $container, RecaptchaHelper $recaptchaHelper)
+    public function __construct($recaptchaPublicKey, RecaptchaHelper $recaptchaHelper)
     {
-        $this->container = $container;
+        $this->recaptchaPublicKey = $recaptchaPublicKey;
         $this->recaptchaHelper = $recaptchaHelper;
     }
 
@@ -29,12 +28,8 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetStaticContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-        /* @var WidgetForm $widget */
-        if ($widget->isRecaptcha() && $this->recaptchaHelper->canUseReCaptcha()) {
-            return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
-        } else {
-            return array_merge($parameters, ['test' => 'test']);
-        }
+
+        return $this->addRecaptchaKey($widget, $parameters);
     }
 
     /**
@@ -47,12 +42,8 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetBusinessEntityContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-        /* @var WidgetForm $widget */
-        if ($widget->isRecaptcha() && $this->recaptchaHelper->canUseReCaptcha()) {
-            return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
-        } else {
-            return array_merge($parameters, ['test' => 'test']);
-        }
+
+        return $this->addRecaptchaKey($widget, $parameters);
     }
 
     /**
@@ -65,12 +56,8 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetEntityContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-        /* @var WidgetForm $widget */
-        if ($widget->isRecaptcha()) {
-            return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
-        } else {
-            return array_merge($parameters, ['test' => 'test']);
-        }
+
+        return $this->addRecaptchaKey($widget, $parameters);
     }
 
     /**
@@ -83,12 +70,16 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetQueryContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-        /* @var WidgetForm $widget */
-        if ($widget->isRecaptcha()) {
-            return array_merge($parameters, ['recaptcha_public_key' => $this->container->getParameter('victoire_widget_form.recaptcha_public_key')]);
-        } else {
-            return array_merge($parameters, ['test' => 'test']);
-        }
+
+        return $this->addRecaptchaKey($widget, $parameters);
     }
 
+    protected function addRecaptchaKey(WidgetForm $widget, array $parameters)
+    {
+        if ($widget->isRecaptcha() && $this->recaptchaHelper->canUseReCaptcha()) {
+            return array_merge($parameters, ['recaptcha_public_key' => $this->recaptchaPublicKey]);
+        }
+
+        return $parameters;
+    }
 }

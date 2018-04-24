@@ -290,8 +290,8 @@ class FormController extends Controller
         foreach ($attachments as $attachment) {
             if ($attachment instanceof UploadedFile) {
                 $message
-                  ->attach(\Swift_Attachment::fromPath($attachment->getPathName())
-                            ->setFilename($attachment->getClientOriginalName())
+                    ->attach(\Swift_Attachment::fromPath($attachment->getPathName())
+                        ->setFilename($attachment->getClientOriginalName())
                     );
             }
         }

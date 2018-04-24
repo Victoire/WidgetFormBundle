@@ -3,7 +3,7 @@ services:
         parent: victoire_widget.base_widget_content_resolver
         class: Victoire\Widget\FormBundle\Resolver\WidgetFormContentResolver
         arguments:
-                    - '@service_container'
+                    - '%victoire_widget_form.recaptcha_public_key%'
                     - '@victoire.form_widget.helper.recaptcha'
         tags:
             - { name: victoire_widget.widget_content_resolver, alias: Form }
@@ -23,7 +23,9 @@ services:
 
     victoire.form_widget.helper.recaptcha:
       class: Victoire\Widget\FormBundle\Helper\RecaptchaHelper
-      arguments: ['@service_container']
+      arguments:
+          - '%victoire_widget_form.recaptcha_public_key%'
+          - '%victoire_widget_form.recaptcha_private_key%'
 
     victoire.form_widget.twig.extension:
         class: Victoire\Widget\FormBundle\Twig\WidgetFormExtension

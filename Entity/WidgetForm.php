@@ -110,6 +110,13 @@ class WidgetForm extends Widget
     protected $autoAnswer;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="recaptcha", type="boolean", nullable=true)
+     */
+    protected $recaptcha;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="message", type="text", nullable=true)
@@ -763,5 +770,23 @@ class WidgetForm extends Widget
     public function setSubmitClass($submitClass)
     {
         $this->submitClass = $submitClass;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRecaptcha()
+    {
+        return $this->recaptcha;
+    }
+
+    /**
+     * @param bool $recaptcha
+     * @return WidgetForm
+     */
+    public function setRecaptcha($recaptcha)
+    {
+        $this->recaptcha = $recaptcha;
+        return $this;
     }
 }

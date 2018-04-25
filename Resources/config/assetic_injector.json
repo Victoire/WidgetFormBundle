@@ -4,8 +4,13 @@
         "javascripts":
         {
             "foot": [
-              "@VictoireWidgetFormBundle/Resources/public/js/validator.js"
+              "@VictoireWidgetFormBundle/Resources/public/js/validator.js",
+              "https://www.google.com/recaptcha/api.js"
             ]
+        },
+        "stylesheets":
+        {
+            "head": "@VictoireWidgetFormBundle/Resources/public/css/recaptcha.css"
         }
     }
 }

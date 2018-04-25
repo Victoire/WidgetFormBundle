@@ -60,3 +60,18 @@ When widget is configure to send mail with form data, you can inject some other 
         class: AppBundle\EventListener\WidgetFormListener
         tags:
             - { name: kernel.event_listener, event: victoire.widget_form.pre_send_mail, method: injectData }
+
+## Use reCAPTCHA
+
+[ReCAPTCHA](https://developers.google.com/recaptcha/) is a free CAPTCHA service that protects websites from spam and abuse.
+
+### Parameters 
+
+To use reCAPTCHA on your website, you'll need to :
+* Register your website in the [reCAPTCHA homepage here](https://www.google.com/recaptcha/intro/android.html)
+* Add your api keys in your app parameters
+
+```yaml
+    victoire_widget_form.recaptcha_public_key: XXXXXX
+    victoire_widget_form.recaptcha_private_key: XXXXXX
+```

@@ -111,6 +111,7 @@ class WidgetFormQuestionType extends WidgetType
     {
         $resolver->setDefaults([
             'data_class' => 'Victoire\Widget\FormBundle\Entity\WidgetFormQuestion',
+            'translation_domain' => 'victoire'
         ]);
     }
 }

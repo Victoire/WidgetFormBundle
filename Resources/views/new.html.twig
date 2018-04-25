@@ -4,6 +4,7 @@
 {% set widgetId = widget.id|default('null') %}
 
 {% block form_static %}
+
 <div id="picker-{{ form.mode.vars.data }}" class="vic-tab-pane vic-active">
 {{ form_start(form, {'attr' : {'id' : 'victoire_widget_form' }}) }}
 <div class="vic-row">
@@ -29,6 +30,11 @@
             {{ form_row(form.targetEmail) }}
             {{ form_row(form.adminSubject) }}
         </div>
+        {% if form.recaptcha is defined %}
+            <div class="vic-form-group">
+                {{ form_row(form.recaptcha) }}
+            </div>
+        {% endif %}
         {% set params = (form.autoAnswer.vars.checked == 'on' ? 'true' : '') %}
         {{ form_row(form.autoAnswer, {'attr': {'onclick' : 'showTargetField()'}, value : params }) }}
         <div id="target_container" style="{{ form.autoAnswer.vars.checked == 'on' ? "" : "display:none" }}" class="auto_answer_extra_fields_container">

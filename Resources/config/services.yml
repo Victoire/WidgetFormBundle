@@ -1,6 +1,10 @@
 services:
     victoire_core.widget_form_content_resolver:
-        class: Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver
+        parent: victoire_widget.base_widget_content_resolver
+        class: Victoire\Widget\FormBundle\Resolver\WidgetFormContentResolver
+        arguments:
+                    - '%victoire_widget_form.recaptcha_public_key%'
+                    - '@victoire.form_widget.helper.recaptcha'
         tags:
             - { name: victoire_widget.widget_content_resolver, alias: Form }
 
@@ -13,8 +17,15 @@ services:
         class: Victoire\Widget\FormBundle\Form\WidgetFormType
         arguments:
             - %victoire_widget_form.prefill%
+            - '@victoire.form_widget.helper.recaptcha'
         tags:
             - { name: form.type }
+
+    victoire.form_widget.helper.recaptcha:
+      class: Victoire\Widget\FormBundle\Helper\RecaptchaHelper
+      arguments:
+          - '%victoire_widget_form.recaptcha_public_key%'
+          - '%victoire_widget_form.recaptcha_private_key%'
 
     victoire.form_widget.twig.extension:
         class: Victoire\Widget\FormBundle\Twig\WidgetFormExtension

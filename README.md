@@ -60,3 +60,5 @@ When widget is configure to send mail with form data, you can inject some other 
         class: AppBundle\EventListener\WidgetFormListener
         tags:
             - { name: kernel.event_listener, event: victoire.widget_form.pre_send_mail, method: injectData }
+
+test

@@ -135,9 +135,24 @@
         </div>
 
             {% if recaptcha_public_key is defined %}
+                {% stylesheets injector="victoire_widget_form_recaptcha"
+                %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+                {% endstylesheets %}
                 <div class="row">
                     <div class="col-xs-12">
                         {{formElements.recaptcha(recaptcha_public_key)}}
+                        <script type="text/javascript">
+                            (function() {
+                                if (!document.getElementById('google_recaptcha_script_tag')) {
+                                    var script = document.createElement('script');
+                                    script.type = 'text/javascript';
+                                    script.id = 'google_recaptcha_script_tag';
+                                    script.src = 'https://www.google.com/recaptcha/api.js?explicit&hl={{ app.request.locale }}';
+                                    document.getElementsByTagName('body')[0].appendChild(script);
+                                }
+                            })();
+                        </script>
                     </div>
                 </div>
             {% endif %}

@@ -1,15 +1,3 @@
 {% macro recaptcha(siteKey)%}
-
-    {% stylesheets injector="head"
-    '@VictoireWidgetFormBundle/Resources/public/css/recaptcha.css'
-    %}
-    {% endstylesheets %}
-
     <div class="g-recaptcha" data-sitekey="{{siteKey}}"></div>
-
-    {% javascripts injector="foot"
-    'http://www.google.com/recaptcha/api.js'
-    %}
-    {% endjavascripts %}
-
 {% endmacro %}

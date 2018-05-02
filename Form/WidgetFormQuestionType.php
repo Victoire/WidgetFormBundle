@@ -92,11 +92,12 @@ class WidgetFormQuestionType extends WidgetType
                         'widget_form.form.question.alignment.left'  => 'left',
                         'widget_form.form.question.alignment.right' => 'right',
                     ],
-                    'data'              => 'full',
                     'choices_as_values' => true,
                     'expanded'          => true,
+                    'empty_data' => 'full',
                 ]
             );
+
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
                 $widget = $event->getData();
                 $widget->setProposal(serialize($widget->getProposal()));

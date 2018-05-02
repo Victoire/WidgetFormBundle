@@ -4,7 +4,6 @@
 {% set widgetId = widget.id|default('null') %}
 
 {% block form_static %}
-
 <div id="picker-{{ form.mode.vars.data }}" class="vic-tab-pane vic-active">
 {{ form_start(form, {'attr' : {'id' : 'victoire_widget_form' }}) }}
 <div class="vic-row">
@@ -106,25 +105,24 @@
             icon.closest( ".question" ).find( ".question-content" ).toggle();
         });
     });
-    var questionHolder = $vic('ul#questions-form-list');
+    var questionHolder{{ quantum }} = $vic("#v-modal-tab-content-container > div[data-quantum='{{ quantum }}'] ul#questions-form-list");
 
     var $addQuestionLink = $vic('<a href="#" class="add_question_link">{{ "widget_form.form.question.new.label"|trans|raw }}</a>');
-    var $newQuestionLinkLi = $vic('<li class="question-add"></li>').append($addQuestionLink);
+    var $newQuestionLinkLi{{ quantum }} = $vic('<li class="question-add"></li>').append($addQuestionLink);
     var targetOnOff = {{ form.autoAnswer.vars.checked == 'on' ? "true" : "false" }};
 
     $vic(document).ready(function() {
-        questionHolder.find('li.question').each(function() {
+        questionHolder{{ quantum }}.find('li.question').each(function() {
             var id = $vic(this).data('id');
             showQuestionForm(id);
             addQuestionFormDeleteLink($vic(this));
             $vic(this).find('.question-position').val($vic('li.question').index($vic(this)));
             $vic(this).find('.selector-type').attr('onChange', 'showQuestionForm(this)');
         });
-        questionHolder.append($newQuestionLinkLi);
-
+        questionHolder{{ quantum }}.append($newQuestionLinkLi{{ quantum }});
         $addQuestionLink.on('click', function(e) {
             e.preventDefault();
-            addQuestionForm(questionHolder, $newQuestionLinkLi);
+            addQuestionForm(questionHolder{{ quantum }}, $newQuestionLinkLi{{ quantum }});
         });
     });
 

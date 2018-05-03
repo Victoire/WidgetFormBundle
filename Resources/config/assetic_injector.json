@@ -9,7 +9,7 @@
         },
         "stylesheets":
         {
-            "victoire_widget_form_recaptcha": "@VictoireWidgetFormBundle/Resources/public/css/recaptcha.css"
+            "head": "@VictoireWidgetFormBundle/Resources/public/css/recaptcha.css"
         }
     }
 }

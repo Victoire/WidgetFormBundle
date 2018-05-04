@@ -4,18 +4,21 @@ namespace Victoire\Widget\FormBundle\Resolver;
 
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
+use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\RecaptchaAdapter;
+use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
 use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 
 class WidgetFormContentResolver extends BaseWidgetContentResolver
 {
-    protected $recaptchaPublicKey;
-    protected $recaptchaHelper;
+    /**
+     * @var CaptchaHandler
+     */
+    protected $captchaHandler;
 
-    public function __construct($recaptchaPublicKey, RecaptchaHelper $recaptchaHelper)
+    public function __construct(CaptchaHandler $captchaHandler)
     {
-        $this->recaptchaPublicKey = $recaptchaPublicKey;
-        $this->recaptchaHelper = $recaptchaHelper;
+        $this->captchaHandler = $captchaHandler;
     }
 
     /**
@@ -76,8 +79,10 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
 
     protected function addRecaptchaKey(WidgetForm $widget, array $parameters)
     {
-        if ($widget->isRecaptcha() && $this->recaptchaHelper->canUseReCaptcha()) {
-            return array_merge($parameters, ['recaptcha_public_key' => $this->recaptchaPublicKey]);
+        $captchaAdapter = $this->captchaHandler->getCaptcha($widget->getCaptcha());
+        if ($captchaAdapter instanceof RecaptchaAdapter) {
+            /** @var $captchaAdapter RecaptchaAdapter*/
+            return array_merge($parameters, ['recaptcha_public_key' => $captchaAdapter->getRecaptchaPublicKey()]);
         }
 
         return $parameters;

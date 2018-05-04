@@ -13,8 +13,8 @@ use Victoire\Bundle\CoreBundle\Form\WidgetType;
 use Victoire\Bundle\FormBundle\Form\Type\FontAwesomePickerType;
 use Victoire\Bundle\FormBundle\Form\Type\LinkType;
 use Victoire\Bundle\MediaBundle\Form\Type\MediaType;
+use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 use Victoire\Widget\FormBundle\Entity\WidgetFormQuestion;
-use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 
 /**
  * WidgetForm form type.
@@ -22,15 +22,15 @@ use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 class WidgetFormType extends WidgetType
 {
     private $formPrefill;
-    private $recaptchaHelper;
+    private $captchaHandler;
 
     /**
      * Constructor.
      */
-    public function __construct($formPrefill, RecaptchaHelper $recaptchaHelper)
+    public function __construct($formPrefill, CaptchaHandler $captchaHandler)
     {
         $this->formPrefill = $formPrefill;
-        $this->recaptchaHelper = $recaptchaHelper;
+        $this->captchaHandler = $captchaHandler;
     }
 
     /**
@@ -173,12 +173,13 @@ class WidgetFormType extends WidgetType
             'label'    => 'widget_form.form.errorMessage.label',
             'required' => false,
             ]
-        );
-        if ($this->recaptchaHelper->canUseReCaptcha()) {
-            $builder->add('recaptcha', null, [
-                'label' => 'widget_form.form.captcha.label',
-            ]);
-        }
+        )
+        ->add('captcha', ChoiceType::class, [
+            'label'    => 'widget_form.form.captcha.label',
+            'choices'  => $this->captchaHandler->getNameOfAllAvailableCaptcha(),
+            'choice_value' => function ($choice) { return $choice; },
+        ]);
+
         if ($this->formPrefill) {
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $widgetFormSlot = $event->getData();

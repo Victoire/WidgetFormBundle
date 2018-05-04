@@ -132,51 +132,7 @@
                 {% endif %}
             {% endfor %}
         </div>
-
-            {% if recaptcha_public_key is defined %}
-                <div class="col-xs-12">
-                    <p id="widget-form-missing-recaptcha" class="hidden bg-danger">{{ 'widget_form.form.captcha.error' | trans({}, 'victoire') }}</p>
-                    <div class="g-recaptcha" id="recaptcha_{{ widget.id }}" data-widget-id="{{ widget.id }}"></div>
-                    <script type="text/javascript">
-                        if (!document.getElementById('google_recaptcha_script_tag')) {
-
-                            var onloadCallback = function() {
-
-                                var recaptchas = document.querySelectorAll('div[class=g-recaptcha]');
-
-                                /* render reCAPTCHA widget */
-                                recaptchas.forEach(function (element) {
-                                    var formWidgetId = element.getAttribute('data-widget-id');
-                                    var recaptacha_widget_id = 'recaptacha_widget_id' + formWidgetId;
-                                    window[recaptacha_widget_id] = grecaptcha.render( element.id, {
-                                        'sitekey' : "{{ recaptcha_public_key }}",
-                                    });
-
-                                    $('#form-' + formWidgetId).on('submit', function() {
-                                        var response = grecaptcha.getResponse(window[recaptacha_widget_id]);
-                                        $missingRecaptcha = $('#widget-form-missing-recaptcha');
-                                        if (!$missingRecaptcha.hasClass('hidden')) { $missingRecaptcha.toggleClass('hidden') };
-                                        if(response.length === 0 || response === '') {
-                                            $missingRecaptcha.toggleClass('hidden');
-                                            return false;
-                                        }
-                                        return true;
-                                    });
-                                });
-                            };
-
-                            var script = document.createElement('script');
-                            script.type = 'text/javascript';
-                            script.id = 'google_recaptcha_script_tag';
-                            script.async = true;
-                            script.defer = true;
-                            script.src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl={{ app.request.locale }}';
-                            document.getElementsByTagName('body')[0].appendChild(script);
-                        }
-                    </script>
-                </div>
-            {% endif %}
-
+            {% include '@VictoireWidgetForm/form/captcha/captchaManager.html.twig' %}
             <div class="col-xs-12 text-right">
             <button type="submit" class="btn btn-{{ submitClass|default('primary') }}">
                 {% if submitIcon %}

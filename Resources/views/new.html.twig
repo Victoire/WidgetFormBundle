@@ -17,6 +17,9 @@
                 {{ form_row(form.submitIcon) }}
                 {{ form_row(form.submitClass) }}
             </div>
+            <div class="vic-col-md-12">
+                {{ form_row(form.captcha) }}
+            </div>
         </div>
         <div class="vic-form-group vic-well">
            {{ form_row(form.successCallback) }}
@@ -29,11 +32,6 @@
             {{ form_row(form.targetEmail) }}
             {{ form_row(form.adminSubject) }}
         </div>
-        {% if form.recaptcha is defined %}
-            <div class="vic-form-group">
-                {{ form_row(form.recaptcha) }}
-            </div>
-        {% endif %}
         {% set params = (form.autoAnswer.vars.checked == 'on' ? 'true' : '') %}
         {{ form_row(form.autoAnswer, {'attr': {'onclick' : 'showTargetField()'}, value : params }) }}
         <div id="target_container" style="{{ form.autoAnswer.vars.checked == 'on' ? "" : "display:none" }}" class="auto_answer_extra_fields_container">

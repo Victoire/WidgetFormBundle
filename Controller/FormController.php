@@ -3,7 +3,6 @@
 namespace Victoire\Widget\FormBundle\Controller;
 
 use Gedmo\Sluggable\Util\Urlizer;
-use ReCaptcha\ReCaptcha;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -11,9 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 use Troopers\AlertifyBundle\Controller\AlertifyControllerTrait;
 use Victoire\Bundle\MediaBundle\Entity\Media;
+use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\CaptchaInterface;
+use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
 use Victoire\Widget\FormBundle\Event\WidgetFormeMailEvent;
-
+use JMS\DiExtraBundle\Annotation\Inject;
 /**
  * FormController.
  *
@@ -22,6 +23,13 @@ use Victoire\Widget\FormBundle\Event\WidgetFormeMailEvent;
 class FormController extends Controller
 {
     use AlertifyControllerTrait;
+
+
+    /**
+     * @var CaptchaHandler
+     * @Inject("victoire.form_widget.domain.captcha.handler")
+     */
+    private $captchaHandler;
 
     /**
      * Handle the form submission.
@@ -45,16 +53,16 @@ class FormController extends Controller
         $widget = $this->get('doctrine.orm.entity_manager')->getRepository('VictoireWidgetFormBundle:WidgetForm')->find($_taintedValues['id']);
         $data = [];
 
-        ///////////////////////// validation reCAPTCHA (if reCAPTCHA field checked) //////////////////////////////////////////
-        $recaptcha_helper = $this->container->get('victoire.form_widget.helper.recaptcha');
-        if ($widget->isRecaptcha() && $recaptcha_helper->canUseReCaptcha()) {
-            $recaptcha = new ReCaptcha($this->container->getParameter('victoire_widget_form.recaptcha_private_key'));
-            $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+        ///////////////////////// validation Captcha (if captcha field selected) //////////////////////////////////////////
 
-            if (!$resp->isSuccess()) {
+        try {
+            $captchaAdapter = $this->captchaHandler->getCaptcha($widget->getCaptcha());
+            if (!$captchaAdapter->validateCaptcha()) {
                 $this->scold($this->get('translator')->trans('widget_form.form.captcha.error', [],'victoire'));
                 return $this->redirect($request->headers->get('referer'));
             }
+        } catch (\Exception $e) {
+            // Do nothing. It's the case where selected captcha is None.
         }
 
         foreach ($_taintedValues['questions'] as $question) {

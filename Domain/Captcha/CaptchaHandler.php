@@ -2,46 +2,51 @@
 
 namespace Victoire\Widget\FormBundle\Domain\Captcha;
 
-use Symfony\Component\Translation\TranslatorInterface;
 use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\CaptchaInterface;
 
-class CaptchaHandler {
-
+class CaptchaHandler
+{
     /**
      * @var CaptchaInterface[]
      */
     private $adapters;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    public function __construct($adapters, TranslatorInterface $translator)
+    public function __construct($adapters)
     {
         $this->adapters = $adapters;
-        $this->translator = $translator;
     }
 
-    public function getCaptcha($name) {
+    /**
+     * Return an instance of Captcha based on the captcha name
+     * @param $name
+     * @param bool $onlyAvailable
+     * @return CaptchaInterface
+     */
+    public function getCaptcha($name, $onlyAvailable = true)
+    {
         foreach ($this->adapters as $adapter) {
-            if($adapter->getName() === $name) {
+            if ($adapter->getName() === $name && (!$onlyAvailable || $adapter->canBeUsed())) {
                 return $adapter;
             }
         }
-        return null;
+
+        throw new \InvalidArgumentException('The requested adapter is not declared or not available : '.$name);
     }
 
-    public function getNameOfAllAvailableCaptcha () {
+    /**
+     * Return all Available Captcha
+     * @return CaptchaInterface[]
+     */
+    public function getAvailableCaptcha()
+    {
         $listAvailableCaptcha = [];
-        $labelNone = $this->translator->trans('widget_form.form.captcha.none', [], 'victoire');
-        $listAvailableCaptcha[$labelNone] = $labelNone;
 
         foreach ($this->adapters as $adapter) {
-            if($adapter->canBeUsed()) {
-                $listAvailableCaptcha[$adapter->getName()] = $adapter->getName();
+            if ($adapter->canBeUsed()) {
+                $listAvailableCaptcha[] = $adapter;
             }
         }
+
         return $listAvailableCaptcha;
     }
 }

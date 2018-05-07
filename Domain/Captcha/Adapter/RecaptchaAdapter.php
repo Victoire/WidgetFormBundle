@@ -2,27 +2,29 @@
 
 namespace Victoire\Widget\FormBundle\Domain\Captcha\Adapter;
 
-
 use ReCaptcha\ReCaptcha;
+use Symfony\Component\HttpFoundation\RequestStack;
 
-class RecaptchaAdapter implements CaptchaInterface {
-
+class RecaptchaAdapter implements CaptchaInterface
+{
     private $recaptchaPrivateKey;
     private $recaptchaPublicKey;
+    private $requestStack;
 
-    public function __construct($recaptchaPrivateKey, $recaptchaPublicKey)
+    public function __construct($recaptchaPrivateKey, $recaptchaPublicKey, RequestStack $requestStack)
     {
         $this->recaptchaPrivateKey = $recaptchaPrivateKey;
         $this->recaptchaPublicKey = $recaptchaPublicKey;
+        $this->requestStack = $requestStack;
     }
 
     public function validateCaptcha()
     {
-//        $recaptcha = new ReCaptcha($this->recaptchaPrivateKey);
-//        $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
-//
-//        return $resp->isSuccess();
-        return true;
+        $request = $this->requestStack->getCurrentRequest();
+        $recaptcha = new ReCaptcha($this->recaptchaPrivateKey);
+        $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+
+        return $resp->isSuccess();
     }
 
     public function getName()
@@ -35,19 +37,8 @@ class RecaptchaAdapter implements CaptchaInterface {
         return $this->recaptchaPublicKey && $this->recaptchaPrivateKey;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRecaptchaPrivateKey()
+    public function getTwigParameters()
     {
-        return $this->recaptchaPrivateKey;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRecaptchaPublicKey()
-    {
-        return $this->recaptchaPublicKey;
+        return ['recaptcha_public_key' => $this->recaptchaPublicKey];
     }
 }

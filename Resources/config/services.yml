@@ -20,12 +20,6 @@ services:
         tags:
             - { name: form.type }
 
-    victoire.form_widget.helper.recaptcha:
-      class: Victoire\Widget\FormBundle\Helper\RecaptchaHelper
-      arguments:
-          - '%victoire_widget_form.recaptcha_public_key%'
-          - '%victoire_widget_form.recaptcha_private_key%'
-
     victoire.form_widget.twig.extension:
         class: Victoire\Widget\FormBundle\Twig\WidgetFormExtension
         tags:
@@ -37,12 +31,12 @@ services:
       class: Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler
       arguments:
           -  !tagged victoire.form_widget.captcha.adapter
-          - '@translator'
 
     victoire.form_widget.domain.captcha.adapter.recaptcha:
       class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\RecaptchaAdapter
       arguments:
           - '%victoire_widget_form.recaptcha_private_key%'
           - '%victoire_widget_form.recaptcha_public_key%'
+          - '@request_stack'
       tags:
           - 'victoire.form_widget.captcha.adapter'

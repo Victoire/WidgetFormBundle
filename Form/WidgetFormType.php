@@ -3,6 +3,7 @@
 namespace Victoire\Widget\FormBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -173,11 +174,18 @@ class WidgetFormType extends WidgetType
             'label'    => 'widget_form.form.errorMessage.label',
             'required' => false,
             ]
-        )
-        ->add('captcha', ChoiceType::class, [
+        );
+
+        $listCaptcha = [];
+        foreach ($this->captchaHandler->getAvailableCaptcha() as $captcha) {
+            $listCaptcha[$captcha->getName()] = $captcha->getName();
+        }
+
+        $builder->add('captcha', ChoiceType::class, [
             'label'    => 'widget_form.form.captcha.label',
-            'choices'  => $this->captchaHandler->getNameOfAllAvailableCaptcha(),
-            'choice_value' => function ($choice) { return $choice; },
+            'choices'  => $listCaptcha,
+            'placeholder' => 'widget_form.form.captcha.none',
+            'choice_label' => function ($value) { return $value; },
         ]);
 
         if ($this->formPrefill) {

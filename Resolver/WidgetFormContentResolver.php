@@ -4,10 +4,10 @@ namespace Victoire\Widget\FormBundle\Resolver;
 
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
+use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\CaptchaInterface;
 use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\RecaptchaAdapter;
 use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
-use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 
 class WidgetFormContentResolver extends BaseWidgetContentResolver
 {
@@ -32,7 +32,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     {
         $parameters = parent::getWidgetStaticContent($widget);
 
-        return $this->addRecaptchaKey($widget, $parameters);
+        return $this->addCaptchaKey($widget, $parameters);
     }
 
     /**
@@ -46,7 +46,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     {
         $parameters = parent::getWidgetStaticContent($widget);
 
-        return $this->addRecaptchaKey($widget, $parameters);
+        return $this->addCaptchaKey($widget, $parameters);
     }
 
     /**
@@ -60,7 +60,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     {
         $parameters = parent::getWidgetStaticContent($widget);
 
-        return $this->addRecaptchaKey($widget, $parameters);
+        return $this->addCaptchaKey($widget, $parameters);
     }
 
     /**
@@ -74,17 +74,22 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     {
         $parameters = parent::getWidgetStaticContent($widget);
 
-        return $this->addRecaptchaKey($widget, $parameters);
+        return $this->addCaptchaKey($widget, $parameters);
     }
 
-    protected function addRecaptchaKey(WidgetForm $widget, array $parameters)
+    /**
+     * Injecting the params of the current captcha
+     * @param WidgetForm $widget
+     * @param array $parameters
+     * @return array
+     */
+    protected function addCaptchaKey(WidgetForm $widget, array $parameters)
     {
-        $captchaAdapter = $this->captchaHandler->getCaptcha($widget->getCaptcha());
-        if ($captchaAdapter instanceof RecaptchaAdapter) {
-            /** @var $captchaAdapter RecaptchaAdapter*/
-            return array_merge($parameters, ['recaptcha_public_key' => $captchaAdapter->getRecaptchaPublicKey()]);
+        try {
+            $captchaAdapter = $this->captchaHandler->getCaptcha($widget->getCaptcha());
+            return array_merge($parameters, $captchaAdapter->getTwigParameters());
+        } catch (\Exception $e) {
+            return $parameters;
         }
-
-        return $parameters;
     }
 }

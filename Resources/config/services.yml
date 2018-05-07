@@ -40,3 +40,11 @@ services:
           - '@request_stack'
       tags:
           - 'victoire.form_widget.captcha.adapter'
+
+    victoire.form_widget.domain.captcha.adapter.iphub:
+      class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\IpHubAdapter
+      arguments:
+          - 'MjE5MTpDTnFHWEVBRlRyb3l6WnRVOGpGS1g1V2hoZ0VUSTJMeA=='
+          - '@request_stack'
+      tags:
+          - 'victoire.form_widget.captcha.adapter'

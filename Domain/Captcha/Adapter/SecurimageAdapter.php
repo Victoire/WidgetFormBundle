@@ -3,39 +3,40 @@
 namespace Victoire\Widget\FormBundle\Domain\Captcha\Adapter;
 
 use Securimage;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 
 class SecurimageAdapter implements CaptchaInterface
 {
     /**
-     * @var RequestStack
+     * @var Request
      */
-    private $requestStack;
+    private $request;
 
-    public function __construct(RequestStack $requestStack)
+    public function __construct(Request $request)
     {
-        $this->requestStack = $requestStack;
+        $this->request = $request;
     }
 
     /**
      * Checks if the captcha is valid or not.
-     * Then delete it from session if captcha is valid
+     * Then delete it from session if captcha is valid.
      *
      * @param bool $clear
+     *
      * @return bool
      */
-    public function validateCaptcha($clear=true)
+    public function validateCaptcha($clear = true)
     {
-        $request = $this->requestStack->getCurrentRequest()->request;
+        $request = $this->request->request;
         $securimage_namespace = $request->get('securimage_namespace');
         $code = $request->get('securimage_code');
         $sc = $this->getSerurimageInstance($securimage_namespace);
 
-        if($clear) {
+        if ($clear) {
             return $sc->check($code);
-        } else {
-            return $sc->getCode() === $code;
         }
+
+        return strtolower($sc->getCode()) === strtolower($code);
     }
 
     /**
@@ -64,6 +65,16 @@ class SecurimageAdapter implements CaptchaInterface
      * @return array
      */
     public function getTwigParameters()
+    {
+        return $this->generateNewImage();
+    }
+
+    /**
+     * Return a new Image encoded in base64 and his namespace.
+     *
+     * @return array
+     */
+    public function generateNewImage()
     {
         $namespace = md5(uniqid(rand(), true));
         $sc = $this->getSerurimageInstance($namespace);
@@ -94,6 +105,11 @@ class SecurimageAdapter implements CaptchaInterface
         return $sc;
     }
 
+    /**
+     * Return all parameters to instanciate Securimage.
+     *
+     * @return array
+     */
     private function getSecurimageParameters()
     {
         return [

@@ -25,6 +25,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    #Controller
+#    victoire.widget.form.controller.form:
+#        class: Victoire\Widget\FormBundle\Controller\FormController
+#        arguments: ["@victoire.form_widget.domain.captcha.handler"]
+
     # Domain
 
     victoire.form_widget.domain.captcha.handler:
@@ -52,6 +57,6 @@ services:
     victoire.form_widget.domain.captcha.adapter.securimage:
       class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\SecurimageAdapter
       arguments:
-          - '@request_stack'
+          - "@=service('request_stack').getCurrentRequest()"
       tags:
           - 'victoire.form_widget.captcha.adapter'

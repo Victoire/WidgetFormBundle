@@ -48,3 +48,10 @@ services:
           - '@request_stack'
       tags:
           - 'victoire.form_widget.captcha.adapter'
+
+    victoire.form_widget.domain.captcha.adapter.securimage:
+      class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\SecurimageAdapter
+      arguments:
+          - '@request_stack'
+      tags:
+          - 'victoire.form_widget.captcha.adapter'

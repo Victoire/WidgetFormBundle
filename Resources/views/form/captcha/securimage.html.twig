@@ -1,0 +1,10 @@
+<div class="col-xs-12">
+    <div class="form-group">
+        <img alt="Captcha Image" src="data:image/png;base64,{{ securimage_html }}" />
+        <label for="securimage_code" class="control-label">Captcha<span class="required">*</span></label>
+        <div class="input">
+            <input type="hidden" name="securimage_namespace" value="{{ securimage_namespace }}">
+            <input class="form-control" id="securimage_code" name="securimage_code" type="text" required="required">
+        </div>
+    </div>
+</div>

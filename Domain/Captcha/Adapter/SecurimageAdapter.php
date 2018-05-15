@@ -72,6 +72,10 @@ class SecurimageAdapter implements CaptchaInterface
     /**
      * Return a new Image encoded in base64 and his namespace.
      *
+     * https://stackoverflow.com/questions/4401949/whats-the-use-of-ob-start-in-php?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+     * ob_start() turns on output buffering.
+     * ob_get_contents() grabs all of the data gathered since we called ob_start.
+     * ob_end_clean() erases the buffer, and turns off output buffering.
      * @return array
      */
     public function generateNewImage()

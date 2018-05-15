@@ -3,7 +3,6 @@ victoire_core:
         Form:
             class: "Victoire\\Widget\\FormBundle\\Entity\\WidgetForm"
             name: Form
-            cache: false
 jms_translation:
     configs:
         victoire_form_bundle:

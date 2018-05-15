@@ -27,4 +27,10 @@ interface CaptchaInterface
      * @return array
      */
     public function getTwigParameters();
+
+    /**
+     * Return the view path to render the widget
+     */
+    public function getViewPath();
+
 }

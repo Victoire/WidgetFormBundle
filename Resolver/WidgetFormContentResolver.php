@@ -12,16 +12,6 @@ use Victoire\Widget\FormBundle\Entity\WidgetForm;
 class WidgetFormContentResolver extends BaseWidgetContentResolver
 {
     /**
-     * @var CaptchaHandler
-     */
-    protected $captchaHandler;
-
-    public function __construct(CaptchaHandler $captchaHandler)
-    {
-        $this->captchaHandler = $captchaHandler;
-    }
-
-    /**
      * Get the static content of the widget.
      *
      * @param Widget $widget
@@ -31,8 +21,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetStaticContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addCaptchaKey($widget, $parameters);
+        return $parameters;
     }
 
     /**
@@ -45,8 +34,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetBusinessEntityContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addCaptchaKey($widget, $parameters);
+        return $parameters;
     }
 
     /**
@@ -59,8 +47,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetEntityContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addCaptchaKey($widget, $parameters);
+        return $parameters;
     }
 
     /**
@@ -73,23 +60,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetQueryContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addCaptchaKey($widget, $parameters);
+        return $parameters;
     }
 
-    /**
-     * Injecting the params of the current captcha
-     * @param WidgetForm $widget
-     * @param array $parameters
-     * @return array
-     */
-    protected function addCaptchaKey(WidgetForm $widget, array $parameters)
-    {
-        try {
-            $captchaAdapter = $this->captchaHandler->getCaptcha($widget->getCaptcha());
-            return array_merge($parameters, $captchaAdapter->getTwigParameters());
-        } catch (\Exception $e) {
-            return $parameters;
-        }
-    }
 }

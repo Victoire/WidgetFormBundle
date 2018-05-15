@@ -74,4 +74,12 @@ class IpHubAdapter implements CaptchaInterface {
         }
         return false;
     }
+
+    /**
+     * Return the view path to render the widget
+     */
+    public function getViewPath()
+    {
+        // TODO: Implement getViewPath() method.
+    }
 }

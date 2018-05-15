@@ -41,4 +41,12 @@ class RecaptchaAdapter implements CaptchaInterface
     {
         return ['recaptcha_public_key' => $this->recaptchaPublicKey];
     }
+
+    /**
+     * Return the view path to render the widget
+     */
+    public function getViewPath()
+    {
+        return '@VictoireWidgetForm/form/captcha/recaptcha.html.twig';
+    }
 }

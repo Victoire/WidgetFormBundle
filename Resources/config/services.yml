@@ -2,8 +2,6 @@ services:
     victoire_core.widget_form_content_resolver:
         parent: victoire_widget.base_widget_content_resolver
         class: Victoire\Widget\FormBundle\Resolver\WidgetFormContentResolver
-        arguments:
-            - '@victoire.form_widget.domain.captcha.handler'
         tags:
             - { name: victoire_widget.widget_content_resolver, alias: Form }
 

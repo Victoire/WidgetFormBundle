@@ -1,6 +1,16 @@
-{% if widget.captcha == 'recaptcha' %}
-    {% include '@VictoireWidgetForm/form/captcha/recaptcha.html.twig' %}
-{% elseif widget.captcha == 'securimage' %}
-    {% include '@VictoireWidgetForm/form/captcha/securimage.html.twig' %}
-{% else %}
+{% if widget.captcha is not null %}
+    <div class="form-{{ widget.id }}-captcha-container" id="form-{{ widget.id }}-captcha-container"></div>
+    <script type="text/javascript">
+        (function(){
+            $.ajax({
+                url         : '{{ path('victoire_form_captcha_render', {'widget_form_id': widget.id}) }}',
+                type        : 'GET',
+                async       : false,
+            }).done(function(response) {
+                $('#form-{{ widget.id }}-captcha-container').append(response);
+            }).fail(function(response) {
+                console.error('Request has failed');
+            });
+        })();
+    </script>
 {% endif %}

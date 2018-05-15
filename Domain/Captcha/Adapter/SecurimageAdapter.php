@@ -125,4 +125,12 @@ class SecurimageAdapter implements CaptchaInterface
             'case_sensitive' => false,
         ];
     }
+
+    /**
+     * Return the view path to render the widget
+     */
+    public function getViewPath()
+    {
+        return '@VictoireWidgetForm/form/captcha/securimage.html.twig';
+    }
 }

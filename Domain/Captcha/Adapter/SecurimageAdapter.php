@@ -36,7 +36,7 @@ class SecurimageAdapter implements CaptchaInterface
             return $sc->check($code);
         }
 
-        return strtolower($sc->getCode()) === strtolower($code);
+        return $this->getSecurimageParameters()['case_sensitive'] ? $sc->getCode() === $code : strtolower($sc->getCode()) === strtolower($code);
     }
 
     /**
@@ -118,6 +118,7 @@ class SecurimageAdapter implements CaptchaInterface
             'no_exit' => true,
             'image_width' => 275,
             'code_length' => mt_rand(4, 6),
+            'case_sensitive' => false,
         ];
     }
 }

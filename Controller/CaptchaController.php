@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\SecurimageAdapter;
-use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 
 /**
  * Class CaptchaController.

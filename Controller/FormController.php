@@ -10,10 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 use Troopers\AlertifyBundle\Controller\AlertifyControllerTrait;
 use Victoire\Bundle\MediaBundle\Entity\Media;
-use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
 use Victoire\Widget\FormBundle\Event\WidgetFormeMailEvent;
-use JMS\DiExtraBundle\Annotation\Inject;
+
 /**
  * FormController.
  *
@@ -25,19 +24,13 @@ class FormController extends Controller
 
 
     /**
-     * @var CaptchaHandler
-     * @Inject("victoire.form_widget.domain.captcha.handler")
-     */
-    private $captchaHandler;
-
-    /**
      * Handle the form submission.
      *
      * @param Request $request
-     *
+     * @return array
+     * @throws \Exception
      * @Route("/addFormAnswerAction", name="victoire_contact_form_result")
      *
-     * @return array
      */
     public function addFormAnswerAction(Request $request)
     {
@@ -55,7 +48,8 @@ class FormController extends Controller
         ///////////////////////// validation Captcha (if captcha field selected) //////////////////////////////////////////
 
         try {
-            $captchaAdapter = $this->captchaHandler->getCaptcha($widget->getCaptcha());
+            $captchaHandler = $this->get('victoire.form_widget.domain.captcha.handler');
+            $captchaAdapter = $captchaHandler->getCaptcha($widget->getCaptcha());
             if (!$captchaAdapter->validateCaptcha()) {
                 $this->scold($this->get('translator')->trans('widget_form.form.captcha.error', [],'victoire'));
                 return $this->redirect($request->headers->get('referer'));

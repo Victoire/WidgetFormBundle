@@ -23,7 +23,7 @@
         "troopers/alertify-bundle": "~3.0",
         "egeloen/ckeditor-bundle": "~4.0",
         "google/recaptcha": "~1.1",
-        "dapphp/securimage": "~3.6"
+        "dapphp/securimage": "^3.6"
     },
     "suggest": {
         "ornicar/akismet-bundle": "Analyze form content thanks to akismet"

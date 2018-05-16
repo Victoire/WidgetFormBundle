@@ -1,16 +1,3 @@
 {% if widget.captcha is not null %}
-    <div class="form-{{ widget.id }}-captcha-container" id="form-{{ widget.id }}-captcha-container"></div>
-    <script type="text/javascript">
-        (function(){
-            $.ajax({
-                url         : '{{ path('victoire_form_captcha_render', {'widget_form_id': widget.id}) }}',
-                type        : 'GET',
-                async       : false,
-            }).done(function(response) {
-                $('#form-{{ widget.id }}-captcha-container').append(response);
-            }).fail(function(response) {
-                console.error('Request has failed');
-            });
-        })();
-    </script>
+    {{ render_esi(url('victoire_form_captcha_render', {'widget_form_id': widget.id})) }}
 {% endif %}

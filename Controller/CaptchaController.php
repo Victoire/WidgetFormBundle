@@ -51,10 +51,6 @@ class CaptchaController extends Controller
      */
     public function rendererCaptcha(Request $request, WidgetForm $widget) {
 
-        if(!$request->isXmlHttpRequest()) {
-            throw $this->createNotFoundException();
-        }
-
         $captchaHandler = $this->get('victoire.form_widget.domain.captcha.handler');
         try {
             /** @var $captchaAdapter CaptchaInterface */

@@ -39,7 +39,7 @@ class VictoireWidgetFormExtension extends Extension implements PrependExtensionI
     public function prepend(ContainerBuilder $container)
     {
         $container->prependExtensionConfig('framework', array(
-            'esi' => true
+            'esi' => ['enabled' => true]
         ));
     }
 }

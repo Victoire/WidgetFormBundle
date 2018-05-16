@@ -18,6 +18,8 @@
                         url         : '{{ path('victoire_form_captcha_securimage') }}',
                         data        : $(this).serialize(),
                         type        : 'POST',
+                        cache       : false,
+                        async       : false,
                     }).done(function(response) {
                         if (response.valid) {
                             $form = $('#form-' + {{ widget.id }});

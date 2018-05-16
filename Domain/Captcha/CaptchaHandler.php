@@ -22,10 +22,10 @@ class CaptchaHandler
      * @param bool $onlyAvailable
      * @return CaptchaInterface
      */
-    public function getCaptcha($name, $onlyAvailable = true)
+    public function getCaptcha($name, $onlyAvailable = true, $onlyRender = false)
     {
         foreach ($this->adapters as $adapter) {
-            if ($adapter->getName() === $name && (!$onlyAvailable || $adapter->canBeUsed())) {
+            if ($adapter->getName() === $name && (!$onlyAvailable || $adapter->canBeUsed()) && (!$onlyRender || $adapter->getViewPath() != null)) {
                 return $adapter;
             }
         }

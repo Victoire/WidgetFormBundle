@@ -5,7 +5,7 @@ namespace Victoire\Widget\FormBundle\Domain\Captcha\Adapter;
 use Securimage;
 use Symfony\Component\HttpFoundation\Request;
 
-class SecurimageAdapter implements CaptchaInterface
+class SecurimageAdapter extends AbstractCaptcha
 {
     /**
      * @var Request

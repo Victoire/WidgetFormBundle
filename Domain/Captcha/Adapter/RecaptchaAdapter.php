@@ -5,7 +5,7 @@ namespace Victoire\Widget\FormBundle\Domain\Captcha\Adapter;
 use ReCaptcha\ReCaptcha;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class RecaptchaAdapter implements CaptchaInterface
+class RecaptchaAdapter extends AbstractCaptcha
 {
     private $recaptchaPrivateKey;
     private $recaptchaPublicKey;

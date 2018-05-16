@@ -58,7 +58,7 @@ class CaptchaController extends Controller
         $captchaHandler = $this->get('victoire.form_widget.domain.captcha.handler');
         try {
             /** @var $captchaAdapter CaptchaInterface */
-            $captchaAdapter = $captchaHandler->getCaptcha($widget->getCaptcha());
+            $captchaAdapter = $captchaHandler->getCaptcha($widget->getCaptcha(), true, true);
         } catch (\Exception $e) {
             throw $this->createNotFoundException();
         }

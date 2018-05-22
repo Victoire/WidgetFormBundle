@@ -20,21 +20,27 @@ use Victoire\Widget\FormBundle\Entity\WidgetForm;
  */
 class CaptchaController extends Controller
 {
+
     /**
-     * @Route("/securimage", name="victoire_form_captcha_securimage")
-     * @Method({"POST"})
-     *
+     * @Route("/validate/captcha/{widget_form_id}", name="victoire_form_captcha_validate")
+     * @ParamConverter("widget", class="VictoireWidgetFormBundle:WidgetForm", options={"id" = "widget_form_id"})
      * @param Request $request
-     *
-     * @return JsonResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function validateSecurimageAction(Request $request)
-    {
-        $securimage = new SecurimageAdapter($request);
+    public function validateCaptchaAjaxAction(Request $request, WidgetForm $widget) {
+
+        $captchaHandler = $this->get('victoire.form_widget.domain.captcha.handler');
+        try {
+            /** @var $captchaAdapter CaptchaInterface */
+            $captchaAdapter = $captchaHandler->getCaptcha($widget->getCaptcha(), true);
+        } catch (\Exception $e) {
+            throw $this->createNotFoundException();
+        }
 
         $data = [];
-        if (!$securimage->validateCaptcha(false)) {
-            $data = $securimage->generateNewImage();
+        if(!$captchaAdapter->validateCaptcha(false)) {
+            $captchaAdapter->generateNewCaptcha();
+            $data = $captchaAdapter->getTwigParameters();
             $data['valid'] = false;
         } else {
             $data['valid'] = true;
@@ -49,7 +55,7 @@ class CaptchaController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function rendererCaptcha(Request $request, WidgetForm $widget) {
+    public function rendererCaptchaAction(Request $request, WidgetForm $widget) {
 
         $captchaHandler = $this->get('victoire.form_widget.domain.captcha.handler');
         try {

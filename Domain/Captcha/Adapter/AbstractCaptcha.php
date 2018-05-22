@@ -41,4 +41,12 @@ abstract class AbstractCaptcha implements CaptchaInterface {
     {
         return;
     }
+
+    /**
+     * Regenerate a new Captcha
+     * @return mixed
+     */
+    public function generateNewCaptcha() {
+        return;
+    }
 }

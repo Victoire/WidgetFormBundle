@@ -44,3 +44,11 @@ services:
           - "@=service('request_stack').getCurrentRequest()"
       tags:
           - 'victoire.form_widget.captcha.adapter'
+
+    victoire.form_widget.domain.captcha.adapter.grewarcaptcha:
+      class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\GregwarCaptchaAdapter
+      arguments:
+          - "@session"
+          - "@=service('request_stack').getCurrentRequest()"
+      tags:
+          - 'victoire.form_widget.captcha.adapter'

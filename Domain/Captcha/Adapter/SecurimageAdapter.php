@@ -12,9 +12,21 @@ class SecurimageAdapter extends AbstractCaptcha
      */
     private $request;
 
+    /**
+     * @var Securimage
+     */
+    private $securimage;
+
+    /**
+     * @var string
+     */
+    private $namespace;
+
     public function __construct(Request $request)
     {
         $this->request = $request;
+        $this->securimage = new Securimage($this->getSecurimageParameters());
+        $this->generateNewCaptcha();
     }
 
     /**
@@ -28,15 +40,15 @@ class SecurimageAdapter extends AbstractCaptcha
     public function validateCaptcha($clear = true)
     {
         $request = $this->request->request;
-        $securimage_namespace = $request->get('securimage_namespace');
-        $code = $request->get('securimage_code');
-        $sc = $this->getSerurimageInstance($securimage_namespace);
+        $securimage_namespace = $request->get('captcha_namespace');
+        $code = $request->get('captcha_code');
+        $this->securimage->setNamespace($securimage_namespace);
 
         if ($clear) {
-            return $sc->check($code);
+            return $this->securimage->check($code);
         }
 
-        return $this->getSecurimageParameters()['case_sensitive'] ? $sc->getCode() === $code : strtolower($sc->getCode()) === strtolower($code);
+        return $this->getSecurimageParameters()['case_sensitive'] ? $this->securimage->getCode() === $code : strtolower($this->securimage->getCode()) === strtolower($code);
     }
 
     /**
@@ -66,47 +78,47 @@ class SecurimageAdapter extends AbstractCaptcha
      */
     public function getTwigParameters()
     {
-        return $this->generateNewImage();
+        return [
+            'captcha_image' => 'data:image/png;base64,'.$this->getImageStr(),
+            'captcha_namespace' => $this->getNamespace()
+        ];
     }
 
     /**
-     * Return a new Image encoded in base64 and his namespace.
+     * Return a new Image encoded in base64.
      *
      * https://stackoverflow.com/questions/4401949/whats-the-use-of-ob-start-in-php?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
      * ob_start() turns on output buffering.
      * ob_get_contents() grabs all of the data gathered since we called ob_start.
      * ob_end_clean() erases the buffer, and turns off output buffering.
+     *
      * @return array
      */
-    public function generateNewImage()
+    public function getImageStr()
     {
-        $namespace = md5(uniqid(rand(), true));
-        $sc = $this->getSerurimageInstance($namespace);
-
         ob_start();
-        $sc->show();
+        $this->securimage->show();
         $imageData = ob_get_contents();
         ob_end_clean();
 
-        $imageStr = base64_encode($imageData);
-
-        return [
-            'securimage_html' => $imageStr,
-            'securimage_namespace' => $namespace,
-        ];
+        return base64_encode($imageData);
     }
 
     /**
-     * @return Securimage
-     *
-     * @param mixed $namespace
+     * Regenerate a new Captcha
+     * @return mixed
      */
-    private function getSerurimageInstance($namespace)
-    {
-        $sc = new Securimage($this->getSecurimageParameters());
-        $sc->setNamespace($namespace);
+    public function generateNewCaptcha() {
+        $this->setNamespace(md5(uniqid(rand(), true)));
+        $this->securimage->setNamespace($this->getNamespace());
+    }
 
-        return $sc;
+    /**
+     * Return the view path to render the widget.
+     */
+    public function getViewPath()
+    {
+        return '@VictoireWidgetForm/form/captcha/captcha.html.twig';
     }
 
     /**
@@ -123,14 +135,24 @@ class SecurimageAdapter extends AbstractCaptcha
             'image_width' => 275,
             'code_length' => mt_rand(4, 6),
             'case_sensitive' => false,
+            'expiry_time' => 0,
+            'send_headers' => false
         ];
     }
 
     /**
-     * Return the view path to render the widget
+     * @param mixed $namespace
      */
-    public function getViewPath()
+    public function setNamespace($namespace)
     {
-        return '@VictoireWidgetForm/form/captcha/securimage.html.twig';
+        $this->namespace = $namespace;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNamespace()
+    {
+        return $this->namespace;
     }
 }

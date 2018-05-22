@@ -33,4 +33,9 @@ interface CaptchaInterface
      */
     public function getViewPath();
 
+    /**
+     * Regenerate a new Captcha
+     * @return mixed
+     */
+    public function generateNewCaptcha();
 }

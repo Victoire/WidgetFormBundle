@@ -31,8 +31,11 @@ class GregwarCaptchaAdapter extends AbstractCaptcha {
     {
         $this->session = $session;
         $this->request = $request;
-        $this->captchaBuilder = new CaptchaBuilder();
-        $this->generateNewCaptcha();
+
+        if ($this->canBeUsed()) {
+            $this->captchaBuilder = new CaptchaBuilder();
+            $this->generateNewCaptcha();
+        }
     }
 
     /**
@@ -68,6 +71,15 @@ class GregwarCaptchaAdapter extends AbstractCaptcha {
             'captcha_image' => $this->captchaBuilder->inline(),
             'captcha_namespace' => $this->namespace
         ];
+    }
+
+    /**
+     * Check if current configuration allow to use this captcha
+     * @return boolean
+     */
+    public function canBeUsed()
+    {
+        return extension_loaded('gd');
     }
 
     /**

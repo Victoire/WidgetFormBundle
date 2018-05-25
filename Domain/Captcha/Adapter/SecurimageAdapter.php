@@ -25,8 +25,11 @@ class SecurimageAdapter extends AbstractCaptcha
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->securimage = new Securimage($this->getSecurimageParameters());
-        $this->generateNewCaptcha();
+
+        if ($this->canBeUsed()) {
+            $this->securimage = new Securimage($this->getSecurimageParameters());
+            $this->generateNewCaptcha();
+        }
     }
 
     /**
@@ -68,7 +71,7 @@ class SecurimageAdapter extends AbstractCaptcha
      */
     public function canBeUsed()
     {
-        return true;
+        return extension_loaded('gd');
     }
 
     /**

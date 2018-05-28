@@ -34,14 +34,11 @@ services:
       arguments:
           - '%victoire_widget_form.recaptcha_private_key%'
           - '%victoire_widget_form.recaptcha_public_key%'
-          - '@request_stack'
       tags:
           - 'victoire.form_widget.captcha.adapter'
 
     victoire.form_widget.domain.captcha.adapter.securimage:
       class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\SecurimageAdapter
-      arguments:
-          - "@=service('request_stack').getCurrentRequest()"
       tags:
           - 'victoire.form_widget.captcha.adapter'
 
@@ -49,6 +46,5 @@ services:
       class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\GregwarCaptchaAdapter
       arguments:
           - "@session"
-          - "@=service('request_stack').getCurrentRequest()"
       tags:
           - 'victoire.form_widget.captcha.adapter'

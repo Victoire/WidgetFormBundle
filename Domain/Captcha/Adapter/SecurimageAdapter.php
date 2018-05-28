@@ -5,13 +5,8 @@ namespace Victoire\Widget\FormBundle\Domain\Captcha\Adapter;
 use Securimage;
 use Symfony\Component\HttpFoundation\Request;
 
-class SecurimageAdapter extends AbstractCaptcha
+class SecurimageAdapter extends AbstractCaptcha implements CaptchaCodeInterface
 {
-    /**
-     * @var Request
-     */
-    private $request;
-
     /**
      * @var Securimage
      */
@@ -22,10 +17,8 @@ class SecurimageAdapter extends AbstractCaptcha
      */
     private $namespace;
 
-    public function __construct(Request $request)
+    public function __construct()
     {
-        $this->request = $request;
-
         if ($this->canBeUsed()) {
             $this->securimage = new Securimage($this->getSecurimageParameters());
             $this->generateNewCaptcha();
@@ -33,19 +26,16 @@ class SecurimageAdapter extends AbstractCaptcha
     }
 
     /**
-     * Checks if the captcha is valid or not.
-     * Then delete it from session if captcha is valid.
-     *
+     * Check if the captcha is valid or not
+     * @param Request $request
      * @param bool $clear
-     *
      * @return bool
      */
-    public function validateCaptcha($clear = true)
+    public function validateCaptcha($request, $clear = true)
     {
-        $request = $this->request->request;
-        $securimage_namespace = $request->get('captcha_namespace');
         $code = $request->get('captcha_code');
-        $this->securimage->setNamespace($securimage_namespace);
+        $namespace = $request->get('captcha_namespace');
+        $this->securimage->setNamespace($namespace);
 
         if ($clear) {
             return $this->securimage->check($code);
@@ -157,5 +147,16 @@ class SecurimageAdapter extends AbstractCaptcha
     public function getNamespace()
     {
         return $this->namespace;
+    }
+
+    /**
+     * Get captcha Code by namespace
+     * @param $namespace
+     * @return mixed
+     */
+    public function getCaptchaCode($namespace)
+    {
+        $this->securimage->setNamespace($namespace);
+        return $this->securimage->getCode();
     }
 }

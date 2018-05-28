@@ -6,7 +6,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class GregwarCaptchaAdapter extends AbstractCaptcha {
+class GregwarCaptchaAdapter extends AbstractCaptcha implements CaptchaCodeInterface {
 
     /**
      * @var CaptchaBuilder
@@ -22,15 +22,10 @@ class GregwarCaptchaAdapter extends AbstractCaptcha {
      * @var SessionInterface
      */
     private $session;
-    /**
-     * @var Request
-     */
-    private $request;
 
-    public function __construct(SessionInterface $session, Request $request)
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
-        $this->request = $request;
 
         if ($this->canBeUsed()) {
             $this->captchaBuilder = new CaptchaBuilder();
@@ -40,21 +35,20 @@ class GregwarCaptchaAdapter extends AbstractCaptcha {
 
     /**
      * Check if the captcha is valid or not
-     * @return boolean
+     * @param Request $request
+     * @param bool $clear
+     * @return bool
      */
-    public function validateCaptcha($clear = true)
+    public function validateCaptcha($request, $clear = true)
     {
-        $request = $this->request->request;
-        $captcha_namespace = $request->get('captcha_namespace');
         $code = $request->get('captcha_code');
-
-        $displayCode = $this->session->get($captcha_namespace);
-
+        $namespace = $request->get('captcha_namespace');
+        $codeDisplay = $this->getCaptchaCode($namespace);
         if ($clear) {
-            $this->session->remove($captcha_namespace);
+            $this->session->remove($namespace);
         }
 
-        return strtolower($code) === strtolower($displayCode);
+        return strtolower($code) === strtolower($codeDisplay);
     }
 
     /**
@@ -122,5 +116,15 @@ class GregwarCaptchaAdapter extends AbstractCaptcha {
     public function getNamespace()
     {
         return $this->namespace;
+    }
+
+    /**
+     * Get captcha Code by namespace
+     * @param $namespace
+     * @return mixed
+     */
+    public function getCaptchaCode($namespace)
+    {
+        return $this->session->get($namespace);
     }
 }

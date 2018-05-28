@@ -2,13 +2,17 @@
 
 namespace Victoire\Widget\FormBundle\Domain\Captcha\Adapter;
 
+use Symfony\Component\HttpFoundation\Request;
+
 abstract class AbstractCaptcha implements CaptchaInterface {
 
     /**
      * Check if the captcha is valid or not
-     * @return boolean
+     * @param Request $request
+     * @param bool $clear
+     * @return bool
      */
-    abstract public function validateCaptcha();
+    abstract public function validateCaptcha($request, $clear = true);
 
     /**
      * Get the captcha name

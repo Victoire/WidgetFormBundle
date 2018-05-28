@@ -38,7 +38,7 @@ class CaptchaController extends Controller
         }
 
         $data = [];
-        if(!$captchaAdapter->validateCaptcha(false)) {
+        if(!$captchaAdapter->validateCaptcha($request, false)) {
             $captchaAdapter->generateNewCaptcha();
             $data = $captchaAdapter->getTwigParameters();
             $data['valid'] = false;

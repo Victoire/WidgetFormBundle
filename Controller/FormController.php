@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 use Troopers\AlertifyBundle\Controller\AlertifyControllerTrait;
 use Victoire\Bundle\MediaBundle\Entity\Media;
+use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\CaptchaInterface;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
 use Victoire\Widget\FormBundle\Event\WidgetFormeMailEvent;
 
@@ -49,8 +50,9 @@ class FormController extends Controller
 
         try {
             $captchaHandler = $this->get('victoire.form_widget.domain.captcha.handler');
+            /* @var $captchaAdapter CaptchaInterface */
             $captchaAdapter = $captchaHandler->getCaptcha($widget->getCaptcha());
-            if (!$captchaAdapter->validateCaptcha()) {
+            if (!$captchaAdapter->validateCaptcha($request)) {
                 $this->scold($this->get('translator')->trans('widget_form.form.captcha.error', [],'victoire'));
                 return $this->redirect($request->headers->get('referer'));
             }

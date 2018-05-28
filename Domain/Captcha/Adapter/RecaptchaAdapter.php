@@ -3,26 +3,30 @@
 namespace Victoire\Widget\FormBundle\Domain\Captcha\Adapter;
 
 use ReCaptcha\ReCaptcha;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class RecaptchaAdapter extends AbstractCaptcha
 {
     private $recaptchaPrivateKey;
     private $recaptchaPublicKey;
-    private $requestStack;
 
-    public function __construct($recaptchaPrivateKey, $recaptchaPublicKey, RequestStack $requestStack)
+    public function __construct($recaptchaPrivateKey, $recaptchaPublicKey)
     {
         $this->recaptchaPrivateKey = $recaptchaPrivateKey;
         $this->recaptchaPublicKey = $recaptchaPublicKey;
-        $this->requestStack = $requestStack;
     }
 
-    public function validateCaptcha()
+    /**
+     * Check if the captcha is valid or not
+     * @param Request $request
+     * @param bool $clear
+     * @return bool
+     */
+    public function validateCaptcha($request, $clear = true)
     {
-        $request = $this->requestStack->getCurrentRequest();
         $recaptcha = new ReCaptcha($this->recaptchaPrivateKey);
-        $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+        $resp = $recaptcha->verify($request->get('g-recaptcha-response'), $request->getClientIp());
 
         return $resp->isSuccess();
     }

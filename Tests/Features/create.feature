@@ -9,4 +9,4 @@ Feature: Create a Form widget
         When I switch to "layout" mode
         Then I should see "New content"
         When I select "Form" from the "1" select of "main_content" slot
-        Then I should see "Widget  (Form)"
+        Then I should see "    Widget (Form)"

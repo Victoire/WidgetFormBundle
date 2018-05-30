@@ -46,5 +46,6 @@ services:
       class: Victoire\Widget\FormBundle\Domain\Captcha\Adapter\GregwarCaptchaAdapter
       arguments:
           - "@session"
+          - "%kernel.environment%"
       tags:
           - 'victoire.form_widget.captcha.adapter'

@@ -23,12 +23,16 @@ class GregwarCaptchaAdapter extends AbstractCaptcha implements CaptchaCodeInterf
      */
     private $session;
 
-    public function __construct(SessionInterface $session)
+    public function __construct(SessionInterface $session, $ENV)
     {
         $this->session = $session;
 
         if ($this->canBeUsed()) {
-            $this->captchaBuilder = new CaptchaBuilder();
+            if($ENV === 'ci' || $ENV === 'test') {
+                $this->captchaBuilder = new CaptchaBuilder("correctly");
+            } else {
+                $this->captchaBuilder = new CaptchaBuilder();
+            }
             $this->generateNewCaptcha();
         }
     }

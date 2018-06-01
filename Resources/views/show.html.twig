@@ -1,5 +1,4 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
-{% import 'VictoireWidgetFormBundle:macros:form_elements.html.twig' as formElements %}
 
 {% block content %}
     <h3>{{ widget.title }}</h3>
@@ -132,33 +131,10 @@
                     </div>
                 {% endif %}
             {% endfor %}
+            {% include '@VictoireWidgetForm/form/captcha/captchaManager.html.twig' %}
         </div>
-
-            {% if recaptcha_public_key is defined %}
-                {% stylesheets injector="victoire_widget_form_recaptcha"
-                %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-                {% endstylesheets %}
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{formElements.recaptcha(recaptcha_public_key)}}
-                        <script type="text/javascript">
-                            (function() {
-                                if (!document.getElementById('google_recaptcha_script_tag')) {
-                                    var script = document.createElement('script');
-                                    script.type = 'text/javascript';
-                                    script.id = 'google_recaptcha_script_tag';
-                                    script.src = 'https://www.google.com/recaptcha/api.js?explicit&hl={{ app.request.locale }}';
-                                    document.getElementsByTagName('body')[0].appendChild(script);
-                                }
-                            })();
-                        </script>
-                    </div>
-                </div>
-            {% endif %}
-
             <div class="col-xs-12 text-right">
-            <button type="submit" class="btn btn-{{ submitClass|default('primary') }}">
+            <button type="submit" id="form-{{ widget.id }}-submit" class="btn btn-{{ submitClass|default('primary') }}">
                 {% if submitIcon %}
                     <span class="fa {{ submitIcon }}"></span>&nbsp;
                 {% endif %}

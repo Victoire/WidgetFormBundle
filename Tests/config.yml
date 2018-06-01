@@ -1,0 +1,10 @@
+swiftmailer:
+    transport: smtp
+    host:      127.0.0.1
+    username:  null
+    password:  null
+    spool:     { type: memory }
+
+parameters:
+    victoire_widget_form.default_email_address: "anakin@victoire.io"
+    victoire_widget_form.default_email_label: "anakin"

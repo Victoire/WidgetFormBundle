@@ -3,6 +3,7 @@
 namespace Victoire\Widget\FormBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,8 +14,8 @@ use Victoire\Bundle\CoreBundle\Form\WidgetType;
 use Victoire\Bundle\FormBundle\Form\Type\FontAwesomePickerType;
 use Victoire\Bundle\FormBundle\Form\Type\LinkType;
 use Victoire\Bundle\MediaBundle\Form\Type\MediaType;
+use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 use Victoire\Widget\FormBundle\Entity\WidgetFormQuestion;
-use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 
 /**
  * WidgetForm form type.
@@ -22,15 +23,15 @@ use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 class WidgetFormType extends WidgetType
 {
     private $formPrefill;
-    private $recaptchaHelper;
+    private $captchaHandler;
 
     /**
      * Constructor.
      */
-    public function __construct($formPrefill, RecaptchaHelper $recaptchaHelper)
+    public function __construct($formPrefill, CaptchaHandler $captchaHandler)
     {
         $this->formPrefill = $formPrefill;
-        $this->recaptchaHelper = $recaptchaHelper;
+        $this->captchaHandler = $captchaHandler;
     }
 
     /**
@@ -174,11 +175,19 @@ class WidgetFormType extends WidgetType
             'required' => false,
             ]
         );
-        if ($this->recaptchaHelper->canUseReCaptcha()) {
-            $builder->add('recaptcha', null, [
-                'label' => 'widget_form.form.captcha.label',
-            ]);
+
+        $listCaptcha = [];
+        foreach ($this->captchaHandler->getAvailableCaptcha() as $captcha) {
+            $listCaptcha[$captcha->getName()] = $captcha->getName();
         }
+
+        $builder->add('captcha', ChoiceType::class, [
+            'label'    => 'widget_form.form.captcha.label',
+            'choices'  => $listCaptcha,
+            'placeholder' => 'widget_form.form.captcha.none',
+            'choice_label' => function ($value) { return $value; },
+        ]);
+
         if ($this->formPrefill) {
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $widgetFormSlot = $event->getData();

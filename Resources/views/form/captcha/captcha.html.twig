@@ -1,0 +1,46 @@
+<div class="col-xs-12">
+    <div class="form-group">
+        <label for="securimage_code" class="control-label">Captcha<span class="required">*</span></label>
+        <p id="widget-form-missing-captcha-{{ widget.id }}" class="hidden bg-danger">{{ 'widget_form.form.captcha.error' | trans({}, 'victoire') }}</p>
+        <img alt="Captcha Image" id="captcha-image-{{ widget.id }}" src="{{ captcha_image }}" style="margin: 0 auto;"/>
+        <div class="input">
+            <input type="hidden" name="captcha_namespace" id="captcha-namespace-{{ widget.id }}" value="{{ captcha_namespace }}">
+            <input class="form-control" id="captcha-code-{{ widget.id }}" name="captcha_code" type="text" required="required">
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function(){
+            $('#form-{{ widget.id }}').on('submit', function(e) {
+                $missingRecaptcha = $('#widget-form-missing-captcha-{{ widget.id }}');
+                if (!$missingRecaptcha.hasClass('hidden')) { $missingRecaptcha.toggleClass('hidden') };
+                if(!$(this).attr('validated')) {
+                    $.ajax({
+                        url         : '{{ path('victoire_form_captcha_validate', {'widget_form_id': widget.id}) }}',
+                        data        : $(this).serialize(),
+                        type        : 'POST',
+                        cache       : false,
+                        async       : false,
+                        xhrFields:  {
+                            withCredentials: true
+                        }
+                    }).done(function(response) {
+                        if (response.valid) {
+                            $form = $('#form-' + {{ widget.id }});
+                            $form.attr('validated', true);
+                            $form.submit();
+                        } else {
+                            $missingRecaptcha.toggleClass('hidden');
+                            $('#captcha-image-{{ widget.id }}').replaceWith($('<img alt="Captcha Image" id="captcha-image-{{ widget.id }}" src="'+ response.captcha_image +'" style="margin: 0 auto;"/>'));
+                            $('#captcha-namespace-{{ widget.id }}').val(response.captcha_namespace);
+                            $('#captcha-code-{{ widget.id }}').val('');
+                        }
+                    }).fail(function(response) {
+                        console.error('Request has failed');
+                    });
+                    return false;
+                }
+                return true;
+            });
+        })()
+    </script>
+</div>

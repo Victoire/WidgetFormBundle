@@ -4,20 +4,13 @@ namespace Victoire\Widget\FormBundle\Resolver;
 
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
+use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\CaptchaInterface;
+use Victoire\Widget\FormBundle\Domain\Captcha\Adapter\RecaptchaAdapter;
+use Victoire\Widget\FormBundle\Domain\Captcha\CaptchaHandler;
 use Victoire\Widget\FormBundle\Entity\WidgetForm;
-use Victoire\Widget\FormBundle\Helper\RecaptchaHelper;
 
 class WidgetFormContentResolver extends BaseWidgetContentResolver
 {
-    protected $recaptchaPublicKey;
-    protected $recaptchaHelper;
-
-    public function __construct($recaptchaPublicKey, RecaptchaHelper $recaptchaHelper)
-    {
-        $this->recaptchaPublicKey = $recaptchaPublicKey;
-        $this->recaptchaHelper = $recaptchaHelper;
-    }
-
     /**
      * Get the static content of the widget.
      *
@@ -28,8 +21,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetStaticContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addRecaptchaKey($widget, $parameters);
+        return $parameters;
     }
 
     /**
@@ -42,8 +34,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetBusinessEntityContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addRecaptchaKey($widget, $parameters);
+        return $parameters;
     }
 
     /**
@@ -56,8 +47,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetEntityContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addRecaptchaKey($widget, $parameters);
+        return $parameters;
     }
 
     /**
@@ -70,16 +60,7 @@ class WidgetFormContentResolver extends BaseWidgetContentResolver
     public function getWidgetQueryContent(Widget $widget)
     {
         $parameters = parent::getWidgetStaticContent($widget);
-
-        return $this->addRecaptchaKey($widget, $parameters);
-    }
-
-    protected function addRecaptchaKey(WidgetForm $widget, array $parameters)
-    {
-        if ($widget->isRecaptcha() && $this->recaptchaHelper->canUseReCaptcha()) {
-            return array_merge($parameters, ['recaptcha_public_key' => $this->recaptchaPublicKey]);
-        }
-
         return $parameters;
     }
+
 }

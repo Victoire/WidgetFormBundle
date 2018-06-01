@@ -1,286 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2018-04-24T14:29:54Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
     <header>
-      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
-      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+      <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="6ac75fee8fbaac0f847ca7e650d188dd55f795aa" resname="victoire.widget-form.successCallback.choices.notification">
+      <trans-unit id="mJDdXI." resname="widget.form.new.action.label">
+        <source>widget.form.new.action.label</source>
+        <target state="new">Formulario</target>
+      </trans-unit>
+      <trans-unit id="QCPsRi." resname="modal.form.widget.type.form.label">
+        <source>modal.form.widget.type.form.label</source>
+        <target state="new">Formulario</target>
+      </trans-unit>
+      <trans-unit id="PkGKuz2" resname="victoire.widget-form.successCallback.choices.notification">
         <source>victoire.widget-form.successCallback.choices.notification</source>
         <target>Notificación</target>
-        <jms:reference-file line="155">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="bb33783448158a3117ff0e4ae677c20b7f347784" resname="victoire.widget-form.successCallback.choices.redirect">
+      <trans-unit id="OpSieUQ" resname="victoire.widget-form.successCallback.choices.redirect">
         <source>victoire.widget-form.successCallback.choices.redirect</source>
         <target>Redirección</target>
-        <jms:reference-file line="156">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="fbfe7182252094cbc1b0f6b51689a070fb41e452" resname="widget_form.form.adminSubject.label">
+      <trans-unit id="sjr2bSH" resname="widget_form.form.adminSubject.label">
         <source>widget_form.form.adminSubject.label</source>
         <target state="new">widget_form.form.adminSubject.label</target>
-        <jms:reference-file line="75">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="9be572048c9d305b27fffcf34d59bc4c99435085" resname="widget_form.form.attachmentUrl.label">
+      <trans-unit id="q2ygjvX" resname="widget_form.form.attachmentUrl.label">
         <source>widget_form.form.attachmentUrl.label</source>
         <target>URL adjunta</target>
-        <jms:reference-file line="51">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="55bf3edb16aa7c06e484124a9472247b7ef6de22" resname="widget_form.form.attachmentUrl2.label">
+      <trans-unit id="5OIBh.c" resname="widget_form.form.attachmentUrl2.label">
         <source>widget_form.form.attachmentUrl2.label</source>
         <target>URL adjunta 2</target>
-        <jms:reference-file line="54">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="f67a8113b66786957090ee0811869703c494aabe" resname="widget_form.form.attachmentUrl3.label">
+      <trans-unit id="D7uwZRz" resname="widget_form.form.attachmentUrl3.label">
         <source>widget_form.form.attachmentUrl3.label</source>
         <target>URL adjunta 3</target>
-        <jms:reference-file line="57">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="a93f1118b4b058b98b21217dc339e015337c1079" resname="widget_form.form.attachmentUrl4.label">
+      <trans-unit id="niVSTdi" resname="widget_form.form.attachmentUrl4.label">
         <source>widget_form.form.attachmentUrl4.label</source>
         <target>URL adjunta 4</target>
-        <jms:reference-file line="60">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="9cfcbe6ce76ccf6b0b2c73b228417864a97199c6" resname="widget_form.form.attachmentUrl5.label">
+      <trans-unit id="euBYf0z" resname="widget_form.form.attachmentUrl5.label">
         <source>widget_form.form.attachmentUrl5.label</source>
         <target>URL adjunta 5</target>
-        <jms:reference-file line="63">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="0660ed41cdae571760c1c0b48ff385d38546e315" resname="widget_form.form.attachmentUrl6.label">
+      <trans-unit id="130kLB2" resname="widget_form.form.attachmentUrl6.label">
         <source>widget_form.form.attachmentUrl6.label</source>
         <target>URL adjunta 6</target>
-        <jms:reference-file line="66">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="14cf2cf843e4cc0f38061ef203cc70d45f637717" resname="widget_form.form.attachmentUrl7.label">
+      <trans-unit id="3F7JpBM" resname="widget_form.form.attachmentUrl7.label">
         <source>widget_form.form.attachmentUrl7.label</source>
         <target>URL adjunta 7</target>
-        <jms:reference-file line="69">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="a1f4f6de88a8e79f96a033d44753c33e615135db" resname="widget_form.form.autoAnswer.label">
+      <trans-unit id="Pq_Yrbj" resname="widget_form.form.autoAnswer.label">
         <source>widget_form.form.autoAnswer.label</source>
         <target>Respuesta automática</target>
-        <jms:reference-file line="87">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
-        <jms:reference-file line="90">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="fda53ad7a99c2e79bbdbe3d742371ddc695f5b93" resname="widget_form.form.captcha.error">
+      <trans-unit id="Gmas.iD" resname="widget_form.form.captcha.error">
         <source>widget_form.form.captcha.error</source>
         <target>No válido captcha</target>
-        <jms:reference-file line="55">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Controller/FormController.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="45d5c05fd9d5bc71433e4e5c50b49c293e605443" resname="widget_form.form.captcha.label">
+      <trans-unit id="WXd8EgZ" resname="widget_form.form.captcha.label">
         <source>widget_form.form.captcha.label</source>
         <target>Captcha</target>
-        <jms:reference-file line="179">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="e81b429c9fefba1035ec7fb6a62d77802884adac" resname="widget_form.form.choice.style.label.danger">
+      <trans-unit id="55izuKO" resname="widget_form.form.captcha.none">
+        <source>widget_form.form.captcha.none</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="xMrJiA1" resname="widget_form.form.choice.style.label.danger">
         <source>widget_form.form.choice.style.label.danger</source>
         <target>Peligro</target>
-        <jms:reference-file line="147">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="f4687aa3a817696d970034bf28fdf72cd76f14fc" resname="widget_form.form.choice.style.label.default">
+      <trans-unit id="ADvLBfX" resname="widget_form.form.choice.style.label.default">
         <source>widget_form.form.choice.style.label.default</source>
         <target>Defecto</target>
-        <jms:reference-file line="142">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="062bc21048c83474471835ab21a2dd99380e4b2f" resname="widget_form.form.choice.style.label.info">
+      <trans-unit id="m8MN6xy" resname="widget_form.form.choice.style.label.info">
         <source>widget_form.form.choice.style.label.info</source>
         <target>Informativo</target>
-        <jms:reference-file line="145">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="c5e2720139456017b7b77e2df94b92f5e4c42130" resname="widget_form.form.choice.style.label.primary">
+      <trans-unit id="Yotk7Qx" resname="widget_form.form.choice.style.label.primary">
         <source>widget_form.form.choice.style.label.primary</source>
         <target>Primario</target>
-        <jms:reference-file line="143">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="28c6a5a6144e071f06894291aaff79d1281fccf5" resname="widget_form.form.choice.style.label.success">
+      <trans-unit id="OVyeTyN" resname="widget_form.form.choice.style.label.success">
         <source>widget_form.form.choice.style.label.success</source>
         <target>éxito</target>
-        <jms:reference-file line="144">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="cb343ad6ada0be1e19f04cc8cc95fc3ee4527751" resname="widget_form.form.choice.style.label.warning">
+      <trans-unit id="iOZttrK" resname="widget_form.form.choice.style.label.warning">
         <source>widget_form.form.choice.style.label.warning</source>
         <target>Advertencia</target>
-        <jms:reference-file line="146">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="ed38662db8a368f67b28ff7587307098a5b40902" resname="widget_form.form.errorMessage.label">
+      <trans-unit id="0xRxGUQ" resname="widget_form.form.errorMessage.label">
         <source>widget_form.form.errorMessage.label</source>
         <target>Mensaje de error :</target>
-        <jms:reference-file line="173">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="c4d2a048daf56a84033588b91bb3c96c6ca29c09" resname="widget_form.form.errorNotification.label">
+      <trans-unit id="Z.qzMi0" resname="widget_form.form.errorNotification.label">
         <source>widget_form.form.errorNotification.label</source>
         <target>Mostrar una notificación de error?</target>
-        <jms:reference-file line="168">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="948bfb43a676cb5c83a9799707120d52541968c1" resname="widget_form.form.message.help_block">
+      <trans-unit id="Ht5VicY" resname="widget_form.form.message.help_block">
         <source>widget_form.form.message.help_block</source>
         <target><![CDATA[<p class="vic-help-block"><span class="fa fa-info-circle"></span>&nbsp;Puede utilizar las variables en la forma que rodea el nombre con dobles llaves : {{Nombre}}</p>]]></target>
-        <jms:reference-file line="44">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Resources/views/new.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="b550384423cc8502322e9c7e228fc111e697061a" resname="widget_form.form.message.label">
+      <trans-unit id="THYXW2C" resname="widget_form.form.message.label">
         <source>widget_form.form.message.label</source>
         <target>Contenido</target>
-        <jms:reference-file line="93">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="00df089c1e94d8c452858e2fa7732cb4ca441d37" resname="widget_form.form.noReply.label">
+      <trans-unit id="lq4Pdd3" resname="widget_form.form.noReply.label">
         <source>widget_form.form.noReply.label</source>
         <target>Dirección de respuesta automática</target>
-        <jms:reference-file line="83">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="95ad097c60f8b35b52b7e3ebdb3b9022b158249b" resname="widget_form.form.proposal.new.label">
+      <trans-unit id="vceLryX" resname="widget_form.form.proposal.new.label">
         <source>widget_form.form.proposal.new.label</source>
         <target>Nueva propuesta</target>
-        <jms:reference-file line="93">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Resources/views/formCreatorQuestion.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="1f3450f3a5d88120be8f29c44930afdf400329ac" resname="widget_form.form.question.alignment.full">
+      <trans-unit id="h4.TQGP" resname="widget_form.form.question.alignment.full">
         <source>widget_form.form.question.alignment.full</source>
         <target state="new">widget_form.form.question.alignment.full</target>
-        <jms:reference-file line="91">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="01268bd8d6d8bc7ad686a3fc7f1dfcdc6b3c933f" resname="widget_form.form.question.alignment.label">
+      <trans-unit id="jq8i_qb" resname="widget_form.form.question.alignment.label">
         <source>widget_form.form.question.alignment.label</source>
         <target state="new">widget_form.form.question.alignment.label</target>
-        <jms:reference-file line="89">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="fa3c2bbb87fc17fa5c8629e2929014c9e56e1e8a" resname="widget_form.form.question.alignment.left">
+      <trans-unit id="LaWD6MH" resname="widget_form.form.question.alignment.left">
         <source>widget_form.form.question.alignment.left</source>
         <target state="new">widget_form.form.question.alignment.left</target>
-        <jms:reference-file line="92">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="884abeca82d1ce23e23a869c33d252b94205eb6a" resname="widget_form.form.question.alignment.right">
+      <trans-unit id="suH92XT" resname="widget_form.form.question.alignment.right">
         <source>widget_form.form.question.alignment.right</source>
         <target state="new">widget_form.form.question.alignment.right</target>
-        <jms:reference-file line="93">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="6dbaaf86dc8953a255e6cf16f48fcda657d66889" resname="widget_form.form.question.new.label">
+      <trans-unit id="KSJ8zAi" resname="widget_form.form.question.new.label">
         <source>widget_form.form.question.new.label</source>
         <target><![CDATA[<span class="fa fa-plus"></span>&nbsp;Añadir una nueva pregunta]]></target>
-        <jms:reference-file line="111">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Resources/views/new.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="ec5240eb8ef6c0adc3f62a29077a44ccc5c4cf28" resname="widget_form.form.question.prefix.label">
+      <trans-unit id="z_KCU3q" resname="widget_form.form.question.prefix.label">
         <source>widget_form.form.question.prefix.label</source>
         <target>Prefijo</target>
-        <jms:reference-file line="39">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="00d67b300a75833106ea7f3d7ba1b5bd28ae83ef" resname="widget_form.form.question.proposal.label">
+      <trans-unit id="IvGuZL7" resname="widget_form.form.question.proposal.label">
         <source>widget_form.form.question.proposal.label</source>
         <target>Propuesta</target>
-        <jms:reference-file line="76">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="21a05ad5d96c016d94014dcabc4b3386866f0d5e" resname="widget_form.form.question.proposalExpanded.label">
+      <trans-unit id="KcieWin" resname="widget_form.form.question.proposalExpanded.label">
         <source>widget_form.form.question.proposalExpanded.label</source>
         <target>Utilice casillas de verificación</target>
-        <jms:reference-file line="66">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="46500b8a0413d965ba0946ed7b1f50991c2de1a6" resname="widget_form.form.question.proposalInline.label">
+      <trans-unit id="Cmh_uQP" resname="widget_form.form.question.proposalInline.label">
         <source>widget_form.form.question.proposalInline.label</source>
         <target>Ver en línea</target>
-        <jms:reference-file line="71">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="622edae0cf0e636709e6f1982a827d6dd367fd48" resname="widget_form.form.question.regex.label">
+      <trans-unit id="PQKCIdF" resname="widget_form.form.question.regex.label">
         <source>widget_form.form.question.regex.label</source>
         <target>Regex</target>
-        <jms:reference-file line="81">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="e2b9b1875e1dfd2baca20714d9c71e9ac9eb840c" resname="widget_form.form.question.regexTitle.label">
+      <trans-unit id="aLUtYcE" resname="widget_form.form.question.regexTitle.label">
         <source>widget_form.form.question.regexTitle.label</source>
         <target>Regex</target>
-        <jms:reference-file line="85">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="a7ceda27a9d272db597a764f1f9fab238eb5b964" resname="widget_form.form.question.required.label">
+      <trans-unit id="x1eKjPZ" resname="widget_form.form.question.required.label">
         <source>widget_form.form.question.required.label</source>
         <target>Requerido</target>
-        <jms:reference-file line="43">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="41689c4a967b671915c283aca5d2775b0cb0dde2" resname="widget_form.form.question.title.label">
+      <trans-unit id="u3xwaIO" resname="widget_form.form.question.title.label">
         <source>widget_form.form.question.title.label</source>
         <target>Pregunta</target>
-        <jms:reference-file line="28">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="9d678fc12c82aae461071152913d86006efe855a" resname="widget_form.form.question.type.boolean">
+      <trans-unit id="JHPSJQZ" resname="widget_form.form.question.type.boolean">
         <source>widget_form.form.question.type.boolean</source>
         <target>Casilla de verificación</target>
-        <jms:reference-file line="52">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="3baba184857884bccbbc3ba634db02a2dd662632" resname="widget_form.form.question.type.choice">
+      <trans-unit id="Hsi_h56" resname="widget_form.form.question.type.choice">
         <source>widget_form.form.question.type.choice</source>
         <target>Opciones múltiples</target>
-        <jms:reference-file line="53">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="ae81cc791b90ce61675bc82c95de0c7a8cbd93e3" resname="widget_form.form.question.type.date">
+      <trans-unit id="JdGq_b5" resname="widget_form.form.question.type.date">
         <source>widget_form.form.question.type.date</source>
         <target>Fecha</target>
-        <jms:reference-file line="50">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="477a7a1359315a3514f32636e7781bab22d8793e" resname="widget_form.form.question.type.email">
+      <trans-unit id="xjQM11e" resname="widget_form.form.question.type.email">
         <source>widget_form.form.question.type.email</source>
         <target>Email</target>
-        <jms:reference-file line="51">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="346c82b9d4c7946ab7f639f1983864345fa40623" resname="widget_form.form.question.type.label">
+      <trans-unit id="Aml0tbn" resname="widget_form.form.question.type.label">
         <source>widget_form.form.question.type.label</source>
         <target>Tipo de respuesta</target>
-        <jms:reference-file line="58">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="5a79b42081da42e9fb69d50408f8e5acc77f7ea1" resname="widget_form.form.question.type.radio">
+      <trans-unit id="51UozAS" resname="widget_form.form.question.type.radio">
         <source>widget_form.form.question.type.radio</source>
         <target>Opción únicae</target>
-        <jms:reference-file line="54">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="19374c9d6693ce985767e0bd85fc354e9cc8045c" resname="widget_form.form.question.type.text">
+      <trans-unit id="oEkq63s" resname="widget_form.form.question.type.text">
         <source>widget_form.form.question.type.text</source>
         <target>Respuesta abierta corta</target>
-        <jms:reference-file line="48">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="abebf26bc69014461b222463a278c68b782d93fb" resname="widget_form.form.question.type.textarea">
+      <trans-unit id="8rUf3WJ" resname="widget_form.form.question.type.textarea">
         <source>widget_form.form.question.type.textarea</source>
         <target>Respuesta abierta larga</target>
-        <jms:reference-file line="49">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormQuestionType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="00035cf22d869b93feb661d8b5c3238be2a39d84" resname="widget_form.form.questions.label">
+      <trans-unit id="F8QjJTO" resname="widget_form.form.questions.label">
         <source>widget_form.form.questions.label</source>
         <target>Preguntas</target>
-        <jms:reference-file line="126">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="07da8591fa5e86f88576d33c8edd749847786bf8" resname="widget_form.form.subject.label">
+      <trans-unit id="qn0jAeu" resname="widget_form.form.subject.label">
         <source>widget_form.form.subject.label</source>
         <target>Sujeto</target>
-        <jms:reference-file line="72">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="c87f94e67bc4a1939a60db99b594a6b2683ef824" resname="widget_form.form.submitClass.label">
+      <trans-unit id="V7pYiff" resname="widget_form.form.submitClass.label">
         <source>widget_form.form.submitClass.label</source>
         <target>Botón estilo :</target>
-        <jms:reference-file line="140">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="ef6cf391bda6a09a10398433470040be89963285" resname="widget_form.form.submitIcon.label">
+      <trans-unit id="Le4cyXq" resname="widget_form.form.submitIcon.label">
         <source>widget_form.form.submitIcon.label</source>
         <target>Icono</target>
-        <jms:reference-file line="136">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="7a08c0f605bb0a5629878135c6f24ac0335b0ff0" resname="widget_form.form.submitLabel.label">
+      <trans-unit id="dgF.W3j" resname="widget_form.form.submitLabel.label">
         <source>widget_form.form.submitLabel.label</source>
         <target>Botón enviar</target>
-        <jms:reference-file line="132">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="3afb6b2f30734de8a478d852f9091b3a8e8db26f" resname="widget_form.form.successCallback.label">
+      <trans-unit id="Ev1_Hc8" resname="widget_form.form.successCallback.label">
         <source>widget_form.form.successCallback.label</source>
         <target>Acción para el éxito</target>
-        <jms:reference-file line="152">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="d6e00c3fb5f1395d39da1fa8c8578f83e201e260" resname="widget_form.form.successMessage.label">
+      <trans-unit id="SXiDoJQ" resname="widget_form.form.successMessage.label">
         <source>widget_form.form.successMessage.label</source>
         <target>Éxito mensaje</target>
-        <jms:reference-file line="163">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="23032ca5e669d006e184d330b5b04f0711ecb1fc" resname="widget_form.form.targetEmail.label">
+      <trans-unit id="wrCbw86" resname="widget_form.form.targetEmail.label">
         <source>widget_form.form.targetEmail.label</source>
         <target>Correo electrónico de la recepción de los datos</target>
-        <jms:reference-file line="79">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="cf3fb0f4be87be33c048bf0e50fad57f89bca1c8" resname="widget_form.form.title.label">
+      <trans-unit id="52OIoLO" resname="widget_form.form.title.label">
         <source>widget_form.form.title.label</source>
         <target>Título</target>
-        <jms:reference-file line="48">/../vendor/victoire/form-widget/Victoire/Widget/FormBundle/Form/WidgetFormType.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>

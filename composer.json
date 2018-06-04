@@ -34,5 +34,8 @@
             "Victoire\\Widget\\FormBundle": ""
         }
     },
-    "target-dir": "Victoire/Widget/FormBundle"
+    "target-dir": "Victoire/Widget/FormBundle",
+    "require-dev": {
+        "alexandresalome/mailcatcher": "^1.2"
+    }
 }

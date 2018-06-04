@@ -1,10 +1,23 @@
 #!/usr/bin/env bash
 
-echo ">>> Installing Mailhog"
+echo ">>> Installing MailCatcher"
 
-# Download binary from github
-wget https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
-sudo cp MailHog_linux_amd64 /usr/bin/mailhog
-sudo chmod +x /usr/bin/mailhog
-nohup mailhog > /dev/null 2>&1 &
+sudo apt install -y build-essential libsqlite3-dev ruby-dev
+gem install mailcatcher
+echo "sendmail_path = /usr/bin/env $(which catchmail) -f 'www-data@localhost'" >> /etc/php/7.1/mods-available/mailcatcher.ini
+phpenmod mailcatcher
+/usr/bin/env $(which mailcatcher) --ip=0.0.0.0
+
+echo ">>> Update Behat config"
+
+# Get the Namespace of EmailContext file with regular expression
+# Alter the namespace to remove ';' then use triple backslashes instead of a single backslash
+namespace="$(cat ../../../Context/EmailContext.php | sed -rn 's/namespace ((\\{1,2}\w+|\w+\\{1,2})(\w+\\{0,2})+)/\1/p' | sed -r 's/;+$//' | sed -e 's|\\|\\\\\\|g' )"
+# Add EmailContext path in the behat.yml.dist file to load the context
+sed -i "s@contexts:@contexts: \n                 - $namespace\\\EmailContext@" behat.yml.dist
+rm ../../../Tests/Context/EmailContext.php
+sed -i "s@extensions:@extensions: \n         Alex\\\MailCatcher\\\Behat\\\MailCatcherExtension\\\Extension:\n            url: http://fr.victoir
+e.io:1080\n            purge_before_scenario: true@" behat.yml.dist
+# Use Chrome instead of firefox
 sed -i -e 's/firefox/chrome/g' behat.yml.dist
+

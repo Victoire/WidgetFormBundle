@@ -107,6 +107,13 @@ class FormController extends Controller
             }
         }
 
+        $email = null;
+        foreach ($_taintedValues['questions'] as $question) {
+            if ($question['label'] == 'Email' || $question['label'] == 'email') {
+                $email = $question[0];
+            }
+        }
+
         ///////////////////////// SEND EMAIL TO ADMIN (set in the form or default one)  //////////////////////////////////////////
 
         //$isSpam = $this->testForSpam($taintedValues, $request);
@@ -135,19 +142,13 @@ class FormController extends Controller
                 );
                 if (count($regexErrors) == 0) {
                     $emailSend = true;
-                    $this->createAndSendMail($widget->getAdminSubject(), $from, $targetEmail, $body, 'text/html', null, [], $mailer);
+                    $this->createAndSendMail($widget->getAdminSubject(), $from, $targetEmail, $body, 'text/html', $email, [], $mailer);
                 }
             } catch (\Exception $e) {
                 throw $e;
             }
         }
         ///////////////////////// AUTOANSWER (if email field exists and is filled properly)  //////////////////////////////////////////
-        $email = null;
-        foreach ($_taintedValues['questions'] as $question) {
-            if ($question['label'] == 'Email' || $question['label'] == 'email') {
-                $email = $question[0];
-            }
-        }
         if ($widget->isAutoAnswer() === true && $email) {
             if ($errors = $this->get('validator')->validate($widget->getNoReply(), new EmailConstraint())) {
                 try {

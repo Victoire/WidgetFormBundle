@@ -19,3 +19,6 @@ rm ../../../Tests/Context/EmailContext.php
 sed -i "s@extensions:@extensions: \n         Alex\\\MailCatcher\\\Behat\\\MailCatcherExtension\\\Extension:\n            url: http://fr.victoire.io:1080\n            purge_before_scenario: true@" behat.yml.dist
 # Use Chrome instead of firefox
 sed -i -e 's/firefox/chrome/g' behat.yml.dist
+
+echo ">>> Install dev Dependencies"
+php -d memory_limit=-1 /usr/local/bin/composer require alexandresalome/mailcatcher

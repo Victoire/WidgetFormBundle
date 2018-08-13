@@ -97,12 +97,6 @@ class WidgetFormQuestionType extends WidgetType
                     'empty_data' => 'full',
                 ]
             );
-
-        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
-                $widget = $event->getData();
-                $widget->setProposal(serialize($widget->getProposal()));
-            }
-        );
     }
 
     /**
